@@ -51,7 +51,9 @@ export const addHabit = newHabit => dispatch => {
 export const deleteHabit = id => dispatch => {
   dispatch({ type: DELETE_HABIT_START });
   axios
-    .delete(`http://localhost:5000/api/friends/${id}`)
+    .delete(`http://localhost:5000/api/friends/${id}`, {
+      headers: { Authorization: localStorage.getItem("token") }
+    })
     .then(response => {
       console.log("deleteHabit response.data", response.data);
       dispatch({ type: DELETE_HABIT_SUCCESS, payload: response.data });
