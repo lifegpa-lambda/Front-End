@@ -11,21 +11,8 @@ let nextId = 7;
 let friends = [
   {
     id: 1,
-    image: "https://i.imgur.com/6NQ2g4f.png",
-    name: "Shocked Ball",
-    email: "chonk1@gmail.com"
-  },
-  {
-    id: 2,
-    image: "https://i.imgur.com/RtZ39EG.png",
-    name: "Choco Taco",
-    email: "meltyscoop@gmail.com"
-  },
-  {
-    id: 3,
-    image: "https://i.imgur.com/40TennG.png",
-    name: "Snooze Button",
-    email: "fishnthecity@gmail.com"
+    habit: "Fill your habits in here. Click to cross off.",
+    completed: false
   }
 ];
 
