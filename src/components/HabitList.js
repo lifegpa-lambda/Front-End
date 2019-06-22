@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { getHabits } from "../actions/habitActions";
 
 class HabitList extends Component {
   componentDidMount() {
     console.log("CDM");
+    this.props.getHabits();
   }
 
   render() {
@@ -11,6 +13,10 @@ class HabitList extends Component {
     return (
       <div>
         <h2>Habit list</h2>
+        {this.props.habits.habits.map(habit => {
+          console.log("HabitList habit", habit);
+          return <HabitCard habit={habit} key={habit.id} />;
+        })}
       </div>
     );
   }
@@ -18,10 +24,12 @@ class HabitList extends Component {
 
 const mapStateToProps = state => {
   console.log("HabitList mapStateToProps state", state);
-  return {};
+  return {
+    habits: state.habits
+  };
 };
 
 export default connect(
-  null,
-  {}
+  mapStateToProps,
+  { getHabits }
 )(HabitList);
