@@ -24,7 +24,7 @@ class Login extends Component {
     console.log("login event", event);
     event.preventDefault();
     this.props.login(this.state.credentials).then(() => {
-      this.props.history.push("/habit-list");
+      this.props.history.push("/habits");
     });
 
     this.setState({
