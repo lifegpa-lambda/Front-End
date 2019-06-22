@@ -47,3 +47,20 @@ export const addHabit = newHabit => dispatch => {
       });
     });
 };
+
+export const deleteHabit = id => dispatch => {
+  dispatch({ type: DELETE_HABIT_START });
+  axios
+    .delete(`http://localhost:5000/api/friends/${id}`)
+    .then(response => {
+      console.log("deleteHabit response.data", response.data);
+      dispatch({ type: DELETE_HABIT_SUCCESS, payload: response.data });
+    })
+    .catch(error => {
+      console.log("deleteHabit error", error);
+      dispatch({
+        type: DELETE_HABIT_ERROR,
+        payload: error
+      });
+    });
+};

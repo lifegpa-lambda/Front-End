@@ -1,11 +1,26 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { deleteHabit } from "../actions/habitActions";
 
-const HabitCard = props => {
-  return (
-    <div className="habit-card">
-      <div>{props.habit.habit}</div>
-    </div>
-  );
-};
+class HabitCard extends Component {
+  deleteHabit = event => {
+    event.preventDefault();
+    this.props.deleteHabit(this.props.habit.id);
+  };
 
-export default HabitCard;
+  render() {
+    return (
+      <div className="habit-card">
+        <div>{this.props.habit.habit}</div>
+        <button onClick={this.deleteHabit} className="delete-btn">
+          X
+        </button>
+      </div>
+    );
+  }
+}
+
+export default connect(
+  null,
+  { deleteHabit }
+)(HabitCard);
