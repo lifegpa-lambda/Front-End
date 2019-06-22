@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getHabits } from "../actions/habitActions";
+import HabitCard from "./HabitCard";
 
 class HabitList extends Component {
   componentDidMount() {
