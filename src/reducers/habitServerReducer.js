@@ -4,7 +4,10 @@ import {
   FETCH_HABITS_ERROR,
   ADD_HABIT_START,
   ADD_HABIT_SUCCESS,
-  ADD_HABIT_ERROR
+  ADD_HABIT_ERROR,
+  DELETE_HABIT_START,
+  DELETE_HABIT_SUCCESS,
+  DELETE_HABIT_ERROR
 } from "../actions/habitActions";
 
 const initialState = {
@@ -52,6 +55,26 @@ export default (state = initialState, action) => {
       return {
         ...state,
         addingHabit: false,
+        error: action.payload
+      };
+
+    case DELETE_HABIT_START:
+      return {
+        ...state,
+        deletingHabit: true,
+        error: null
+      };
+    case DELETE_HABIT_SUCCESS:
+      return {
+        ...state,
+        deletingHabit: false,
+        error: null,
+        habits: action.payload
+      };
+    case DELETE_HABIT_ERROR:
+      return {
+        ...state,
+        deletingHabit: false,
         error: action.payload
       };
     default:
