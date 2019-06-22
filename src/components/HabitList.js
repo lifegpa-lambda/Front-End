@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getHabits } from "../actions/habitActions";
 import HabitCard from "./HabitCard";
+import HabitForm from "./HabitForm";
 
 class HabitList extends Component {
   componentDidMount() {
@@ -18,6 +19,7 @@ class HabitList extends Component {
           console.log("HabitList habit", habit);
           return <HabitCard habit={habit} key={habit.id} />;
         })}
+        <HabitForm />
       </div>
     );
   }

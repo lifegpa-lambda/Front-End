@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { addHabit } from "../actions/habitActions";
 
 class HabitForm extends Component {
   state = {
@@ -17,6 +18,7 @@ class HabitForm extends Component {
             value={this.state.habit}
             onChange={this.handleChanges}
           />
+          <button>Add Habit</button>
         </form>
       </div>
     );
