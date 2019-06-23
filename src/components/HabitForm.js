@@ -18,12 +18,19 @@ class UpdateForm extends Component {
       this.props.habits.activeHabit &&
       prevState.habits.activeHabit !== this.props.habits.activeHabit
     ) {
-      this.setState({ habit: this.props.habits.activeHabit, active: true });
+      this.setState({
+        habit: this.props.habits.activeHabit.habit,
+        active: true
+      });
     }
   }
 
   render() {
-    console.log("HabitForm this.props", this.props);
+    console.log(
+      "HabitForm this.props.habits.activeHabit",
+      this.props.habits.activeHabit
+    );
+    console.log("HabitForm this.state.habit", this.state.habit);
     console.log(
       "HabitForm this.props.habits.activeHabit",
       this.props.habits.activeHabit
@@ -55,7 +62,11 @@ class UpdateForm extends Component {
 
   submitHandler = newHabit => {
     if (this.props.habits.active) {
-      this.props.updateHabit(this.state.habit);
+      const updateHabit = {
+        habit: this.state.habit,
+        id: this.props.habits.activeHabit.id
+      };
+      this.props.updateHabit(updateHabit);
     } else {
       this.addHabit(newHabit);
     }
