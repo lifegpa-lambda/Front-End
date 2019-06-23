@@ -109,6 +109,6 @@ export const filterHabits = list => {
 export const toggleChecked = habit => {
   return {
     type: TOGGLE_CHECKED,
-    payload: !habit.checked
+    payload: habit
   };
 };

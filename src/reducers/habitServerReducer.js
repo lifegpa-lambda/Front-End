@@ -21,7 +21,8 @@ const initialState = {
     {
       id: "",
       habit: "",
-      checked: false
+      checked: false,
+      count: 0
     }
   ],
   fetching: false,
