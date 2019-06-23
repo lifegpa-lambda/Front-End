@@ -20,6 +20,16 @@ const NavBar = () => {
             Daily
           </Link>
         </div>
+        <div className="col">
+          <Link className="nav-link" to="/dashboard">
+            Dashboard
+          </Link>
+        </div>
+        <div className="col">
+          <Link className="nav-link" to="/dharma">
+            Dharma
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -6,6 +6,8 @@ import PrivateRoute from "./components/PrivateRoute";
 import HabitList from "./components/HabitList";
 import NavBar from "./components/NavBar";
 import DailyList from "./components/DailyList";
+import Dashboard from "./components/Dashboard";
+import DharmaCard from "./components/DharmaCard";
 
 const App = () => {
   return (
@@ -15,6 +17,8 @@ const App = () => {
         <Route path="/login" component={Login} />
         <PrivateRoute exact path="/habits" component={HabitList} />
         <PrivateRoute exact path="/daily" component={DailyList} />
+        <PrivateRoute exact path="/dashboard" component={Dashboard} />
+        <PrivateRoute exact path="/dharma" component={DharmaCard} />
       </div>
     </Router>
   );
