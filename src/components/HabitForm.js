@@ -11,10 +11,10 @@ class UpdateForm extends Component {
   };
 
   componentDidUpdate(prevState) {
-    console.log(
-      "HabitForm prevState.habits.activeHabit",
-      prevState.habits.activeHabit
-    );
+    // console.log(
+    //   "HabitForm prevState.habits.activeHabit",
+    //   prevState.habits.activeHabit
+    // );
     if (
       this.props.habits.activeHabit &&
       prevState.habits.activeHabit !== this.props.habits.activeHabit
@@ -27,15 +27,15 @@ class UpdateForm extends Component {
   }
 
   render() {
-    console.log(
-      "HabitForm this.props.habits.activeHabit",
-      this.props.habits.activeHabit
-    );
-    console.log("HabitForm this.state.habit", this.state.habit);
-    console.log(
-      "HabitForm this.props.habits.activeHabit",
-      this.props.habits.activeHabit
-    );
+    // console.log(
+    //   "HabitForm this.props.habits.activeHabit",
+    //   this.props.habits.activeHabit
+    // );
+    // console.log("HabitForm this.state.habit", this.state.habit);
+    // console.log(
+    //   "HabitForm this.props.habits.activeHabit",
+    //   this.props.habits.activeHabit
+    // );
     return (
       <div>
         <Form onSubmit={this.submitHandler}>

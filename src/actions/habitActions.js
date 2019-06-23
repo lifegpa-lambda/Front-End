@@ -106,7 +106,7 @@ export const filterHabits = list => {
   };
 };
 
-export const toggleChecked = icon => {
+export const toggleChecked = () => {
   return {
     type: TOGGLE_CHECKED
   };

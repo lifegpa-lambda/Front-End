@@ -18,7 +18,7 @@ class HabitList extends Component {
         <h2>HBTZ</h2>
         <SearchBar />
         {this.props.habits.habits.map(habit => {
-          console.log("HabitList habit", habit);
+          // console.log("HabitList habit", habit);
           return <HabitCard habit={habit} key={habit.id} />;
         })}
         <HabitForm />
@@ -28,7 +28,7 @@ class HabitList extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("HabitList mapStateToProps state", state);
+  // console.log("HabitList mapStateToProps state", state);
   return {
     habits: state.habits
   };

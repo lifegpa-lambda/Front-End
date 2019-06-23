@@ -123,7 +123,7 @@ export default (state = initialState, action) => {
     case TOGGLE_CHECKED:
       return {
         ...state,
-        checked: !checked
+        checked: !state.checked
       };
     default:
       return state;

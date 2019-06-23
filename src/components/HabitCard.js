@@ -18,7 +18,7 @@ class HabitCard extends Component {
   };
 
   render() {
-    console.log("HabitCard this.props.habit", this.props.habit);
+    // console.log("HabitCard this.props.habit", this.props.habit);
     return (
       <div className="habit-card">
         <div>

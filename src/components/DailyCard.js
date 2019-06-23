@@ -5,19 +5,19 @@ import { faCheckCircle } from "@fortawesome/free-regular-svg-icons";
 import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
 import { toggleChecked } from "../actions/habitActions";
 
-class HabitCard extends Component {
-  state = {
-    checked: false
-  };
+class DailyCard extends Component {
+  // state = {
+  //   checked: false
+  // };
 
   toggleChecked = event => {
-    console.log("toggleChecked event.target", event.target);
+    // console.log("toggleChecked event.target", event.target);
     event.preventDefault();
-    this.props.toggleChecked(event.target);
+    this.props.toggleChecked();
   };
 
   render() {
-    console.log("DailyCard this.props.habit", this.props.habit);
+    console.log("DailyCard this.props.habit", this.props);
     return (
       <div className="daily-card">
         <div>{this.props.habit.habit}</div>
@@ -25,11 +25,15 @@ class HabitCard extends Component {
           <FontAwesomeIcon
             onClick={this.toggleChecked}
             icon={faCheckCircle}
-            className="daily-circle"
+            className={`${
+              this.props.habits.checked
+                ? "daily-circle-checked"
+                : "daily-circle"
+            }`}
             size="2x"
           />
           <FontAwesomeIcon
-            onClick={this.toggleChecked}
+            // onClick={this.toggleChecked}
             icon={faTimesCircle}
             className="daily-circle"
             size="2x"
@@ -40,7 +44,13 @@ class HabitCard extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    habits: state.habits
+  };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   { toggleChecked }
-)(HabitCard);
+)(DailyCard);
