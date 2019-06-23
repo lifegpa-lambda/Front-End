@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { deleteHabit, setUpdateForm } from "../actions/habitActions";
 import { Button } from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircle } from "@fortawesome/free-regular-svg-icons";
 
 class HabitCard extends Component {
   deleteHabit = event => {
@@ -18,7 +20,10 @@ class HabitCard extends Component {
     console.log("HabitCard this.props.habit", this.props.habit);
     return (
       <div className="habit-card">
-        <div>{this.props.habit.habit}</div>
+        <div>
+          <FontAwesomeIcon icon={faCircle} className="link user" />{" "}
+          {this.props.habit.habit}
+        </div>
         <div className="btn-div">
           <Button
             onClick={this.setUpdateForm}
