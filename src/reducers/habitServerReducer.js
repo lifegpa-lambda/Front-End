@@ -11,7 +11,8 @@ import {
   UPDATE_HABIT_START,
   UPDATE_HABIT_SUCCESS,
   UPDATE_HABIT_ERROR,
-  SET_UPDATE_FORM
+  SET_UPDATE_FORM,
+  FILTER_HABITS
 } from "../actions/habitActions";
 
 const initialState = {
@@ -22,7 +23,8 @@ const initialState = {
   deletingHabit: false,
   updatingHabit: false,
   activeHabit: null,
-  active: false
+  active: false,
+  filteredHabits: "banana"
 };
 
 export default (state = initialState, action) => {
@@ -110,6 +112,11 @@ export default (state = initialState, action) => {
         ...state,
         activeHabit: action.payload,
         active: true
+      };
+    case FILTER_HABITS:
+      return {
+        ...state,
+        filteredHabits: action.payload
       };
     default:
       return state;
