@@ -70,3 +70,7 @@
   margin: 10px;
   color: red;
 }
+
+.checked {
+  text-decoration: line-through;
+}

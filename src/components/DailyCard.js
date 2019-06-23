@@ -26,7 +26,12 @@ class DailyCard extends Component {
     console.log("DailyCard this.props", this.props);
     return (
       <div className="daily-card">
-        <div>{this.props.habit.habit}</div>
+        <div
+          onClick={this.toggleChecked}
+          className={`${this.props.habit.checked ? "checked" : ""}`}
+        >
+          {this.props.habit.habit}
+        </div>
         <div className="btn-div">
           <FontAwesomeIcon
             onClick={this.toggleChecked}
