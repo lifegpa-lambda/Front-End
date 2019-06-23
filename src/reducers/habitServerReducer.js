@@ -116,7 +116,7 @@ export default (state = initialState, action) => {
     case FILTER_HABITS:
       return {
         ...state,
-        filteredHabits: action.payload
+        habits: action.payload.length > 0 ? action.payload : state.habits
       };
     default:
       return state;

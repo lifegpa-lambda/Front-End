@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { getHabits } from "../actions/habitActions";
 import HabitCard from "./HabitCard";
 import HabitForm from "./HabitForm";
+import SearchBar from "./SearchBar";
 
 class HabitList extends Component {
   componentDidMount() {
@@ -15,6 +16,7 @@ class HabitList extends Component {
     return (
       <div>
         <h2>HBTZ</h2>
+        <SearchBar />
         {this.props.habits.habits.map(habit => {
           console.log("HabitList habit", habit);
           return <HabitCard habit={habit} key={habit.id} />;

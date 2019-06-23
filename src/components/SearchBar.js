@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 class SearchBar extends Component {
   state = {
@@ -6,6 +7,7 @@ class SearchBar extends Component {
   };
 
   render() {
+    console.log("SearchBar this.props.habits.habits", this.props.habits.habits);
     return (
       <div className="container">
         <div className="row">
@@ -22,22 +24,25 @@ class SearchBar extends Component {
   }
 
   handleSearch = event => {
-    console.log("SearchBar event.target.value", event.target.value);
-    const list = this.props.habits.filter(habit => {
+    console.log("handleSearch event.target.value", event.target.value);
+    const list = this.props.habits.habits.filter(habit => {
+      console.log("handleSeach habit.habit", habit.habit);
       if (habit.habit.includes(event.target.value)) {
         return habit;
       }
+      //   this.setState({ filteredHabits: list });
     });
-    this.setState({ filteredHabits: list });
+    console.log("handleSearch list", list);
+    // this.props.filterHabits(list);
   };
 }
 
 const mapStateToProps = state => {
   console.log("SearchBar mapStateToProps state", state);
-  console.log(
-    "SearchBar mapStateToProps state.filteredHabits",
-    state.filteredHabits
-  );
+  //   console.log(
+  //     "SearchBar mapStateToProps state.filteredHabits",
+  //     state.filteredHabits
+  //   );
   return {
     filteredHabits: state.filteredHabits,
     habits: state.habits
