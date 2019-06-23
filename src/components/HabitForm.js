@@ -69,7 +69,7 @@ class UpdateForm extends Component {
             </Input>
           </FormGroup>
 
-          <Button>{`${
+          <Button color="primary">{`${
             this.props.habits.active ? "Update" : "Add Habit"
           }`}</Button>
         </Form>

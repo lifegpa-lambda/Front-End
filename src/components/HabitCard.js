@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { deleteHabit, setUpdateForm } from "../actions/habitActions";
+import { Button } from "reactstrap";
 
 class HabitCard extends Component {
   deleteHabit = event => {
@@ -18,12 +19,20 @@ class HabitCard extends Component {
     return (
       <div className="habit-card">
         <div>{this.props.habit.habit}</div>
-        <button onClick={this.deleteHabit} className="delete-btn">
+        <Button
+          onClick={this.deleteHabit}
+          className="delete-btn"
+          color="primary"
+        >
           X
-        </button>
-        <button onClick={this.setUpdateForm} className="update-btn">
+        </Button>
+        <Button
+          onClick={this.setUpdateForm}
+          className="update-btn"
+          color="primary"
+        >
           Update
-        </button>
+        </Button>
       </div>
     );
   }
