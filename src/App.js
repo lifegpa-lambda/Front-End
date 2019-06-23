@@ -4,19 +4,13 @@ import "./App.css";
 import Login from "./components/Login";
 import PrivateRoute from "./components/PrivateRoute";
 import HabitList from "./components/HabitList";
+import NavBar from "./components/NavBar";
 
 const App = () => {
   return (
     <Router>
       <div className="App">
-        <ul className="links">
-          <li>
-            <Link to="/login">Log In</Link>
-          </li>
-          <li>
-            <Link to="/habits">Habits</Link>
-          </li>
-        </ul>
+        <NavBar />
         <Route path="/login" component={Login} />
         <PrivateRoute exact path="/habits" component={HabitList} />
       </div>

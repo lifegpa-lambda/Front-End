@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addHabit } from "../actions/habitActions";
 import { updateHabit } from "../actions/habitActions";
+import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
 class UpdateForm extends Component {
   state = {
@@ -37,18 +38,41 @@ class UpdateForm extends Component {
     );
     return (
       <div>
-        <form onSubmit={this.submitHandler} className="habit-form">
-          <input
-            type="text"
-            placeholder="habit"
-            name="habit"
-            value={this.state.habit}
-            onChange={this.handleChanges}
-          />
-          <button>{`${
+        <Form onSubmit={this.submitHandler}>
+          <FormGroup>
+            <Label for="exampleText">New Habit Tracker</Label>
+            <Input
+              type="textarea"
+              name="habit"
+              value={this.state.habit}
+              onChange={this.handleChanges}
+              id="exampleText"
+              placeholder="Inserted by Rory"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="exampleSelect">Select Habit Icon</Label>
+            <Input type="select" name="select" id="exampleSelect">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </Input>
+            <Label for="exampleSelect">Select Habit Importance</Label>
+            <Input type="select" name="select" id="exampleSelect">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </Input>
+          </FormGroup>
+
+          <Button>{`${
             this.props.habits.active ? "Update" : "Add Habit"
-          }`}</button>
-        </form>
+          }`}</Button>
+        </Form>
       </div>
     );
   }
