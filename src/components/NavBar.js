@@ -15,6 +15,11 @@ const NavBar = () => {
             Habits
           </Link>
         </div>
+        <div className="col">
+          <Link className="nav-link" to="/daily">
+            Daily
+          </Link>
+        </div>
       </div>
     </div>
   );

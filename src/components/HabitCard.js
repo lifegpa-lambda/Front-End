@@ -4,6 +4,7 @@ import { deleteHabit, setUpdateForm } from "../actions/habitActions";
 import { Button } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-regular-svg-icons";
+import "../App.css";
 
 class HabitCard extends Component {
   deleteHabit = event => {
@@ -21,7 +22,7 @@ class HabitCard extends Component {
     return (
       <div className="habit-card">
         <div>
-          <FontAwesomeIcon icon={faCircle} className="link user" />{" "}
+          <FontAwesomeIcon icon={faCircle} className="circle" />{" "}
           {this.props.habit.habit}
         </div>
         <div className="btn-div">

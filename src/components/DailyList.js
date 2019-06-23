@@ -5,7 +5,7 @@ import DailyCard from "./DailyCard";
 import HabitForm from "./HabitForm";
 import SearchBar from "./SearchBar";
 
-class HabitList extends Component {
+class DailyList extends Component {
   componentDidMount() {
     console.log("CDM");
     this.props.getHabits();
@@ -16,12 +16,11 @@ class HabitList extends Component {
     return (
       <div>
         <h2>DLY HBTZ</h2>
-        <SearchBar />
+        <h3>Today did you...?</h3>
+        {/* <SearchBar /> */}
         {this.props.habits.habits.map(habit => {
-          console.log("HabitList habit", habit);
           return <DailyCard habit={habit} key={habit.id} />;
         })}
-        <HabitForm />
       </div>
     );
   }

@@ -12,7 +12,6 @@
 }
 
 .habit-card {
-  border: 1px solid fuchsia;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,5 +40,22 @@
 }
 
 .nav-link {
-  color: red;
+  color: whitesmoke;
+}
+
+.circle {
+  color: grey;
+  margin-right: 15px;
+}
+
+.daily-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  padding: 10px;
+}
+
+.daily-circle {
+  margin: 10px;
 }
