@@ -12,7 +12,7 @@ let friends = [
   {
     id: 1,
     habit: "Fill your habits in here. Click to cross off.",
-    completed: false
+    checked: false
   }
 ];
 

@@ -106,8 +106,9 @@ export const filterHabits = list => {
   };
 };
 
-export const toggleChecked = () => {
+export const toggleChecked = habit => {
   return {
-    type: TOGGLE_CHECKED
+    type: TOGGLE_CHECKED,
+    payload: !habit.checked
   };
 };

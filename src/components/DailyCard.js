@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-regular-svg-icons";
 import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
 import { toggleChecked } from "../actions/habitActions";
+import { updateHabit } from "../actions/habitActions";
 
 class DailyCard extends Component {
   // state = {
@@ -11,13 +12,18 @@ class DailyCard extends Component {
   // };
 
   toggleChecked = event => {
-    // console.log("toggleChecked event.target", event.target);
+    console.log("toggleChecked this.props.habit", this.props.habit);
     event.preventDefault();
-    this.props.toggleChecked();
+    const newHabit = {
+      ...this.props.habit,
+      checked: !this.props.habit.checked
+    };
+    console.log("newHabit", newHabit);
+    this.props.updateHabit(newHabit);
   };
 
   render() {
-    console.log("DailyCard this.props.habit", this.props);
+    console.log("DailyCard this.props", this.props);
     return (
       <div className="daily-card">
         <div>{this.props.habit.habit}</div>
@@ -26,12 +32,18 @@ class DailyCard extends Component {
             onClick={this.toggleChecked}
             icon={faCheckCircle}
             className={`${
-              this.props.habits.checked
-                ? "daily-circle-checked"
-                : "daily-circle"
+              this.props.habit.checked ? "daily-circle-checked" : "daily-circle"
             }`}
             size="2x"
           />
+          {/* <FontAwesomeIcon
+            onClick={this.toggleChecked}
+            icon={faTimesCircle}
+            className={`${
+              this.props.habit.checked ? "daily-times-checked" : "daily-circle"
+            }`}
+            size="2x"
+          /> */}
           <FontAwesomeIcon
             // onClick={this.toggleChecked}
             icon={faTimesCircle}
@@ -52,5 +64,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { toggleChecked }
+  { toggleChecked, updateHabit }
 )(DailyCard);

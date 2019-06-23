@@ -110,7 +110,7 @@ class UpdateForm extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("HabitForm mapStateToProps state", state);
+  // console.log("HabitForm mapStateToProps state", state);
   return {
     activeHabit: state.activeHabit,
     active: state.active,

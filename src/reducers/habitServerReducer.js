@@ -17,7 +17,13 @@ import {
 } from "../actions/habitActions";
 
 const initialState = {
-  habits: [],
+  habits: [
+    {
+      id: "",
+      habit: "",
+      checked: false
+    }
+  ],
   fetching: false,
   error: null,
   addingHabit: false,
@@ -121,9 +127,9 @@ export default (state = initialState, action) => {
         habits: action.payload.length > 0 ? action.payload : state.habits
       };
     case TOGGLE_CHECKED:
+      console.log("TOGGLE_CHECKED state", state);
       return {
-        ...state,
-        checked: !state.checked
+        ...state
       };
     default:
       return state;

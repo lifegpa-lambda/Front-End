@@ -10,7 +10,7 @@ class SearchBar extends Component {
   };
 
   render() {
-    console.log("SearchBar this.props.habits.habits", this.props.habits.habits);
+    // console.log("SearchBar this.props.habits.habits", this.props.habits.habits);
     return (
       <div className="container">
         <div className="row">
