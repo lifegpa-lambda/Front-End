@@ -36,14 +36,14 @@ class DailyCard extends Component {
             }`}
             size="2x"
           />
-          {/* <FontAwesomeIcon
+          <FontAwesomeIcon
             onClick={this.toggleChecked}
             icon={faTimesCircle}
             className={`${
               this.props.habit.checked ? "daily-times-checked" : "daily-circle"
             }`}
             size="2x"
-          /> */}
+          />
           <FontAwesomeIcon
             // onClick={this.toggleChecked}
             icon={faTimesCircle}

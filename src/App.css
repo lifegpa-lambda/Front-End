@@ -58,9 +58,15 @@
 
 .daily-circle {
   margin: 10px;
+  border: 1px solid red;
 }
 
 .daily-circle-checked {
+  margin: 10px;
+  color: green;
+}
+
+.daily-times-checked {
   margin: 10px;
   color: red;
 }
