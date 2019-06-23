@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { login } from "../actions/authActions";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 class Login extends Component {
   state = {
@@ -37,23 +38,28 @@ class Login extends Component {
     return (
       <div>
         <h1>Welcome to LifeGPA!</h1>
-        <form onSubmit={this.login}>
-          <input
-            type="text"
-            name="username"
-            placeholder="username"
-            value={this.state.credentials.username}
-            onChange={this.handleChanges}
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="password"
-            value={this.state.credentials.password}
-            onChange={this.handleChanges}
-          />
-          <button>Log In</button>
-        </form>
+        <Form onSubmit={this.login}>
+          <FormGroup>
+            <Label for="exampleText">NEW HBT</Label>
+            <Input
+              type="text"
+              name="username"
+              placeholder="username"
+              value={this.state.credentials.username}
+              onChange={this.handleChanges}
+            />
+            <Input
+              type="password"
+              name="password"
+              placeholder="password"
+              value={this.state.credentials.password}
+              onChange={this.handleChanges}
+            />
+          </FormGroup>
+          <Button className="login-button" color="primary">
+            Log In
+          </Button>
+        </Form>
       </div>
     );
   }
