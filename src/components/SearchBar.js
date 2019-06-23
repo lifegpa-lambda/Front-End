@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { filterHabits } from "../actions/habitActions";
 
 class SearchBar extends Component {
   state = {
@@ -33,7 +34,7 @@ class SearchBar extends Component {
       //   this.setState({ filteredHabits: list });
     });
     console.log("handleSearch list", list);
-    // this.props.filterHabits(list);
+    this.props.filterHabits(list);
   };
 }
 
@@ -51,5 +52,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {}
+  { filterHabits }
 )(SearchBar);

@@ -98,9 +98,9 @@ export const setUpdateForm = habit => {
   };
 };
 
-// export const filterHabits = habit => {
-//   return {
-//     type: FILTER_HABITS,
-//     payload: list
-//   };
-// };
+export const filterHabits = list => {
+  return {
+    type: FILTER_HABITS,
+    payload: list
+  };
+};
