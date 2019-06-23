@@ -5,20 +5,29 @@ import { updateHabit } from "../actions/habitActions";
 
 class UpdateForm extends Component {
   state = {
-    habit: this.props.activeHabit || "",
+    habit: this.props.habits.activeHabit || "",
     active: false
   };
 
-  // componentDidUpdate(prevState) {
-  //   if (
-  //     this.props.activeHabit &&
-  //     prevState.activeHabit !== this.props.activeHabit
-  //   ) {
-  //     this.setState({ habit: this.props.activeHabit, active: true });
-  //   }
-  // }
+  componentDidUpdate(prevState) {
+    console.log(
+      "HabitForm prevState.habits.activeHabit",
+      prevState.habits.activeHabit
+    );
+    if (
+      this.props.habits.activeHabit &&
+      prevState.habits.activeHabit !== this.props.habits.activeHabit
+    ) {
+      this.setState({ habit: this.props.habits.activeHabit, active: true });
+    }
+  }
 
   render() {
+    console.log("HabitForm this.props", this.props);
+    console.log(
+      "HabitForm this.props.habits.activeHabit",
+      this.props.habits.activeHabit
+    );
     return (
       <div>
         <form onSubmit={this.submitHandler} className="habit-form">
@@ -29,7 +38,9 @@ class UpdateForm extends Component {
             value={this.state.habit}
             onChange={this.handleChanges}
           />
-          <button>{`${this.state.active ? "Update" : "Add Habit"}`}</button>
+          <button>{`${
+            this.props.habits.active ? "Update" : "Add Habit"
+          }`}</button>
         </form>
       </div>
     );
@@ -43,7 +54,7 @@ class UpdateForm extends Component {
   };
 
   submitHandler = newHabit => {
-    if (this.state.active) {
+    if (this.props.habits.active) {
       this.props.updateHabit(this.state.habit);
     } else {
       this.addHabit(newHabit);
@@ -66,11 +77,13 @@ class UpdateForm extends Component {
 const mapStateToProps = state => {
   console.log("HabitForm mapStateToProps state", state);
   return {
-    activeHabit: state.activeHabit
+    activeHabit: state.activeHabit,
+    active: state.active,
+    habits: state.habits
   };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   { updateHabit, addHabit }
 )(UpdateForm);
