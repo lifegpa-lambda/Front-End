@@ -11,6 +11,7 @@ class HabitCard extends Component {
   };
 
   toggleChecked = event => {
+    console.log("toggleChecked event.target", event.target);
     event.preventDefault();
     this.props.toggleChecked(event.target);
   };

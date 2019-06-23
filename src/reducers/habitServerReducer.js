@@ -12,7 +12,8 @@ import {
   UPDATE_HABIT_SUCCESS,
   UPDATE_HABIT_ERROR,
   SET_UPDATE_FORM,
-  FILTER_HABITS
+  FILTER_HABITS,
+  TOGGLE_CHECKED
 } from "../actions/habitActions";
 
 const initialState = {
@@ -24,7 +25,8 @@ const initialState = {
   updatingHabit: false,
   activeHabit: null,
   active: false,
-  filteredHabits: "banana"
+  filteredHabits: "banana",
+  checked: false
 };
 
 export default (state = initialState, action) => {
@@ -117,6 +119,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         habits: action.payload.length > 0 ? action.payload : state.habits
+      };
+    case TOGGLE_CHECKED:
+      return {
+        ...state,
+        checked: !checked
       };
     default:
       return state;
