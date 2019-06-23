@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-regular-svg-icons";
 import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
+import { toggleChecked } from "../actions/habitActions";
 
 class HabitCard extends Component {
   state = {
@@ -21,11 +22,13 @@ class HabitCard extends Component {
         <div>{this.props.habit.habit}</div>
         <div className="btn-div">
           <FontAwesomeIcon
+            onClick={this.toggleChecked}
             icon={faCheckCircle}
             className="daily-circle"
             size="2x"
           />
           <FontAwesomeIcon
+            onClick={this.toggleChecked}
             icon={faTimesCircle}
             className="daily-circle"
             size="2x"
@@ -38,5 +41,5 @@ class HabitCard extends Component {
 
 export default connect(
   null,
-  {}
+  { toggleChecked }
 )(HabitCard);

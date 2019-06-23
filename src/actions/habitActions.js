@@ -14,6 +14,7 @@ export const UPDATE_HABIT_SUCCESS = "UPDATE_HABIT_SUCCESS";
 export const UPDATE_HABIT_ERROR = "UPDATE_HABIT_ERROR";
 export const SET_UPDATE_FORM = "SET_UPDATE_FORM";
 export const FILTER_HABITS = "FILTER_HABITS";
+export const TOGGLE_CHECKED = "TOGGLE_CHECKED";
 
 export const getHabits = () => dispatch => {
   dispatch({ type: FETCH_HABITS_START });
@@ -102,5 +103,12 @@ export const filterHabits = list => {
   return {
     type: FILTER_HABITS,
     payload: list
+  };
+};
+
+export const toggleChecked = icon => {
+  return {
+    type: TOGGLE_CHECKED,
+    payload: !icon.checked
   };
 };
