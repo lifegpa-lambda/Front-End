@@ -19,20 +19,22 @@ class HabitCard extends Component {
     return (
       <div className="habit-card">
         <div>{this.props.habit.habit}</div>
-        <Button
-          onClick={this.deleteHabit}
-          className="delete-btn"
-          color="primary"
-        >
-          X
-        </Button>
-        <Button
-          onClick={this.setUpdateForm}
-          className="update-btn"
-          color="primary"
-        >
-          Update
-        </Button>
+        <div className="btn-div">
+          <Button
+            onClick={this.setUpdateForm}
+            className="card-btn"
+            color="primary"
+          >
+            UPDT
+          </Button>
+          <Button
+            onClick={this.deleteHabit}
+            className="card-btn"
+            color="primary"
+          >
+            X
+          </Button>
+        </div>
       </div>
     );
   }

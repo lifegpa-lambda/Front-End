@@ -40,37 +40,37 @@ class UpdateForm extends Component {
       <div>
         <Form onSubmit={this.submitHandler}>
           <FormGroup>
-            <Label for="exampleText">New Habit Tracker</Label>
+            <Label for="exampleText">NEW HBT</Label>
             <Input
               type="textarea"
               name="habit"
               value={this.state.habit}
               onChange={this.handleChanges}
               id="exampleText"
-              placeholder="Inserted by Rory"
+              placeholder="HBT"
             />
           </FormGroup>
-          <FormGroup>
-            <Label for="exampleSelect">Select Habit Icon</Label>
-            <Input type="select" name="select" id="exampleSelect">
+          {/* <FormGroup>
+            <Label for="exampleSelect">HBT ICON</Label>
+            <Input type="select" name="select">
               <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
               <option>5</option>
             </Input>
-            <Label for="exampleSelect">Select Habit Importance</Label>
-            <Input type="select" name="select" id="exampleSelect">
+            <Label for="exampleSelect">HBT RNK</Label>
+            <Input type="select" name="select">
               <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
               <option>5</option>
             </Input>
-          </FormGroup>
+          </FormGroup> */}
 
-          <Button color="primary">{`${
-            this.props.habits.active ? "Update" : "Add Habit"
+          <Button className="add-update-button" color="primary">{`${
+            this.props.habits.active ? "UPDT" : "ADD"
           }`}</Button>
         </Form>
       </div>

@@ -2,3 +2,24 @@
   text-align: center;
   border: 1px solid hotpink;
 }
+
+.add-update-button {
+  margin: 10px;
+}
+
+.card-btn {
+  margin: 10px;
+}
+
+.habit-card {
+  border: 1px solid fuchsia;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  padding: 10px;
+}
+
+.card-btn {
+  font-size: 0.75rem;
+}
