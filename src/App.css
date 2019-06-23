@@ -23,3 +23,23 @@
 .card-btn {
   font-size: 0.75rem;
 }
+
+.Login {
+  background: dodgerblue;
+}
+
+.Login > h1 {
+  color: whitesmoke;
+}
+
+.login-header {
+  color: whitesmoke;
+}
+
+.nav-bar {
+  background: dodgerblue;
+}
+
+.nav-link {
+  color: red;
+}

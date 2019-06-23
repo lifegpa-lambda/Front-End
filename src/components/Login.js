@@ -36,11 +36,11 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div className="Login">
         <h1>Welcome to LifeGPA!</h1>
         <Form onSubmit={this.login}>
           <FormGroup>
-            <Label for="exampleText">NEW HBT</Label>
+            <Label className="login-header">LOGIN</Label>
             <Input
               type="text"
               name="username"
