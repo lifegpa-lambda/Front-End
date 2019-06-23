@@ -1,11 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addHabit } from "../actions/habitActions";
+import { updateHabit } from "../actions/habitActions";
 
-class HabitForm extends Component {
+class UpdateForm extends Component {
   state = {
-    habit: ""
+    habit: this.props.activeHabit || "",
+    active: false
   };
+
+  componentDidUpdate(prevState) {
+    if (
+      this.props.activeHabit &&
+      prevState.activeHabit !== this.props.activeHabit
+    ) {
+      this.setState({ habit: this.props.activeHabit, active: true });
+    }
+  }
 
   render() {
     return (
@@ -18,7 +29,7 @@ class HabitForm extends Component {
             value={this.state.habit}
             onChange={this.handleChanges}
           />
-          <button>Add Habit</button>
+          <button>{`${this.state.active ? "Update" : "Add Habit"}`}</button>
         </form>
       </div>
     );
@@ -30,6 +41,15 @@ class HabitForm extends Component {
       [event.target.name]: event.target.value
     });
   };
+
+  // submitHandler = newHabit => {
+  //   if (this.state.active) {
+  //     this.props.updateHabit(this.state.habit);
+  //   } else {
+  //     this.addHabit(newHabit);
+  //   }
+  //   this.setState({ habit: "", active: false });
+  // };
 
   addHabit = event => {
     event.preventDefault();
@@ -45,5 +65,5 @@ class HabitForm extends Component {
 
 export default connect(
   null,
-  { addHabit }
-)(HabitForm);
+  { updateHabit, addHabit }
+)(UpdateForm);

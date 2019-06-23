@@ -7,14 +7,20 @@ import {
   ADD_HABIT_ERROR,
   DELETE_HABIT_START,
   DELETE_HABIT_SUCCESS,
-  DELETE_HABIT_ERROR
+  DELETE_HABIT_ERROR,
+  UPDATE_HABIT_START,
+  UPDATE_HABIT_SUCCESS,
+  UPDATE_HABIT_ERROR
 } from "../actions/habitActions";
 
 const initialState = {
   habits: [],
   fetching: false,
   error: null,
-  addingHabit: false
+  addingHabit: false,
+  deletingHabit: false,
+  updatingHabit: false,
+  activeFriend: null
 };
 
 export default (state = initialState, action) => {
@@ -75,6 +81,26 @@ export default (state = initialState, action) => {
       return {
         ...state,
         deletingHabit: false,
+        error: action.payload
+      };
+
+    case UPDATE_HABIT_START:
+      return {
+        ...state,
+        updatingHabit: true,
+        error: null
+      };
+    case UPDATE_HABIT_SUCCESS:
+      return {
+        ...state,
+        updatingHabit: false,
+        error: null,
+        habits: action.payload
+      };
+    case UPDATE_HABIT_ERROR:
+      return {
+        ...state,
+        updatingHabit: false,
         error: action.payload
       };
     default:

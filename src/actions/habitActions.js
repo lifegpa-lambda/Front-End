@@ -9,6 +9,9 @@ export const ADD_HABIT_ERROR = "ADD_HABIT_ERROR";
 export const DELETE_HABIT_START = "DELETE_HABIT_START";
 export const DELETE_HABIT_SUCCESS = "DELETE_HABIT_SUCCESS";
 export const DELETE_HABIT_ERROR = "DELETE_HABIT_ERROR";
+export const UPDATE_HABIT_START = "UPDATE_HABIT_START";
+export const UPDATE_HABIT_SUCCESS = "UPDATE_HABIT_SUCCESS";
+export const UPDATE_HABIT_ERROR = "UPDATE_HABIT_ERROR";
 
 export const getHabits = () => dispatch => {
   dispatch({ type: FETCH_HABITS_START });
@@ -66,3 +69,26 @@ export const deleteHabit = id => dispatch => {
       });
     });
 };
+
+export const updateHabit = habit => dispatch => {
+  dispatch({ type: UPDATE_HABIT_START });
+  axios
+    .put(`http://localhost:5000/api/friends/${habit.id}`, habit, {
+      headers: { Authorization: localStorage.getItem("token") }
+    })
+    .then(response => {
+      console.log("updateHabit response.data", response.data);
+      dispatch({ type: UPDATE_HABIT_SUCCESS, payload: response.data });
+    })
+    .catch(error => {
+      console.log("updateHabit error", error);
+      dispatch({
+        type: UPDATE_HABIT_ERROR,
+        payload: error
+      });
+    });
+};
+
+// export const setUpdateForm = habit => {
+//   this.setState({ type: UPDATE_FORM, payload: habit })
+// }
