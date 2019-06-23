@@ -9,19 +9,19 @@ class UpdateForm extends Component {
     active: false
   };
 
-  componentDidUpdate(prevState) {
-    if (
-      this.props.activeHabit &&
-      prevState.activeHabit !== this.props.activeHabit
-    ) {
-      this.setState({ habit: this.props.activeHabit, active: true });
-    }
-  }
+  // componentDidUpdate(prevState) {
+  //   if (
+  //     this.props.activeHabit &&
+  //     prevState.activeHabit !== this.props.activeHabit
+  //   ) {
+  //     this.setState({ habit: this.props.activeHabit, active: true });
+  //   }
+  // }
 
   render() {
     return (
       <div>
-        <form onSubmit={this.addHabit} className="habit-form">
+        <form onSubmit={this.submitHandler} className="habit-form">
           <input
             type="text"
             placeholder="habit"
@@ -42,14 +42,14 @@ class UpdateForm extends Component {
     });
   };
 
-  // submitHandler = newHabit => {
-  //   if (this.state.active) {
-  //     this.props.updateHabit(this.state.habit);
-  //   } else {
-  //     this.addHabit(newHabit);
-  //   }
-  //   this.setState({ habit: "", active: false });
-  // };
+  submitHandler = newHabit => {
+    if (this.state.active) {
+      this.props.updateHabit(this.state.habit);
+    } else {
+      this.addHabit(newHabit);
+    }
+    this.setState({ habit: "", active: false });
+  };
 
   addHabit = event => {
     event.preventDefault();
@@ -62,6 +62,13 @@ class UpdateForm extends Component {
     });
   };
 }
+
+const mapStateToProps = state => {
+  console.log("HabitForm mapStateToProps state", state);
+  return {
+    activeHabit: state.activeHabit
+  };
+};
 
 export default connect(
   null,

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { deleteHabit } from "../actions/habitActions";
-// import { deleteHabit } from "../actions/habitActions";
+import { deleteHabit, setUpdateForm } from "../actions/habitActions";
 
 class HabitCard extends Component {
   deleteHabit = event => {
@@ -9,37 +8,29 @@ class HabitCard extends Component {
     this.props.deleteHabit(this.props.habit.id);
   };
 
-  // setUpdateForm = event => {
-  //   event.preventDefault();
-  //   this.props.setUpdateForm(this.props.habit.id);
-  // };
-
-  // setUpdateForm = (event, habit) => {
-  //   event.preventDefault();
-  //   this.setState({
-  //     activeHabit: habit
-  //   })
-  // }
-
-  // updateHabit = event => {
-  //   event.preventDefault();
-  //   this.props.updateHabit(this.props.habit.id);
-  // };
+  setUpdateForm = event => {
+    event.preventDefault();
+    this.props.setUpdateForm(this.props.habit);
+  };
 
   render() {
+    console.log("HabitCard this.props", this.props);
     return (
       <div className="habit-card">
         <div>{this.props.habit.habit}</div>
         <button onClick={this.deleteHabit} className="delete-btn">
           X
         </button>
-        <button className="update-btn">Update</button>
+        <button onClick={this.setUpdateForm} className="update-btn">
+          Update
+        </button>
       </div>
     );
   }
 }
 
+
 export default connect(
   null,
-  { deleteHabit }
+  { deleteHabit, setUpdateForm }
 )(HabitCard);

@@ -10,7 +10,8 @@ import {
   DELETE_HABIT_ERROR,
   UPDATE_HABIT_START,
   UPDATE_HABIT_SUCCESS,
-  UPDATE_HABIT_ERROR
+  UPDATE_HABIT_ERROR,
+  SET_UPDATE_FORM
 } from "../actions/habitActions";
 
 const initialState = {
@@ -20,7 +21,8 @@ const initialState = {
   addingHabit: false,
   deletingHabit: false,
   updatingHabit: false,
-  activeFriend: null
+  activeHabit: null,
+  active: false
 };
 
 export default (state = initialState, action) => {
@@ -102,6 +104,12 @@ export default (state = initialState, action) => {
         ...state,
         updatingHabit: false,
         error: action.payload
+      };
+    case SET_UPDATE_FORM:
+      return {
+        ...state,
+        activeHabit: action.payload,
+        active: true
       };
     default:
       return state;

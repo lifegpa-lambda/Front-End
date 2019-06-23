@@ -12,6 +12,7 @@ export const DELETE_HABIT_ERROR = "DELETE_HABIT_ERROR";
 export const UPDATE_HABIT_START = "UPDATE_HABIT_START";
 export const UPDATE_HABIT_SUCCESS = "UPDATE_HABIT_SUCCESS";
 export const UPDATE_HABIT_ERROR = "UPDATE_HABIT_ERROR";
+export const SET_UPDATE_FORM = "SET_UPDATE_FORM";
 
 export const getHabits = () => dispatch => {
   dispatch({ type: FETCH_HABITS_START });
@@ -89,6 +90,9 @@ export const updateHabit = habit => dispatch => {
     });
 };
 
-// export const setUpdateForm = habit => {
-//   this.setState({ type: UPDATE_FORM, payload: habit })
-// }
+export const setUpdateForm = habit => {
+  return {
+    type: SET_UPDATE_FORM,
+    payload: habit
+  };
+};
