@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getHabits } from "../actions/habitActions";
 import HabitCard from "./HabitCard";
@@ -26,6 +27,15 @@ class HabitList extends Component {
     );
   }
 }
+
+HabitList.propTypes = {
+  habits: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    habit: PropTypes.string.isRequired,
+    checked: PropTypes.bool.isRequired,
+    count: PropTypes.number.isRequired
+  })
+};
 
 const mapStateToProps = state => {
   // console.log("HabitList mapStateToProps state", state);
