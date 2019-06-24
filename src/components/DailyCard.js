@@ -60,13 +60,13 @@ DailyCard.propTypes = {
   habit: PropTypes.object
 };
 
-const mapStateToProps = state => {
-  return {
-    habits: state.habits
-  };
-};
+// const mapStateToProps = state => {
+//   return {
+//     habits: state.habits
+//   };
+// };
 
 export default connect(
-  mapStateToProps,
+  null,
   { toggleChecked, updateHabit }
 )(DailyCard);

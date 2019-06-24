@@ -5,7 +5,7 @@ import { addHabit } from "../actions/habitActions";
 import { updateHabit } from "../actions/habitActions";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
-class UpdateForm extends Component {
+class HabitForm extends Component {
   state = {
     habit: this.props.habits.activeHabit || "",
     active: false
@@ -110,7 +110,7 @@ class UpdateForm extends Component {
   };
 }
 
-UpdateForm.propTypes = {
+HabitForm.propTypes = {
   activeHabit: PropTypes.object,
   active: PropTypes.bool,
   habits: PropTypes.object,
@@ -130,4 +130,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { updateHabit, addHabit }
-)(UpdateForm);
+)(HabitForm);

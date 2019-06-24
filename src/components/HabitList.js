@@ -29,12 +29,7 @@ class HabitList extends Component {
 }
 
 HabitList.propTypes = {
-  habits: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    habit: PropTypes.string.isRequired,
-    checked: PropTypes.bool.isRequired,
-    count: PropTypes.number.isRequired
-  }),
+  habits: PropTypes.object,
   getHabits: PropTypes.func.isRequired
 };
 
