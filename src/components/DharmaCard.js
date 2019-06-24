@@ -15,9 +15,19 @@ class DharmaCard extends Component {
     return (
       <div className="dharma-card">
         {this.props.habit.count > 0 ? (
-          <FontAwesomeIcon icon={faCircle} className="circle-green" />
+          <div className="dharmas">
+            <FontAwesomeIcon
+              icon={faCircle}
+              className="circle-green"
+              size="6x"
+            />
+            {this.props.habit.habit}
+          </div>
         ) : (
-          <FontAwesomeIcon icon={faCircle} className="circle" />
+          <div className="dharmas">
+            <FontAwesomeIcon icon={faCircle} className="circle-red" size="6x" />
+            {this.props.habit.habit}
+          </div>
         )}
       </div>
 

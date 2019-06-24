@@ -83,3 +83,8 @@
 .checked {
   text-decoration: line-through;
 }
+
+.dharmas {
+  display: flex;
+  flex-direction: column;
+}
