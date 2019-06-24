@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { getHabits } from "../actions/habitActions";
 import DailyCard from "./DailyCard";
 import SearchBar from "./SearchBar";
@@ -23,6 +24,11 @@ class DailyList extends Component {
     );
   }
 }
+
+DailyList.propTypes = {
+  getHabits: PropTypes.func,
+  habits: PropTypes.object
+};
 
 const mapStateToProps = state => {
   // console.log("HabitList mapStateToProps state", state);
