@@ -1,7 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
+import "./";
 import Login from "./components/Login";
+import CreateAccount from "./components/CreateAccount";
 import PrivateRoute from "./components/PrivateRoute";
 import HabitList from "./components/HabitList";
 import NavBar from "./components/NavBar";
@@ -15,6 +17,7 @@ const App = () => {
       <div className="App">
         <NavBar />
         <Route path="/login" component={Login} />
+        <Route path="/create" component={CreateAccount} />
         <PrivateRoute exact path="/habits" component={HabitList} />
         <PrivateRoute exact path="/daily" component={DailyList} />
         <PrivateRoute exact path="/dashboard" component={Dashboard} />

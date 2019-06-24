@@ -24,7 +24,7 @@
 }
 
 .Login {
-  background: black;
+  background: dodgerblue;
 }
 
 .Login > h1 {
@@ -32,14 +32,6 @@
 }
 
 .login-header {
-  color: whitesmoke;
-}
-
-.nav-bar {
-  background: dodgerblue;
-}
-
-.nav-link {
   color: whitesmoke;
 }
 
@@ -54,7 +46,7 @@
 }
 
 .circle-red {
-  color: green;
+  color: red;
   margin-right: 15px;
 }
 
@@ -85,6 +77,21 @@
 }
 
 .dharmas {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+}
+
+.dharma-card {
+  /* border: 1px solid red; */
+}
+
+.create-account-button {
+  margin: 10px;
+}
+
+.create-account-header {
+  color: whitesmoke;
+  margin: 10px;
 }

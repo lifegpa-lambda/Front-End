@@ -8,7 +8,6 @@ import { updateHabit } from "../actions/habitActions";
 
 class DailyCard extends Component {
   state = {
-    redCheck: false,
     greenCheck: false,
     count: 0
   };
@@ -27,10 +26,6 @@ class DailyCard extends Component {
 
   toggleGreenCheck = () => {
     this.setState({ greenCheck: !this.state.greenCheck });
-  };
-
-  toggleRedCheck = () => {
-    this.setState({ redCheck: !this.state.redCheck });
   };
 
   render() {

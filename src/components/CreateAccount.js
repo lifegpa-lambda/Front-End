@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { login } from "../actions/authActions";
+import { createAccount } from "../actions/authActions";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
-class Login extends Component {
+class CreateAccount extends Component {
   state = {
     credentials: {
       username: "",
@@ -21,10 +21,10 @@ class Login extends Component {
     });
   };
 
-  login = event => {
-    console.log("login event", event);
+  createAccount = event => {
+    console.log("create account event", event);
     event.preventDefault();
-    this.props.login(this.state.credentials).then(() => {
+    this.props.createAccount(this.state.credentials).then(() => {
       this.props.history.push("/habits");
     });
     this.setState({
@@ -36,20 +36,10 @@ class Login extends Component {
   render() {
     return (
       <div className="Login">
-        <h1>Welcome to LifeGPA!</h1>
-        <div className="create-account-header">CREATE ACCOUNT</div>
-        <Button
-          onClick={() => {
-            this.props.history.push("/create");
-          }}
-          className="create-account-button"
-          color="primary"
-        >
-          Create Account
-        </Button>
+        <h1>Make the Grade</h1>
         <Form onSubmit={this.login}>
           <FormGroup>
-            <Label className="login-header">LOGIN</Label>
+            <Label className="login-header">CREATE ACCOUNT</Label>
             <Input
               required
               type="text"
@@ -60,15 +50,39 @@ class Login extends Component {
             />
             <Input
               required
+              type="text"
+              name="fullName"
+              placeholder="Full name"
+              value={this.state.credentials.fullName}
+              onChange={this.handleChanges}
+            />
+            <Input
+              required
               type="password"
               name="password"
               placeholder="password"
               value={this.state.credentials.password}
               onChange={this.handleChanges}
             />
+            <Input
+              required
+              type="email"
+              name="email"
+              placeholder="email"
+              value={this.state.credentials.email}
+              onChange={this.handleChanges}
+            />
+            <Input
+              required
+              type="text"
+              name="imgUrl"
+              placeholder="Link a profile image"
+              value={this.state.credentials.imgUrl}
+              onChange={this.handleChanges}
+            />
           </FormGroup>
-          <Button className="login-button" color="primary">
-            Log In
+          <Button className="create-account-button" color="primary">
+            Create Account
           </Button>
         </Form>
       </div>
@@ -83,5 +97,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { login }
-)(Login);
+  { createAccount }
+)(CreateAccount);
