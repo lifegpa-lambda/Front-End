@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { deleteHabit, setUpdateForm } from "../actions/habitActions";
+import PropTypes from "prop-types";
 import { Button } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-regular-svg-icons";
@@ -45,6 +46,12 @@ class HabitCard extends Component {
     );
   }
 }
+
+HabitCard.propTypes = {
+  deleteHabit: PropTypes.func,
+  setUpdateForm: PropTypes.func,
+  habit: PropTypes.object
+};
 
 export default connect(
   null,
