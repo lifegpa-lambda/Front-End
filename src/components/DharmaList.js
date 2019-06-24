@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { getHabits } from "../actions/habitActions";
 import DharmaCard from "./DharmaCard";
 
-class HabitList extends Component {
+class DharmaList extends Component {
   render() {
     console.log("DharmaList this.props", this.props);
     return (
@@ -28,4 +28,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { getHabits }
-)(HabitList);
+)(DharmaList);
