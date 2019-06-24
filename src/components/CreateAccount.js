@@ -7,7 +7,10 @@ class CreateAccount extends Component {
   state = {
     credentials: {
       username: "",
-      password: ""
+      fullName: "",
+      password: "",
+      email: "",
+      userImgUrl: ""
     }
   };
 
@@ -28,8 +31,13 @@ class CreateAccount extends Component {
       this.props.history.push("/habits");
     });
     this.setState({
-      username: "",
-      password: ""
+      credentials: {
+        username: "",
+        fullName: "",
+        password: "",
+        email: "",
+        userImgUrl: ""
+      }
     });
   };
 
