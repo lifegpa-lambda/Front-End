@@ -34,7 +34,8 @@ HabitList.propTypes = {
     habit: PropTypes.string.isRequired,
     checked: PropTypes.bool.isRequired,
     count: PropTypes.number.isRequired
-  })
+  }),
+  getHabits: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
