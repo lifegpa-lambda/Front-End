@@ -98,6 +98,12 @@ class CreateAccount extends Component {
   }
 }
 
+CreateAccount.propTypes = {
+  error: PropTypes.string,
+  fetching: PropTypes.bool,
+  createAccount: PropTypes.func
+};
+
 const mapStateToProps = state => ({
   error: state.user.error,
   fetching: state.user.fetching
