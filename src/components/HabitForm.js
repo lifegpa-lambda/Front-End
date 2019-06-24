@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addHabit } from "../actions/habitActions";
 import { updateHabit } from "../actions/habitActions";
@@ -108,6 +109,14 @@ class HabitForm extends Component {
     });
   };
 }
+
+HabitForm.propTypes = {
+  activeHabit: PropTypes.object,
+  active: PropTypes.bool,
+  habits: PropTypes.object,
+  updateHabit: PropTypes.func,
+  addHabit: PropTypes.func
+};
 
 const mapStateToProps = state => {
   // console.log("HabitForm mapStateToProps state", state);

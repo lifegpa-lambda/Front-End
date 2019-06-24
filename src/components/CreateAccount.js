@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createAccount } from "../actions/authActions";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
@@ -97,6 +98,12 @@ class CreateAccount extends Component {
     );
   }
 }
+
+CreateAccount.propTypes = {
+  error: PropTypes.string,
+  fetching: PropTypes.bool,
+  createAccount: PropTypes.func
+};
 
 const mapStateToProps = state => ({
   error: state.user.error,

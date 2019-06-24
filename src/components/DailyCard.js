@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-regular-svg-icons";
 import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
@@ -53,13 +54,19 @@ class DailyCard extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    habits: state.habits
-  };
+DailyCard.propTypes = {
+  toggleChecked: PropTypes.func,
+  updateHabit: PropTypes.func,
+  habit: PropTypes.object
 };
 
+// const mapStateToProps = state => {
+//   return {
+//     habits: state.habits
+//   };
+// };
+
 export default connect(
-  mapStateToProps,
+  null,
   { toggleChecked, updateHabit }
 )(DailyCard);

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { login } from "../actions/authActions";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
@@ -75,6 +76,12 @@ class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+  error: PropTypes.string,
+  fetching: PropTypes.bool
+};
 
 const mapStateToProps = state => ({
   error: state.user.error,

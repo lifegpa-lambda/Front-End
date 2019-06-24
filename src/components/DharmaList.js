@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getHabits } from "../actions/habitActions";
+import PropTypes from "prop-types";
 import DharmaCard from "./DharmaCard";
 
 class DharmaList extends Component {
@@ -17,6 +18,11 @@ class DharmaList extends Component {
     );
   }
 }
+
+DharmaList.propTypes = {
+  getHabits: PropTypes.func,
+  habits: PropTypes.object
+};
 
 const mapStateToProps = state => {
   // console.log("DharmaList mapStateToProps state", state);

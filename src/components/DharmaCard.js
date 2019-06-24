@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-regular-svg-icons";
 import { getHabits } from "../actions/habitActions";
@@ -41,6 +42,11 @@ class DharmaCard extends Component {
     );
   }
 }
+
+DharmaCard.propTypes = {
+  getHabits: PropTypes.func,
+  habit: PropTypes.object
+};
 
 export default connect(
   null,
