@@ -27,12 +27,12 @@ export const createAccount = creds => dispatch => {
   return axios
     .post("http://localhost:5000/api/login", creds)
     .then(response => {
-      console.log("login response", response);
+      console.log("createAccount response", response);
       localStorage.setItem("token", response.data.payload);
       dispatch({ type: CREATE_SUCCESS, payload: response.data.payload });
     })
     .catch(error => {
-      console.log("login error.response", error.response);
+      console.log("createAccount error.response", error.response);
       dispatch({ type: CREATE_ERROR, payload: error.response.data.error });
     });
 };
