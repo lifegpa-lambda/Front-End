@@ -7,27 +7,33 @@ import { getHabits } from "../actions/habitActions";
 import "../App.css";
 
 class DharmaCard extends Component {
-  componentDidMount() {
-    console.log("CDM");
-    this.props.getHabits();
-  }
   render() {
     // console.log("DharmaCard this.props.habit", this.props.habit);
     return (
-      <div className="dharma-card">
+      <div className="dharma-card container">
         {this.props.habit.count > 0 ? (
-          <div className="dharmas">
-            <FontAwesomeIcon
-              icon={faCircle}
-              className="circle-green"
-              size="6x"
-            />
-            {this.props.habit.habit}
+          <div className="dharmas row">
+            <div className="col">
+              <FontAwesomeIcon
+                icon={faCircle}
+                className="circle-green"
+                size="4x"
+              />
+
+              {this.props.habit.habit}
+            </div>
           </div>
         ) : (
-          <div className="dharmas">
-            <FontAwesomeIcon icon={faCircle} className="circle-red" size="6x" />
-            {this.props.habit.habit}
+          <div className="dharmas row">
+            <div className="col">
+              <FontAwesomeIcon
+                icon={faCircle}
+                className="circle-red"
+                size="4x"
+              />
+
+              {this.props.habit.habit}
+            </div>
           </div>
         )}
       </div>

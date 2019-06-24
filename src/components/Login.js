@@ -28,7 +28,6 @@ class Login extends Component {
     this.props.login(this.state.credentials).then(() => {
       this.props.history.push("/habits");
     });
-
     this.setState({
       username: "",
       password: ""
@@ -39,10 +38,21 @@ class Login extends Component {
     return (
       <div className="Login">
         <h1>Welcome to LifeGPA!</h1>
+        <div className="create-account-header">CREATE ACCOUNT</div>
+        <Button
+          onClick={() => {
+            this.props.history.push("/create");
+          }}
+          className="create-account-button"
+          color="primary"
+        >
+          Create Account
+        </Button>
         <Form onSubmit={this.login}>
           <FormGroup>
             <Label className="login-header">LOGIN</Label>
             <Input
+              required
               type="text"
               name="username"
               placeholder="username"
@@ -50,6 +60,7 @@ class Login extends Component {
               onChange={this.handleChanges}
             />
             <Input
+              required
               type="password"
               name="password"
               placeholder="password"
