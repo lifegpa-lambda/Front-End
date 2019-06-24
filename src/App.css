@@ -1,33 +1,97 @@
 .App {
   text-align: center;
+  border: 1px solid hotpink;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.add-update-button {
+  margin: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.card-btn {
+  margin: 10px;
+}
+
+.habit-card {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  font-size: 1.25rem;
+  padding: 10px;
+}
+
+.card-btn {
+  font-size: 0.75rem;
+}
+
+.Login {
+  background: dodgerblue;
+}
+
+.Login > h1 {
+  color: whitesmoke;
+}
+
+.login-header {
+  color: whitesmoke;
+}
+
+.circle {
+  color: grey;
+  margin-right: 15px;
+}
+
+.circle-green {
+  color: green;
+  margin-right: 15px;
+}
+
+.circle-red {
+  color: red;
+  margin-right: 15px;
+}
+
+.daily-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  padding: 10px;
+}
+
+.daily-circle {
+  margin: 10px;
+}
+
+.daily-circle-checked {
+  margin: 10px;
+  color: green;
+}
+
+.daily-times-checked {
+  margin: 10px;
+  color: red;
+}
+
+.checked {
+  text-decoration: line-through;
+}
+
+.dharmas {
+  /* display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center; */
 }
 
-.App-link {
-  color: #61dafb;
+.dharma-card {
+  /* border: 1px solid red; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.create-account-button {
+  margin: 10px;
+}
+
+.create-account-header {
+  color: whitesmoke;
+  margin: 10px;
 }

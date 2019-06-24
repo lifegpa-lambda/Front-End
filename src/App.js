@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import "./App.css";
+import "./";
+import Login from "./components/Login";
+import CreateAccount from "./components/CreateAccount";
+import PrivateRoute from "./components/PrivateRoute";
+import HabitList from "./components/HabitList";
+import NavBar from "./components/NavBar";
+import DailyList from "./components/DailyList";
+import Dashboard from "./components/Dashboard";
+import DharmaList from "./components/DharmaList";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <NavBar />
+        <Route path="/login" component={Login} />
+        <Route path="/create" component={CreateAccount} />
+        <PrivateRoute exact path="/habits" component={HabitList} />
+        <PrivateRoute exact path="/daily" component={DailyList} />
+        <PrivateRoute exact path="/dashboard" component={Dashboard} />
+        <PrivateRoute exact path="/dharma" component={DharmaList} />
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
