@@ -48,6 +48,16 @@
   margin-right: 15px;
 }
 
+.circle-green {
+  color: green;
+  margin-right: 15px;
+}
+
+.circle-red {
+  color: green;
+  margin-right: 15px;
+}
+
 .daily-card {
   display: flex;
   justify-content: space-between;

@@ -7,7 +7,7 @@ import HabitList from "./components/HabitList";
 import NavBar from "./components/NavBar";
 import DailyList from "./components/DailyList";
 import Dashboard from "./components/Dashboard";
-import DharmaCard from "./components/DharmaCard";
+import DharmaList from "./components/DharmaList";
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
         <PrivateRoute exact path="/habits" component={HabitList} />
         <PrivateRoute exact path="/daily" component={DailyList} />
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
-        <PrivateRoute exact path="/dharma" component={DharmaCard} />
+        <PrivateRoute exact path="/dharma" component={DharmaList} />
       </div>
     </Router>
   );
