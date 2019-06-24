@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getHabits } from "../actions/habitActions";
+import PropTypes from "prop-types";
 import DharmaCard from "./DharmaCard";
 
-class HabitList extends Component {
+class DharmaList extends Component {
   render() {
     console.log("DharmaList this.props", this.props);
     return (
@@ -18,6 +19,11 @@ class HabitList extends Component {
   }
 }
 
+DharmaList.propTypes = {
+  getHabits: PropTypes.func,
+  habits: PropTypes.object
+};
+
 const mapStateToProps = state => {
   // console.log("DharmaList mapStateToProps state", state);
   return {
@@ -28,4 +34,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { getHabits }
-)(HabitList);
+)(DharmaList);
