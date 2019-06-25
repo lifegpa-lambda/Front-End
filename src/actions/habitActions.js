@@ -16,10 +16,10 @@ export const SET_UPDATE_FORM = "SET_UPDATE_FORM";
 export const FILTER_HABITS = "FILTER_HABITS";
 export const TOGGLE_CHECKED = "TOGGLE_CHECKED";
 
-export const getHabits = () => dispatch => {
+export const getHabits = id => dispatch => {
   dispatch({ type: FETCH_HABITS_START });
   axios
-    .get("http://localhost:5000/api/friends", {
+    .get(`https://lifegpa-zach-christy.herokuapp.com/api/habits/${id}`, {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(response => {

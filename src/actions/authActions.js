@@ -14,11 +14,12 @@ export const login = creds => dispatch => {
     .then(response => {
       console.log("login response", response);
       localStorage.setItem("token", response.data.token);
-      dispatch({ type: LOGIN_SUCCESS, payload: response.data.token });
+      localStorage.setItem("userId", response.data.user.id);
+      dispatch({ type: LOGIN_SUCCESS });
     })
     .catch(error => {
       console.log("login error.response", error.response);
-      dispatch({ type: LOGIN_ERROR, payload: error.response.data.error });
+      dispatch({ type: LOGIN_ERROR, payload: error.response });
     });
 };
 
