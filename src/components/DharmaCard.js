@@ -33,9 +33,19 @@ class DharmaCard extends Component {
                 className="circle-red"
                 size="4x"
               /> */}
-              <Gauge score="33" width="120" strokeWidth="12" />
+              <Gauge
+                score="33"
+                width="100"
+                strokeWidth="12"
+                fontSize="1.6rem"
+              />
               <Gauge score="50" width="120" strokeWidth="12" />
-              <Gauge score="67" width="120" strokeWidth="12" />
+              <Gauge
+                score="67"
+                width="140"
+                strokeWidth="12"
+                fontSize="2.4rem"
+              />
 
               {this.props.habit.habit}
             </div>

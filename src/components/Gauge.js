@@ -13,9 +13,13 @@ const Gauge = props => {
     ? props.color
     : ["#ff3d3d", "#ffe53d", "#00ff00"][Math.floor(score / 33.5)];
 
+  let fontSize = props.fontSize ? props.fontSize : "2rem";
+
   return (
     <div className="gauge-wrapper">
-      <div className="label">{score}</div>
+      <div className="label" style={{ fontSize }}>
+        {score}
+      </div>
       <svg
         className="gauge"
         width={width}
