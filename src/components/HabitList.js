@@ -13,22 +13,19 @@ class HabitList extends Component {
   }
 
   // componentDidUpdate(prevProps, prevState) {
-  //   if (this.props.habits.habits.habits !== prevProps.habits.habits.habits) {
+  //   if (this.props.habits.habits !== prevProps.habits.habits) {
   //     this.props.getHabits();
   //   }
   // }
 
   render() {
-    console.log(
-      "HabitList this.props.habits.habits",
-      this.props.habits.habits.habits
-    );
+    console.log("HabitList this.props.habits.habits", this.props.habits.habits);
     return (
       <div>
         <h2>HBTZ</h2>
         {/* <SearchBar /> */}
-        {this.props.habits.habits.habits &&
-          this.props.habits.habits.habits.map(habit => {
+        {this.props.habits.habits &&
+          this.props.habits.habits.map(habit => {
             // console.log("HabitList habit", habit);
             return <HabitCard habit={habit} key={habit.id} />;
           })}
