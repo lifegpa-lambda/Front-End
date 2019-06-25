@@ -1,33 +1,47 @@
+import React from "react";
 import "../styles/Gauge.scss";
 
 const Gauge = props => {
-  // const { score, width, color, strokeWidth  }
+  const { score, width, color, strokeWidth } = props;
+  const halfWidth = width / 2;
+  const radius = halfWidth - strokeWidth;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference * (2 - (100 - score) / 100);
+  console.log(width, strokeWidth, halfWidth, radius, circumference, offset);
+
   return (
-    <div className="gauge">
+    <div className="gauge-wrapper">
+      <div className="label">{score}</div>
       <svg
-        width={width / 2}
-        height={width / 2}
-        viewBox={`"0 0 ${width} ${width}"`}
+        className="gauge"
+        width={width}
+        height={width}
+        viewBox={`0 0 ${width} ${width}`}
       >
         <circle
-          cx={width / 2}
-          cy={width / 2}
-          r={width / 2 - strokeWidth}
-          fill="none"
-          stroke={color}
-          stroke-width={strokeWidth}
-        />
-        <circle
-          cx={width / 2}
-          cy={width / 2}
-          r={width / 2 - strokeWidth}
+          className="dial"
+          cx={halfWidth}
+          cy={halfWidth}
+          r={halfWidth - strokeWidth}
           fill="none"
           stroke="#bbbbbb"
-          stroke-width={strokeWidth}
-          stroke-dasharray="339.292"
-          stroke-dashoffset="135.717"
+          strokeWidth={strokeWidth}
+        />
+        <circle
+          className="score"
+          cx={halfWidth}
+          cy={halfWidth}
+          r={halfWidth - strokeWidth}
+          fill="none"
+          stroke={color}
+          strokeWidth={strokeWidth}
+          strokeDasharray={offset}
+          strokeDashoffset={circumference}
+          strokeLinecap="round"
         />
       </svg>
     </div>
   );
 };
+
+export default Gauge;

@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-regular-svg-icons";
 import { getHabits } from "../actions/habitActions";
+import Gauge from "./Gauge";
 import "../App.css";
 
 class DharmaCard extends Component {
@@ -14,11 +15,12 @@ class DharmaCard extends Component {
         {this.props.habit.count > 0 ? (
           <div className="dharmas row">
             <div className="col">
-              <FontAwesomeIcon
+              {/* <FontAwesomeIcon
                 icon={faCircle}
                 className="circle-green"
                 size="4x"
-              />
+              /> */}
+              <Gauge score="50" width="120" color="#00FF00" strokeWidth="12" />
 
               {this.props.habit.habit}
             </div>
@@ -26,11 +28,12 @@ class DharmaCard extends Component {
         ) : (
           <div className="dharmas row">
             <div className="col">
-              <FontAwesomeIcon
+              {/* <FontAwesomeIcon
                 icon={faCircle}
                 className="circle-red"
                 size="4x"
-              />
+              /> */}
+              <Gauge score="60" width="120" color="#00FF00" strokeWidth="12" />
 
               {this.props.habit.habit}
             </div>
