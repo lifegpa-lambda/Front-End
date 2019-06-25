@@ -51,7 +51,7 @@ export const addHabit = newHabit => dispatch => {
       dispatch({ type: ADD_HABIT_SUCCESS, payload: response.data });
     })
     .catch(error => {
-      console.log("addHabit error", error);
+      console.log("addHabit error", error.reponse);
       dispatch({
         type: ADD_HABIT_ERROR,
         payload: error.response
@@ -67,8 +67,9 @@ export const deleteHabit = id => dispatch => {
     })
     .then(response => {
       console.log("deleteHabit response.data", response.data);
-      dispatch({ type: DELETE_HABIT_SUCCESS, payload: response.data });
+      dispatch({ type: DELETE_HABIT_SUCCESS });
     })
+    .then(() => window.location.reload())
     .catch(error => {
       console.log("deleteHabit error", error);
       dispatch({
@@ -80,14 +81,20 @@ export const deleteHabit = id => dispatch => {
 
 export const updateHabit = habit => dispatch => {
   dispatch({ type: UPDATE_HABIT_START });
+  console.log("updateHabit habit", habit);
   axios
-    .put(`http://localhost:5000/api/friends/${habit.id}`, habit, {
-      headers: { Authorization: localStorage.getItem("token") }
-    })
+    .put(
+      `https://lifegpa-zach-christy.herokuapp.com/api/habits/${habit.id}`,
+      { habitTitle: habit.habitTitle, categoryId: habit.categoryId },
+      {
+        headers: { Authorization: localStorage.getItem("token") }
+      }
+    )
     .then(response => {
       console.log("updateHabit response.data", response.data);
-      dispatch({ type: UPDATE_HABIT_SUCCESS, payload: response.data });
+      dispatch({ type: UPDATE_HABIT_SUCCESS });
     })
+    .then(() => window.location.reload())
     .catch(error => {
       console.log("updateHabit error", error);
       dispatch({
