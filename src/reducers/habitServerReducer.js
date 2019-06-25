@@ -20,9 +20,11 @@ const initialState = {
   habits: [
     {
       id: "",
-      habit: "",
-      checked: false,
-      count: 0
+      habitTitle: "",
+      completed: 0,
+      completionPoints: 0,
+      userId: "",
+      createdAt: ""
     }
   ],
   fetching: false,
@@ -50,6 +52,7 @@ export default (state = initialState, action) => {
         fetching: false,
         error: null,
         habits: action.payload
+        // user:
       };
     case FETCH_HABITS_ERROR:
       return {

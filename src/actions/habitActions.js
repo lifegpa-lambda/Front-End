@@ -16,12 +16,17 @@ export const SET_UPDATE_FORM = "SET_UPDATE_FORM";
 export const FILTER_HABITS = "FILTER_HABITS";
 export const TOGGLE_CHECKED = "TOGGLE_CHECKED";
 
-export const getHabits = () => dispatch => {
+export const getHabits = id => dispatch => {
   dispatch({ type: FETCH_HABITS_START });
   axios
-    .get("http://localhost:5000/api/friends", {
-      headers: { Authorization: localStorage.getItem("token") }
-    })
+    .get(
+      `https://lifegpa-zach-christy.herokuapp.com/api/users/habits/${localStorage.getItem(
+        "userId"
+      )}`,
+      {
+        headers: { Authorization: localStorage.getItem("token") }
+      }
+    )
     .then(response => {
       console.log("getHabits response.data", response.data);
       dispatch({ type: FETCH_HABITS_SUCCESS, payload: response.data });
@@ -30,7 +35,7 @@ export const getHabits = () => dispatch => {
       console.log("getHabits error", error);
       dispatch({
         type: FETCH_HABITS_ERROR,
-        payload: error.response.data.error
+        payload: error.response
       });
     });
 };
@@ -38,7 +43,7 @@ export const getHabits = () => dispatch => {
 export const addHabit = newHabit => dispatch => {
   dispatch({ type: ADD_HABIT_START });
   axios
-    .post("http://localhost:5000/api/friends", newHabit, {
+    .post(`https://lifegpa-zach-christy.herokuapp.com/api/habits`, newHabit, {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(response => {
@@ -49,7 +54,7 @@ export const addHabit = newHabit => dispatch => {
       console.log("addHabit error", error);
       dispatch({
         type: ADD_HABIT_ERROR,
-        payload: error.response.data.error
+        payload: error.response
       });
     });
 };

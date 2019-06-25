@@ -7,8 +7,9 @@ import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
 class HabitForm extends Component {
   state = {
-    habit: this.props.habits.activeHabit || "",
-    active: false
+    habitTitle: this.props.habits.activeHabit || "",
+    active: false,
+    categoryId: ""
   };
 
   componentDidUpdate(prevState) {
@@ -21,7 +22,7 @@ class HabitForm extends Component {
       prevState.habits.activeHabit !== this.props.habits.activeHabit
     ) {
       this.setState({
-        habit: this.props.habits.activeHabit.habit,
+        habitTitle: this.props.habits.activeHabit.habitTitle,
         active: true
       });
     }
@@ -44,31 +45,20 @@ class HabitForm extends Component {
             <Label for="exampleText">NEW HBT</Label>
             <Input
               type="textarea"
-              name="habit"
-              value={this.state.habit}
+              name="habitTitle"
+              value={this.state.habitTitle}
               onChange={this.handleChanges}
               id="exampleText"
               placeholder="HBT"
             />
+            <Input
+              type="number"
+              name="categoryId"
+              value={this.state.categoryId}
+              onChange={this.handleChanges}
+              placeholder="Category"
+            />
           </FormGroup>
-          {/* <FormGroup>
-            <Label for="exampleSelect">HBT ICON</Label>
-            <Input type="select" name="select">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </Input>
-            <Label for="exampleSelect">HBT RNK</Label>
-            <Input type="select" name="select">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </Input>
-          </FormGroup> */}
 
           <Button className="add-update-button" color="primary">{`${
             this.props.habits.active ? "UPDT" : "ADD"
@@ -85,27 +75,30 @@ class HabitForm extends Component {
     });
   };
 
-  submitHandler = newHabit => {
+  submitHandler = event => {
+    event.preventDefault();
     if (this.props.habits.active) {
       const updateHabit = {
-        habit: this.state.habit,
-        id: this.props.habits.activeHabit.id
+        habitTitle: this.state.habitTitle,
+        categoryId: this.props.habits.activeHabit.categoryId
       };
       this.props.updateHabit(updateHabit);
     } else {
-      this.addHabit(newHabit);
+      this.addHabit(event);
     }
-    this.setState({ habit: "", active: false });
+    this.setState({ habitTitle: "", active: false, categoryId: "" });
   };
 
   addHabit = event => {
     event.preventDefault();
     const newHabit = {
-      habit: this.state.habit
+      habitTitle: this.state.habitTitle,
+      categoryId: parseInt(this.state.categoryId, 10)
     };
     this.props.addHabit(newHabit);
     this.setState({
-      habit: ""
+      habitTitle: "",
+      categoryId: ""
     });
   };
 }

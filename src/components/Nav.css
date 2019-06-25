@@ -1,7 +1,18 @@
 .nav-bar {
-  background: dodgerblue;
+  /* background: #0d0221;
+  color: #f2eee8; */
+  border: 1px solid red;
 }
 
 .nav-link {
-  color: whitesmoke;
+  background: hsl(261, 89%, 7%);
+  color: #f2eee8;
+  border: 2px solid #f2eee8;
+}
+
+.nav-col {
+  border: 1px solid fuchsia;
+}
+.nav-row {
+  border: 1px solid fuchsia;
 }

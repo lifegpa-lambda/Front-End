@@ -17,9 +17,9 @@ class DailyList extends Component {
         <h2>DLY HBTZ</h2>
         <h3>Today did you...?</h3>
         {/* <SearchBar /> */}
-        {this.props.habits.habits.map(habit => {
+        {/* {this.props.habits.habits.map(habit => {
           return <DailyCard habit={habit} key={habit.id} />;
-        })}
+        })} */}
       </div>
     );
   }

@@ -12,16 +12,26 @@ class HabitList extends Component {
     this.props.getHabits();
   }
 
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (this.props.habits.habits.habits !== prevProps.habits.habits.habits) {
+  //     this.props.getHabits();
+  //   }
+  // }
+
   render() {
-    console.log("HabitList this.props", this.props);
+    console.log(
+      "HabitList this.props.habits.habits",
+      this.props.habits.habits.habits
+    );
     return (
       <div>
         <h2>HBTZ</h2>
-        <SearchBar />
-        {this.props.habits.habits.map(habit => {
-          // console.log("HabitList habit", habit);
-          return <HabitCard habit={habit} key={habit.id} />;
-        })}
+        {/* <SearchBar /> */}
+        {this.props.habits.habits.habits &&
+          this.props.habits.habits.habits.map(habit => {
+            // console.log("HabitList habit", habit);
+            return <HabitCard habit={habit} key={habit.id} />;
+          })}
         <HabitForm />
       </div>
     );
