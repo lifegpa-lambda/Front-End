@@ -62,7 +62,7 @@ export const addHabit = newHabit => dispatch => {
 export const deleteHabit = id => dispatch => {
   dispatch({ type: DELETE_HABIT_START });
   axios
-    .delete(`http://localhost:5000/api/friends/${id}`, {
+    .delete(`https://lifegpa-zach-christy.herokuapp.com/api/habits/${id}`, {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(response => {
