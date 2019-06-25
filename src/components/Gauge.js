@@ -2,12 +2,16 @@ import React from "react";
 import "../styles/Gauge.scss";
 
 const Gauge = props => {
-  const { score, width, color, strokeWidth } = props;
+  const { score, width, strokeWidth } = props;
   const halfWidth = width / 2;
   const radius = halfWidth - strokeWidth;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference * (2 - (100 - score) / 100);
-  console.log(width, strokeWidth, halfWidth, radius, circumference, offset);
+  // console.log(width, strokeWidth, halfWidth, radius, circumference, offset);
+
+  let color = props.color
+    ? props.color
+    : ["#ff3d3d", "#ffe53d", "#00ff00"][Math.floor(score / 33.5)];
 
   return (
     <div className="gauge-wrapper">
