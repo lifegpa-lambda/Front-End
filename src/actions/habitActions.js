@@ -81,14 +81,20 @@ export const deleteHabit = id => dispatch => {
 
 export const updateHabit = habit => dispatch => {
   dispatch({ type: UPDATE_HABIT_START });
+  console.log("updateHabit habit", habit);
   axios
-    .put(`http://localhost:5000/api/friends/${habit.id}`, habit, {
-      headers: { Authorization: localStorage.getItem("token") }
-    })
+    .put(
+      `https://lifegpa-zach-christy.herokuapp.com/api/habits/${habit.id}`,
+      { habitTitle: habit.habitTitle, categoryId: habit.categoryId },
+      {
+        headers: { Authorization: localStorage.getItem("token") }
+      }
+    )
     .then(response => {
       console.log("updateHabit response.data", response.data);
-      dispatch({ type: UPDATE_HABIT_SUCCESS, payload: response.data });
+      dispatch({ type: UPDATE_HABIT_SUCCESS });
     })
+    .then(() => window.location.reload())
     .catch(error => {
       console.log("updateHabit error", error);
       dispatch({

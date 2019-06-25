@@ -9,7 +9,8 @@ class HabitForm extends Component {
   state = {
     habitTitle: this.props.habits.activeHabit || "",
     active: false,
-    categoryId: ""
+    categoryId: "",
+    id: ""
   };
 
   componentDidUpdate(prevState) {
@@ -23,21 +24,17 @@ class HabitForm extends Component {
     ) {
       this.setState({
         habitTitle: this.props.habits.activeHabit.habitTitle,
-        active: true
+        active: true,
+        id: this.props.habits.activeHabit.id,
+        categoryId: this.props.habits.activeHabit.categoryId
       });
     }
   }
 
   render() {
-    // console.log(
-    //   "HabitForm this.props.habits.activeHabit",
-    //   this.props.habits.activeHabit
-    // );
+    console.log("HabitForm this.state.id", this.state.id);
     // console.log("HabitForm this.state.habit", this.state.habit);
-    // console.log(
-    //   "HabitForm this.props.habits.activeHabit",
-    //   this.props.habits.activeHabit
-    // );
+
     return (
       <div>
         <Form onSubmit={this.submitHandler}>
@@ -80,7 +77,8 @@ class HabitForm extends Component {
     if (this.props.habits.active) {
       const updateHabit = {
         habitTitle: this.state.habitTitle,
-        categoryId: this.props.habits.activeHabit.categoryId
+        id: this.state.id,
+        categoryId: parseInt(this.state.categoryId, 10)
       };
       this.props.updateHabit(updateHabit);
     } else {

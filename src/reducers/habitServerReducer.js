@@ -109,8 +109,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         updatingHabit: false,
-        error: null,
-        habits: action.payload
+        error: null
       };
     case UPDATE_HABIT_ERROR:
       return {
