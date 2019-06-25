@@ -23,9 +23,10 @@ export const login = creds => dispatch => {
 };
 
 export const createAccount = creds => dispatch => {
+  console.log(creds);
   dispatch({ type: CREATE_START });
   return axios
-    .post("http://localhost:5000/api/login", creds)
+    .post("https://lifegpa-zach-christy.herokuapp.com/api/register/", creds)
     .then(response => {
       console.log("createAccount response", response);
       localStorage.setItem("token", response.data.payload);
