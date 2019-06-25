@@ -24,7 +24,7 @@ const Gauge = props => {
 
   return (
     <div className="gauge-outer-wrapper" style={{ display, height }}>
-      <h2 className="top-label" style={{ fontSize: `${fontSize * 0.7}rem` }}>
+      <h2 className="top-label" style={{ fontSize: `${fontSize * 0.65}rem` }}>
         {topLabel}
       </h2>
       <div className="gauge-inner-wrapper">
