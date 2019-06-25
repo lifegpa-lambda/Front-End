@@ -43,7 +43,7 @@ export const getHabits = id => dispatch => {
 export const addHabit = newHabit => dispatch => {
   dispatch({ type: ADD_HABIT_START });
   axios
-    .post("http://localhost:5000/api/friends", newHabit, {
+    .post(`https://lifegpa-zach-christy.herokuapp.com/api/habits`, newHabit, {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(response => {
@@ -54,7 +54,7 @@ export const addHabit = newHabit => dispatch => {
       console.log("addHabit error", error);
       dispatch({
         type: ADD_HABIT_ERROR,
-        payload: error.response.data.error
+        payload: error.response
       });
     });
 };
