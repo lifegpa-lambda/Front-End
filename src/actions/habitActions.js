@@ -51,7 +51,7 @@ export const addHabit = newHabit => dispatch => {
       dispatch({ type: ADD_HABIT_SUCCESS, payload: response.data });
     })
     .catch(error => {
-      console.log("addHabit error", error);
+      console.log("addHabit error", error.reponse);
       dispatch({
         type: ADD_HABIT_ERROR,
         payload: error.response
@@ -62,13 +62,14 @@ export const addHabit = newHabit => dispatch => {
 export const deleteHabit = id => dispatch => {
   dispatch({ type: DELETE_HABIT_START });
   axios
-    .delete(`http://localhost:5000/api/friends/${id}`, {
+    .delete(`https://lifegpa-zach-christy.herokuapp.com/api/habits/${id}`, {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(response => {
       console.log("deleteHabit response.data", response.data);
-      dispatch({ type: DELETE_HABIT_SUCCESS, payload: response.data });
+      dispatch({ type: DELETE_HABIT_SUCCESS });
     })
+    .then(() => window.location.reload())
     .catch(error => {
       console.log("deleteHabit error", error);
       dispatch({

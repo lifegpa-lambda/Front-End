@@ -51,7 +51,7 @@ export default (state = initialState, action) => {
         ...state,
         fetching: false,
         error: null,
-        habits: action.payload
+        habits: action.payload.habits
         // user:
       };
     case FETCH_HABITS_ERROR:
@@ -71,7 +71,7 @@ export default (state = initialState, action) => {
         ...state,
         addingHabit: false,
         error: null,
-        habits: action.payload
+        habits: state.habits.concat([action.payload])
       };
     case ADD_HABIT_ERROR:
       return {
@@ -90,8 +90,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         deletingHabit: false,
-        error: null,
-        habits: action.payload
+        error: null
       };
     case DELETE_HABIT_ERROR:
       return {
