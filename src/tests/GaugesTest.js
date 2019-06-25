@@ -1,27 +1,27 @@
 import React from "react";
 import Gauge from "../components/Gauge";
+import "../styles/Gauge.scss";
 
 const GaugesTest = () => {
+  const gauges = [];
+  for (let i = 1; i < 31; i++) {
+    gauges.push({
+      id: i,
+      habit: `Habit ${i}`,
+      score: Math.round(Math.random() * 100)
+    });
+  }
   return (
     <div>
-      <Gauge score="33" width="100" strokeWidth="8" />
-      <Gauge score="33" width="100" color="#0000FF" />
-      <br />
-      <Gauge score="50" width="120" strokeWidth="8" height="150px" />
-      <Gauge
-        score="67"
-        width="120"
-        strokeWidth="13"
-        bottomLabel="Eat breakfast"
-        height="150px"
-      />
-      <Gauge
-        score="100"
-        width="200"
-        strokeWidth="15"
-        display="block"
-        topLabel="LGPA"
-      />
+      {gauges.map(gauge => (
+        <Gauge
+          key={gauge.id}
+          score={gauge.score}
+          width="120"
+          strokeWidth="12"
+          bottomLabel={gauge.habit}
+        />
+      ))}
     </div>
   );
 };

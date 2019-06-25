@@ -11,6 +11,7 @@ const Gauge = props => {
     bottomLabel = "",
     display = "inline-block"
   } = props;
+
   const halfWidth = width / 2;
   const radius = halfWidth - strokeWidth;
   const circumference = 2 * Math.PI * radius;
