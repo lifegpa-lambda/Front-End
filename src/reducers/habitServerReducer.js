@@ -51,7 +51,8 @@ export default (state = initialState, action) => {
         ...state,
         fetching: false,
         error: null,
-        habits: action.payload
+        habits: action.payload,
+        user: 
       };
     case FETCH_HABITS_ERROR:
       return {

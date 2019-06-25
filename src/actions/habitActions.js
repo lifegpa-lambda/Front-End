@@ -19,9 +19,14 @@ export const TOGGLE_CHECKED = "TOGGLE_CHECKED";
 export const getHabits = id => dispatch => {
   dispatch({ type: FETCH_HABITS_START });
   axios
-    .get(`https://lifegpa-zach-christy.herokuapp.com/api/habits/${id}`, {
-      headers: { Authorization: localStorage.getItem("token") }
-    })
+    .get(
+      `https://lifegpa-zach-christy.herokuapp.com/api/users/habits/${localStorage.getItem(
+        "userId"
+      )}`,
+      {
+        headers: { Authorization: localStorage.getItem("token") }
+      }
+    )
     .then(response => {
       console.log("getHabits response.data", response.data);
       dispatch({ type: FETCH_HABITS_SUCCESS, payload: response.data });
@@ -30,7 +35,7 @@ export const getHabits = id => dispatch => {
       console.log("getHabits error", error);
       dispatch({
         type: FETCH_HABITS_ERROR,
-        payload: error.response.data.error
+        payload: error.response
       });
     });
 };
