@@ -20,9 +20,11 @@ const initialState = {
   habits: [
     {
       id: "",
-      habit: "",
-      checked: false,
-      count: 0
+      habitTitle: "",
+      completed: 0,
+      completionPoints: 0,
+      userId: "",
+      createdAt: ""
     }
   ],
   fetching: false,
