@@ -8,11 +8,15 @@ class CreateAccount extends Component {
   state = {
     credentials: {
       username: "",
-      fullName: "",
+      fullname: "",
       password: "",
       email: "",
       userImgUrl: ""
     }
+  };
+
+  componentDidMount = () => {
+    console.log(this.props);
   };
 
   handleChanges = event => {
@@ -34,7 +38,7 @@ class CreateAccount extends Component {
     this.setState({
       credentials: {
         username: "",
-        fullName: "",
+        fullname: "",
         password: "",
         email: "",
         userImgUrl: ""
@@ -46,7 +50,7 @@ class CreateAccount extends Component {
     return (
       <div className="Login">
         <h1>Make the Grade</h1>
-        <Form onSubmit={this.login}>
+        <Form onSubmit={this.createAccount}>
           <FormGroup>
             <Label className="login-header">CREATE ACCOUNT</Label>
             <Input
@@ -60,9 +64,9 @@ class CreateAccount extends Component {
             <Input
               required
               type="text"
-              name="fullName"
+              name="fullname"
               placeholder="Full name"
-              value={this.state.credentials.fullName}
+              value={this.state.credentials.fullname}
               onChange={this.handleChanges}
             />
             <Input
@@ -82,7 +86,6 @@ class CreateAccount extends Component {
               onChange={this.handleChanges}
             />
             <Input
-              required
               type="text"
               name="imgUrl"
               placeholder="Link a profile image"

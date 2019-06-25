@@ -10,6 +10,7 @@ import NavBar from "./components/NavBar";
 import DailyList from "./components/DailyList";
 import Dashboard from "./components/Dashboard";
 import DharmaList from "./components/DharmaList";
+import GaugesTest from "./tests/GaugesTest";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <NavBar />
         <Route path="/login" component={Login} />
         <Route path="/create" component={CreateAccount} />
+        <Route exact path="/gaugestest" component={GaugesTest} />
         <PrivateRoute exact path="/habits" component={HabitList} />
         <PrivateRoute exact path="/daily" component={DailyList} />
         <PrivateRoute exact path="/dashboard" component={Dashboard} />

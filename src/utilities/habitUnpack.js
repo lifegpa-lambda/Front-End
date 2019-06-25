@@ -1,5 +1,5 @@
-// const moment = require("moment");
-import moment from "moment";
+const moment = require("moment");
+// import moment from "moment";
 
 // Given a string `trackingData` where a space indicates a day a habit was not kept,
 // and any other character indicates kept, and a date `creationDate` in YYYY-MM-DD HH:MM:SS format,
@@ -20,28 +20,37 @@ const habitUnpack = (trackingData, creationDate) => {
   // Calculate days between start date and today, rounded up to the next whole day
 
   const today = new Date();
-  today.setHours(0, 0, 0, 0); // Normalize time to midnight
-  const start = moment(creationDate.split(" ")[0]); // Normalize to midnight by only using the date
-  const daysSinceStart =
-    Math.ceil(moment.duration({ from: start, to: today }).asDays()) + 1;
+  today.setHours(0, 0, 0, 0); // Normalize today's date to midnight
+  const start = moment(creationDate.split(" ")[0]); // Normalize createDate to midnight by using only the date
 
-  // If a day or more has passed since stats were last updated, add empty stats for the missing days
+  // Calculate days passed since creationDate. Fractional values are rounded up because any part of a day counts, then 1 is added to include today.
+  const daysSinceStart =
+    Math.ceil(
+      moment
+        .duration({
+          from: start,
+          to: today
+        })
+        .asDays()
+    ) + 1;
+
+  // If a day or more has passed since stats were last updated, add empty stats (represented by spaces) for the missing days
   trackingData = trackingData.padEnd(daysSinceStart);
 
   // Helper function for determining GPA
   const gpaCalc = timeSpan => {
+    // If desired timeSpan is greater than the amount of time since tracking started, change timeSpan to daysSinceStart
     timeSpan = timeSpan > daysSinceStart ? daysSinceStart : timeSpan;
+    // Count the numbers of times a habit was kept by removing all spaces and checking the length. .substring() is used to select the desired number of days starting from the most recent
     const daysKept = () => {
-      return daysSinceStart <= timeSpan
-        ? trackingData.replace(/\s/g, "").length
-        : trackingData
-            .substring(trackingData.length - timeSpan)
-            .replace(/\s/g, "").length;
+      return trackingData
+        .substring(trackingData.length - timeSpan)
+        .replace(/\s/g, "").length;
     };
     return Math.round((daysKept() * 100) / timeSpan);
   };
 
-  console.log(`Days tracked: ${trackingData.length}`);
+  // console.log(`Days tracked: ${trackingData.length}`);
   return {
     trackingData: trackingData,
     GPA: {

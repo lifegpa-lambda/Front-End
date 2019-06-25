@@ -1,0 +1,31 @@
+.gauge-outer-wrapper {
+  margin: 15px;
+  vertical-align: top;
+
+  .top-label, .bottom-label {
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .bottom-label {
+    font-weight: normal;
+  }
+
+  .gauge-inner-wrapper {
+    margin: 0 auto;
+    position: relative;
+  
+    .score {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: bold;
+    }
+  
+    .gauge {
+      transform: rotate(-90deg);
+    }
+  }
+}
+
