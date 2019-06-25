@@ -5,9 +5,11 @@ const Gauge = props => {
   const {
     score,
     width = "100",
+    height = "auto",
     strokeWidth = "12",
     topLabel = "",
-    bottomLabel = ""
+    bottomLabel = "",
+    display = "inline-block"
   } = props;
   const halfWidth = width / 2;
   const radius = halfWidth - strokeWidth;
@@ -21,8 +23,8 @@ const Gauge = props => {
   let fontSize = props.fontSize ? props.fontSize : width * 0.014;
 
   return (
-    <div className="gauge-outer-wrapper">
-      <h2 className="top-label" style={{ fontSize: `${fontSize * 1.1}rem` }}>
+    <div className="gauge-outer-wrapper" style={{ display, height }}>
+      <h2 className="top-label" style={{ fontSize: `${fontSize * 0.7}rem` }}>
         {topLabel}
       </h2>
       <div className="gauge-inner-wrapper">
@@ -59,7 +61,7 @@ const Gauge = props => {
           />
         </svg>
       </div>
-      <p className="bottom-label" style={{ fontSize: `${fontSize * 0.65}rem` }}>
+      <p className="bottom-label" style={{ fontSize: `${fontSize * 0.7}rem` }}>
         {bottomLabel}
       </p>
     </div>
