@@ -1,0 +1,42 @@
+.add-update-button {
+  margin: 10px;
+}
+
+.card-btn {
+  margin: 10px;
+  font-size: 0.75rem;
+}
+
+.habit-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  padding: 10px;
+  color: whitesmoke;
+  font-weight: 700;
+}
+
+.habit-form {
+  color: whitesmoke;
+  font-weight: 700;
+}
+
+.habits-header {
+  color: whitesmoke;
+  font-weight: 700;
+  margin-top: 20px;
+  /* text-decoration: underline; */
+}
+
+.habit-input {
+  max-width: 50%;
+  text-align: center;
+}
+
+.habit-input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

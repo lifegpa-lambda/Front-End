@@ -5,6 +5,7 @@ import { getHabits } from "../actions/habitActions";
 import HabitCard from "./HabitCard";
 import HabitForm from "./HabitForm";
 import SearchBar from "./SearchBar";
+import "./Habit.css";
 
 class HabitList extends Component {
   componentDidMount() {
@@ -22,7 +23,7 @@ class HabitList extends Component {
     console.log("HabitList this.props.habits.habits", this.props.habits.habits);
     return (
       <div>
-        <h2>HBTZ</h2>
+        <h2 className="habits-header">Habits</h2>
         {/* <SearchBar /> */}
         {this.props.habits.habits &&
           this.props.habits.habits.map(habit => {

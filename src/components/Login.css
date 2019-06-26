@@ -1,0 +1,35 @@
+.Login {
+  background: #0d0221;
+}
+
+.Login > h1 {
+  color: whitesmoke;
+}
+
+.login-header {
+  color: whitesmoke;
+}
+
+.create-account-button {
+  margin: 50px;
+}
+
+.login-button {
+  margin: 10px;
+}
+
+.login-input {
+  max-width: 50%;
+  text-align: center;
+}
+
+.login-input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome {
+  margin-top: 35px;
+}

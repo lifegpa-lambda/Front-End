@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { addHabit } from "../actions/habitActions";
 import { updateHabit } from "../actions/habitActions";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import "./Habit.css";
 
 class HabitForm extends Component {
   state = {
@@ -37,18 +38,19 @@ class HabitForm extends Component {
 
     return (
       <div>
-        <Form onSubmit={this.submitHandler}>
-          <FormGroup>
-            <Label for="exampleText">NEW HBT</Label>
+        <Form className="habit-form" onSubmit={this.submitHandler}>
+          <FormGroup className="habit-input-container">
+            <Label>NEW HBT</Label>
             <Input
+              className="habit-input"
               type="textarea"
               name="habitTitle"
               value={this.state.habitTitle}
               onChange={this.handleChanges}
-              id="exampleText"
               placeholder="HBT"
             />
             <Input
+              className="habit-input"
               type="number"
               name="categoryId"
               value={this.state.categoryId}
