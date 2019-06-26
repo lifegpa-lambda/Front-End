@@ -32,9 +32,10 @@ export const getHabits = () => dispatch => {
       }
     )
     .then(response => {
-      console.log("getHabits response.data", response.data);
+      // console.log("getHabits response.data", response.data);
       dispatch({ type: FETCH_HABITS_SUCCESS, payload: response.data.habits });
     })
+    .then(() => dispatch(updateGPAs))
     .catch(error => {
       console.log("getHabits error", error);
       dispatch({
@@ -46,13 +47,13 @@ export const getHabits = () => dispatch => {
 
 export const addHabit = newHabit => dispatch => {
   dispatch({ type: ADD_HABIT_START });
-  console.log(newHabit);
+  // console.log(newHabit);
   axios
     .post(`https://lifegpa-zach-christy.herokuapp.com/api/habits`, newHabit, {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(response => {
-      console.log("addHabit response.data", response.data);
+      // console.log("addHabit response.data", response.data);
       dispatch({ type: ADD_HABIT_SUCCESS, payload: response.data });
     })
     .catch(error => {
@@ -71,7 +72,7 @@ export const deleteHabit = id => dispatch => {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(response => {
-      console.log("deleteHabit response.data", response.data);
+      // console.log("deleteHabit response.data", response.data);
       dispatch({ type: DELETE_HABIT_SUCCESS });
     })
     .then(() => {
@@ -88,7 +89,7 @@ export const deleteHabit = id => dispatch => {
 
 export const updateHabit = habit => dispatch => {
   dispatch({ type: UPDATE_HABIT_START });
-  console.log("updateHabit habit", habit);
+  // console.log("updateHabit habit", habit);
   axios
     .put(
       `https://lifegpa-zach-christy.herokuapp.com/api/habits/${habit.id}`,
@@ -103,8 +104,8 @@ export const updateHabit = habit => dispatch => {
       }
     )
     .then(response => {
-      console.log("updateHabit response.data", response.data);
-      dispatch({ type: UPDATE_HABIT_SUCCESS });
+      // console.log("updateHabit response.data", response.data);
+      dispatch({ type: UPDATE_HABIT_SUCCESS, payload: habit });
     })
     .then(() => {
       dispatch(getHabits());
@@ -118,26 +119,31 @@ export const updateHabit = habit => dispatch => {
     });
 };
 
-const updateGPAs = dispatch => {
+export const updateGPAs = dispatch => {
   dispatch({ type: UPDATE_GPAS_START });
-  const gpaScores = store.getState().habits.gpaScores;
-  store.getState().habits.habits.map(habit => {
+  const habits = store.getState().habits.habits;
+  const updatedHabits = habits.map(habit => {
     const { processedHabit, GPA } = unpackHabit(habit);
-    gpaScores[habit.id] = GPA;
+    habit.gpa = GPA;
     if (habit.history !== processedHabit.history) {
       dispatch(updateHabit(processedHabit));
     }
-    return null;
+    return habit;
   });
-  dispatch({ type: UPDATE_GPAS_SUCCESS, payload: gpaScores });
-  // console.log(gpaScores);
+  dispatch({ type: UPDATE_GPAS_SUCCESS, payload: updatedHabits });
 };
 
-const updateGPA = habit => dispatch => {
+export const updateGPA = updatedHabit => dispatch => {
   dispatch({ type: UPDATE_GPAS_START });
-  const gpaScores = store.getState().habits.gpaScores;
-  gpaScores[habit.id] = unpackHabit(habit).GPA;
-  dispatch({ type: UPDATE_GPAS_SUCCESS, payload: gpaScores });
+  dispatch(updateHabit(updatedHabit));
+  const habits = store.getState().habits.habits;
+  const updatedHabits = habits.map(habit => {
+    if (habit.id === updateHabit.id) {
+      habit.gpa = unpackHabit(updatedHabit).GPA;
+    }
+    return habit;
+  });
+  dispatch({ type: UPDATE_GPAS_SUCCESS, payload: updatedHabits });
 };
 
 export const setUpdateForm = habit => {

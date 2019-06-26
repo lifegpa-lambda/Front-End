@@ -38,6 +38,8 @@ const unpackHabit = habit => {
   if (daysSinceStart <= 0) daysSinceStart = 1;
 
   history = history.padEnd(daysSinceStart, " ");
+  // console.log("unpackhabit history", habit.habitTitle, history, history.length);
+  // console.log("unpackhabit daysSinceStart", habit.habitTitle, daysSinceStart);
 
   // console.log("daysSinceStart", daysSinceStart);
   if (history.length > daysSinceStart)

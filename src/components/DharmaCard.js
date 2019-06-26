@@ -1,49 +1,74 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-regular-svg-icons";
 import { getHabits } from "../actions/habitActions";
+import Gauge from "../components/Gauge";
+import store from "../store";
 import "../App.css";
 import "./Dharma.css";
+import "../styles/Gauge.scss";
 
 class DharmaCard extends Component {
   render() {
-    console.log("DharmaCard this.props.habit", this.props.habit);
-    const category = this.props.habit.categoryId;
-    let dharma;
+    const { id, habitTitle, categoryId, gpa } = this.props.habit;
+    const score = gpa ? gpa.all : 0;
+    const width = 160;
 
-    if (category === 1) {
-      dharma = (
-        <FontAwesomeIcon icon={faCircle} className="circle-green" size="4x" />
-      );
-    } else if (category === 2) {
-      dharma = (
-        <FontAwesomeIcon icon={faCircle} className="circle-yellow" size="4x" />
-      );
-    } else if (category === 3) {
-      dharma = (
-        <FontAwesomeIcon icon={faCircle} className="circle-red" size="4x" />
-      );
-    }
+    const category = Math.min(categoryId, 3) - 1;
+    const categoryColor = ["green", "yellow", "red"][category];
 
     return (
-      <div className="dharma-card container">
-        <div className="dharma-card row">
-          <div className="dharma-card col">{dharma}</div>
-        </div>
+      <div
+        style={{
+          width: `${width}px`,
+          padding: "10px",
+          display: "inline-block"
+        }}
+      >
+        <Gauge
+          key={id}
+          score={score}
+          width={width - 20}
+          strokeWidth="7"
+          bottomLabel={habitTitle}
+          background={categoryColor}
+        />
       </div>
     );
+    // let dharma;
+
+    // if (category === 1) {
+    //   dharma = (
+    //     <FontAwesomeIcon icon={faCircle} className="circle-green" size="4x" />
+    //   );
+    // } else if (category === 2) {
+    //   dharma = (
+    //     <FontAwesomeIcon icon={faCircle} className="circle-yellow" size="4x" />
+    //   );
+    // } else if (category === 3) {
+    //   dharma = (
+    //     <FontAwesomeIcon icon={faCircle} className="circle-red" size="4x" />
+    //   );
+    // }
+
+    // return (
+    //   <div className="dharma-card container">
+    //     <div className="dharma-card row">
+    //       <div className="dharma-card col">{dharma}</div>
+    //     </div>
+    //   </div>
+    // );
   }
 }
 
-DharmaCard.propTypes = {
-  getHabits: PropTypes.func,
-  habit: PropTypes.object
-};
+const mapStateToProps = state => ({
+  habits: state.habits.habits
+});
 
 export default connect(
-  null,
+  mapStateToProps,
   { getHabits }
 )(DharmaCard);
 

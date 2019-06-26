@@ -55,6 +55,18 @@
   align-items: center; */
 }
 
+.dharma-header {
+  margin-top: 20px;
+}
+
+.dharma-dials {
+  margin: 0 5%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
 .dharma-card {
   /* border: 1px solid red; */
 }

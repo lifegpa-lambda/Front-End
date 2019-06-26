@@ -20,7 +20,6 @@ import {
 
 const initialState = {
   habits: [],
-  gpaScores: [],
   fetching: false,
   error: null,
   addingHabit: false,
@@ -61,7 +60,7 @@ export default (state = initialState, action) => {
         error: null
       };
     case ADD_HABIT_SUCCESS:
-      console.log("AHS", state.habits, action.payload);
+      // console.log("AHS", state.habits, action.payload);
       return {
         ...state,
         addingHabit: false,
@@ -116,11 +115,11 @@ export default (state = initialState, action) => {
         updatingGPAs: true
       };
     case UPDATE_GPAS_SUCCESS:
-      console.log(action.payload);
+      // console.log(action.payload);
       return {
         ...state,
         updatingGPAs: false,
-        gpaScores: action.payload
+        habits: action.payload
       };
     case SET_UPDATE_FORM:
       return {
@@ -129,14 +128,14 @@ export default (state = initialState, action) => {
         active: true
       };
     case FILTER_HABITS:
-      console.log(action.payload);
+      // console.log(action.payload);
       return {
         ...state,
         filteredHabits: action.payload
         // habits: action.payload.length > 0 ? action.payload : state.habits
       };
     case TOGGLE_CHECKED:
-      console.log("TOGGLE_CHECKED state", state);
+      // console.log("TOGGLE_CHECKED state", state);
       return {
         ...state
       };

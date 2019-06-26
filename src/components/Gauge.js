@@ -9,7 +9,8 @@ const Gauge = props => {
     strokeWidth = "12",
     topLabel = "",
     bottomLabel = "",
-    display = "inline-block"
+    display = "inline-block",
+    background = "transparent"
   } = props;
 
   const halfWidth = width / 2;
@@ -21,10 +22,13 @@ const Gauge = props => {
     ? props.color
     : ["#ff3d3d", "#ffe53d", "#00ff00"][Math.floor(score / 33.5)];
 
-  let fontSize = props.fontSize ? props.fontSize : width * 0.014;
+  let fontSize = props.fontSize ? props.fontSize : width * 0.0185;
 
   return (
-    <div className="gauge-outer-wrapper" style={{ display, height }}>
+    <div
+      className="gauge-outer-wrapper"
+      style={{ display, height, boxSizing: "border-box" }}
+    >
       <h2 className="top-label" style={{ fontSize: `${fontSize * 0.65}rem` }}>
         {topLabel}
       </h2>
@@ -40,12 +44,31 @@ const Gauge = props => {
           viewBox={`0 0 ${width} ${width}`}
         >
           <circle
+            className="background"
+            cx={halfWidth}
+            cy={halfWidth}
+            r={halfWidth - strokeWidth * 1.35}
+            fill="white"
+            stroke="black"
+            strokeWidth={strokeWidth}
+          />
+          <circle
+            className="face"
+            cx={halfWidth}
+            cy={halfWidth}
+            r={halfWidth - strokeWidth * 1.35}
+            fill={background}
+            stroke="black"
+            strokeWidth={strokeWidth}
+            fillOpacity="0.66"
+          />
+          <circle
             className="dial"
             cx={halfWidth}
             cy={halfWidth}
             r={halfWidth - strokeWidth}
             fill="none"
-            stroke="#555555"
+            stroke="#333333"
             strokeWidth={strokeWidth}
           />
           <circle
@@ -62,7 +85,10 @@ const Gauge = props => {
           />
         </svg>
       </div>
-      <p className="bottom-label" style={{ fontSize: `${fontSize * 0.7}rem` }}>
+      <p
+        className="bottom-label"
+        style={{ fontSize: `${Math.max(fontSize * 0.4, 1.175)}rem` }}
+      >
         {bottomLabel}
       </p>
     </div>
