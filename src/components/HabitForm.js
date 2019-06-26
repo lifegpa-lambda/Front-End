@@ -42,7 +42,7 @@ class HabitForm extends Component {
     // let dharmaActive = <div>{this.props.habits.activeHabit.habitTitle}</div>;
 
     let dharmaBox = this.state.active ? (
-      <div className="dharma-box">
+      <div className="dharma-box container">
         <div>{this.props.habits.activeHabit.habitTitle}</div>
         <div>Category: {this.props.habits.activeHabit.categoryId}</div>
         <div>Created: {this.props.habits.activeHabit.createdAt}</div>
@@ -66,18 +66,9 @@ class HabitForm extends Component {
               onChange={this.handleChanges}
               placeholder="HBT"
             />
-            {/* <Input
-              className="habit-input"
-              type="number"
-              name="categoryId"
-              value={this.state.categoryId}
-              onChange={this.handleChanges}
-              placeholder="Category"
-            /> */}
-          </FormGroup>
-          <FormGroup>
             <Label>Select Category</Label>
             <Input
+              className="habit-input"
               type="select"
               name="categoryId"
               value={this.state.categoryId}
@@ -88,7 +79,30 @@ class HabitForm extends Component {
               <option className="option-red">3</option>
               <option className="option-purple">4</option>
             </Input>
+            {/* <Input
+              className="habit-input"
+              type="number"
+              name="categoryId"
+              value={this.state.categoryId}
+              onChange={this.handleChanges}
+              placeholder="Category"
+            /> */}
           </FormGroup>
+          {/* <FormGroup>
+            <Label>Select Category</Label>
+            <Input
+              className="habit-input"
+              type="select"
+              name="categoryId"
+              value={this.state.categoryId}
+              onChange={this.handleChanges}
+            >
+              <option className="option-green">1</option>
+              <option className="option-yellow">2</option>
+              <option className="option-red">3</option>
+              <option className="option-purple">4</option>
+            </Input>
+          </FormGroup> */}
 
           <Button id="habit-form-button" className="add-update-button">{`${
             this.props.habits.active ? "UPDT" : "ADD"

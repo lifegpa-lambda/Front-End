@@ -1,6 +1,6 @@
 import axios from "axios";
-// import store from "../store";
-// import { unpackHabit } from "../utilities";
+import store from "../store";
+import { unpackHabit } from "../utilities";
 
 export const FETCH_HABITS_START = "FETCH_HABITS_START";
 export const FETCH_HABITS_SUCCESS = "FETCH_HABITS_SUCCESS";
