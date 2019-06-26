@@ -9,8 +9,7 @@ import { updateHabit } from "../actions/habitActions";
 
 class DailyCard extends Component {
   state = {
-    history: "",
-    checked: false
+    history: ""
   };
 
   toggleComplete = event => {
@@ -18,7 +17,8 @@ class DailyCard extends Component {
     const habitCheck = "x";
     const newHabit = {
       ...this.props.habit,
-      history: this.props.habit.history.concat(habitCheck)
+      history: this.props.habit.history.concat(habitCheck),
+      completed: !this.props.habit.completed
     };
     this.props.updateHabit(newHabit);
   };
@@ -37,7 +37,7 @@ class DailyCard extends Component {
       <div className="daily-card">
         <div
           onClick={this.toggleChecked}
-          className={`${this.props.habit.checked ? "checked" : ""}`}
+          className={`${this.props.habit.completed ? "checked" : ""}`}
         >
           {this.props.habit.habitTitle}
         </div>
@@ -46,7 +46,9 @@ class DailyCard extends Component {
             onClick={this.toggleComplete}
             icon={faCheckCircle}
             className={`${
-              this.state.checked ? "daily-circle-checked" : "daily-circle"
+              this.props.habit.completed
+                ? "daily-circle-checked"
+                : "daily-circle"
             }`}
             size="2x"
           />

@@ -88,7 +88,8 @@ export const updateHabit = habit => dispatch => {
       {
         habitTitle: habit.habitTitle,
         categoryId: habit.categoryId,
-        history: habit.history
+        history: habit.history,
+        completed: habit.completed
       },
       {
         headers: { Authorization: localStorage.getItem("token") }
