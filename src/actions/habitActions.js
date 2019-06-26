@@ -1,5 +1,6 @@
 import axios from "axios";
 import store from "../store";
+import { unpackHabit } from "../utilities";
 
 export const FETCH_HABITS_START = "FETCH_HABITS_START";
 export const FETCH_HABITS_SUCCESS = "FETCH_HABITS_SUCCESS";
@@ -14,7 +15,7 @@ export const UPDATE_HABIT_START = "UPDATE_HABIT_START";
 export const UPDATE_HABIT_SUCCESS = "UPDATE_HABIT_SUCCESS";
 export const UPDATE_HABIT_ERROR = "UPDATE_HABIT_ERROR";
 export const UPDATE_GPAS_START = "UPDATE_GPAS_START";
-export const UPDATE_GPAS_SUCCESS = "UPDATE_GPAS_START";
+export const UPDATE_GPAS_SUCCESS = "UPDATE_GPAS_SUCCESS";
 export const SET_UPDATE_FORM = "SET_UPDATE_FORM";
 export const FILTER_HABITS = "FILTER_HABITS";
 export const TOGGLE_CHECKED = "TOGGLE_CHECKED";
@@ -85,13 +86,17 @@ export const deleteHabit = id => dispatch => {
     });
 };
 
-export const updateHabit = habit => dispatch => {
+export const updateHabit = (habit, refresh = true) => dispatch => {
   dispatch({ type: UPDATE_HABIT_START });
   console.log("updateHabit habit", habit);
   axios
     .put(
       `https://lifegpa-zach-christy.herokuapp.com/api/habits/${habit.id}`,
-      { habitTitle: habit.habitTitle, categoryId: habit.categoryId },
+      {
+        habitTitle: habit.habitTitle,
+        categoryId: habit.categoryId,
+        history: habit.history
+      },
       {
         headers: { Authorization: localStorage.getItem("token") }
       }
@@ -100,7 +105,10 @@ export const updateHabit = habit => dispatch => {
       console.log("updateHabit response.data", response.data);
       dispatch({ type: UPDATE_HABIT_SUCCESS });
     })
-    .then(() => window.location.reload())
+    .then(() => {
+      console.log(refresh);
+      refresh && window.location.reload();
+    })
     .catch(error => {
       console.log("updateHabit error", error);
       dispatch({
@@ -111,9 +119,25 @@ export const updateHabit = habit => dispatch => {
 };
 
 const updateGPAs = dispatch => {
-  // console.log("updateGPAs");
   dispatch({ type: UPDATE_GPAS_START });
-  console.log("updateGPAS store", store.getState());
+  const gpaScores = store.getState().habits.gpaScores;
+  store.getState().habits.habits.map(habit => {
+    const { processedHabit, GPA } = unpackHabit(habit);
+    gpaScores[habit.id] = GPA;
+    if (habit.history !== processedHabit.history) {
+      dispatch(updateHabit(processedHabit, false));
+    }
+    console.log(gpaScores);
+  });
+  dispatch({ type: UPDATE_GPAS_SUCCESS, payload: gpaScores });
+  // console.log(gpaScores);
+};
+
+const updateGPA = habit => dispatch => {
+  dispatch({ type: UPDATE_GPAS_START });
+  const gpaScores = store.getState().habits.gpaScores;
+  gpaScores[habit.id] = unpackHabit(habit).GPA;
+  dispatch({ type: UPDATE_GPAS_SUCCESS, payload: gpaScores });
 };
 
 export const setUpdateForm = habit => {

@@ -116,6 +116,7 @@ export default (state = initialState, action) => {
         updatingGPAs: true
       };
     case UPDATE_GPAS_SUCCESS:
+      console.log(action.payload);
       return {
         ...state,
         updatingGPAs: false,
