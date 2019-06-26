@@ -7,9 +7,15 @@ const NavBar = () => {
     <div className="nav-bar container">
       <div className="row nav-row">
         <div className="col nav-col">
-          <Link className="nav-link" to="/login">
-            Log In
-          </Link>
+          {localStorage.getItem("token") ? (
+            <Link className="nav-link" to="/signout">
+              Sign Out
+            </Link>
+          ) : (
+            <Link className="nav-link" to="/login">
+              Log In
+            </Link>
+          )}
         </div>
         <div className="col nav-col">
           <Link className="nav-link" to="/habits">
