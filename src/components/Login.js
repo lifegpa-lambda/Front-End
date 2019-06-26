@@ -59,10 +59,9 @@ class Login extends Component {
           Create Account
         </Button>
         <div className="error">
-          {this.props.error && `${this.props.error.data.message}`}
+          {this.props.error && `${this.props.error.data}`}
         </div>
         <Form onSubmit={this.login}>
-          )
           <FormGroup className="login-input-container">
             {/* <Label className="login-header">LOGIN</Label> */}
             <Input

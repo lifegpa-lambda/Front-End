@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Moment from "react-moment";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addHabit } from "../actions/habitActions";
@@ -45,7 +46,10 @@ class HabitForm extends Component {
       <div className="dharma-box">
         <div>{this.props.habits.activeHabit.habitTitle}</div>
         <div>Category: {this.props.habits.activeHabit.categoryId}</div>
-        <div>Created: {this.props.habits.activeHabit.createdAt}</div>
+        <div>
+          Created:{" "}
+          <Moment fromNow>{this.props.habits.activeHabit.createdAt}</Moment>
+        </div>
         <div>Completed: {this.props.habits.activeHabit.completed}</div>
       </div>
     ) : (
