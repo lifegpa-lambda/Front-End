@@ -147,6 +147,13 @@ export const setUpdateForm = habit => {
   };
 };
 
+export const setUpdateBox = habit => {
+  return {
+    type: SET_UPDATE_FORM,
+    payload: habit
+  };
+};
+
 export const filterHabits = list => {
   return {
     type: FILTER_HABITS,

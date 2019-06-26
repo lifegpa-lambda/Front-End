@@ -19,19 +19,59 @@ class HabitCard extends Component {
     this.props.setUpdateForm(this.props.habit);
   };
 
+  // setUpdateBox = event => {
+  //   event.preventDefault();
+  //   this.props.setUpdateBox(this.props.habit);
+  // };
+
   render() {
-    console.log("HabitCard this.props.habit", this.props.habit);
+    console.log("HabitCard this.props", this.props);
+    console.log(
+      "HabitCard this.props.habits.activeHabit",
+      this.props.habits.activeHabit
+    );
 
     const category = this.props.habit.categoryId;
-    let dharma;
-
-    if (category === 1) {
-      dharma = <FontAwesomeIcon icon={faCircle} className="circle-green" />;
+    let dharmaColor;
+    if (category > 3 || category < 0) {
+      dharmaColor = "purple";
+    } else if (category === 1) {
+      dharmaColor = "green";
     } else if (category === 2) {
-      dharma = <FontAwesomeIcon icon={faCircle} className="circle-yellow" />;
+      dharmaColor = "yellow";
     } else if (category === 3) {
-      dharma = <FontAwesomeIcon icon={faCircle} className="circle-red" />;
+      dharmaColor = "red";
     }
+
+    let dharma = (
+      <FontAwesomeIcon icon={faCircle} className={`circle-${dharmaColor}`} />
+    );
+
+    // let dharmaBox = <div className="dharma-box">Dharma Box</div>;
+
+    // If activeHabit is true, render a new div showing activeHabit characteristics underneath the matching habit
+    // if (this.props.habits.activeHabit) {
+    //   dharma = (
+    //     <div>
+    //       <FontAwesomeIcon
+    //         icon={faCircle}
+    //         className={`circle-${dharmaColor}`}
+    //       />
+    //       {dharmaBox}
+    //     </div>
+    //   );
+    // } else {
+    //   dharma = (
+    //     <FontAwesomeIcon icon={faCircle} className={`circle-${dharmaColor}`} />
+    //   );
+    // }
+
+    // let dharma = (
+    //   <div>
+    //     <FontAwesomeIcon icon={faCircle} className={`circle-${dharmaColor}`} />
+    //     <h3>Test Div</h3>
+    //   </div>
+    // );
 
     return (
       <div className="habit-card">
@@ -66,7 +106,16 @@ HabitCard.propTypes = {
   habit: PropTypes.object
 };
 
+const mapStateToProps = state => {
+  // console.log("HabitCard mapStateToProps state", state);
+  return {
+    activeHabit: state.activeHabit,
+    active: state.active,
+    habits: state.habits
+  };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   { deleteHabit, setUpdateForm }
 )(HabitCard);

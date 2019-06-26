@@ -33,11 +33,28 @@ class HabitForm extends Component {
   }
 
   render() {
-    console.log("HabitForm this.state.id", this.state.id);
+    console.log(
+      "HabitForm this.props.habits.activeHabit",
+      this.props.habits.activeHabit
+    );
     // console.log("HabitForm this.state.habit", this.state.habit);
+
+    // let dharmaActive = <div>{this.props.habits.activeHabit.habitTitle}</div>;
+
+    let dharmaBox = this.state.active ? (
+      <div className="dharma-box container">
+        <div>{this.props.habits.activeHabit.habitTitle}</div>
+        <div>Category: {this.props.habits.activeHabit.categoryId}</div>
+        <div>Created: {this.props.habits.activeHabit.createdAt}</div>
+        <div>Completed: {this.props.habits.activeHabit.completed}</div>
+      </div>
+    ) : (
+      <div />
+    );
 
     return (
       <div>
+        {dharmaBox}
         <Form className="habit-form" onSubmit={this.submitHandler}>
           <FormGroup className="habit-input-container">
             <Label>NEW HBT</Label>
@@ -49,14 +66,19 @@ class HabitForm extends Component {
               onChange={this.handleChanges}
               placeholder="HBT"
             />
+            <Label>Select Category</Label>
             <Input
               className="habit-input"
-              type="number"
+              type="select"
               name="categoryId"
               value={this.state.categoryId}
               onChange={this.handleChanges}
-              placeholder="Category"
-            />
+            >
+              <option className="option-green">1</option>
+              <option className="option-yellow">2</option>
+              <option className="option-red">3</option>
+              <option className="option-purple">4</option>
+            </Input>
           </FormGroup>
 
           <Button id="habit-form-button" className="add-update-button">{`${
@@ -80,7 +102,8 @@ class HabitForm extends Component {
       const updateHabit = {
         habitTitle: this.state.habitTitle,
         id: this.state.id,
-        categoryId: parseInt(this.state.categoryId, 10)
+        categoryId:
+          this.state.categoryId === "" ? 1 : parseInt(this.state.categoryId, 10)
       };
       this.props.updateHabit(updateHabit);
     } else {
@@ -93,7 +116,8 @@ class HabitForm extends Component {
     event.preventDefault();
     const newHabit = {
       habitTitle: this.state.habitTitle,
-      categoryId: parseInt(this.state.categoryId, 10)
+      categoryId:
+        this.state.categoryId === "" ? 1 : parseInt(this.state.categoryId, 10)
     };
     this.props.addHabit(newHabit);
     this.setState({

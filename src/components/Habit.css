@@ -45,7 +45,61 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 30px;
 }
 
-.add-update-button {
+.circle {
+  color: grey;
+  margin-right: 15px;
+}
+
+.circle-green {
+  color: green;
+  margin-right: 15px;
+}
+
+.circle-yellow {
+  color: yellow;
+  margin-right: 15px;
+}
+
+.circle-red {
+  color: red;
+  margin-right: 15px;
+}
+
+.circle-purple {
+  color: purple;
+  margin-right: 15px;
+}
+
+.option-purple {
+  color: purple;
+  font-weight: 900;
+}
+
+.option-green {
+  color: green;
+  font-weight: 900;
+}
+
+.option-yellow {
+  color: yellow;
+  font-weight: 900;
+}
+
+.option-red {
+  color: red;
+  font-weight: 900;
+}
+
+.dharma-box {
+  color: #0f084b;
+  font-weight: 700;
+  background: #7fefbd;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  max-width: 50%;
+  border-radius: 25px;
+  text-align: center;
 }

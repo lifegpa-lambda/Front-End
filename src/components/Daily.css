@@ -1,5 +1,11 @@
 .daily-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  padding: 10px;
   color: whitesmoke;
+  font-weight: 700;
 }
 
 .daily-habits-header {
