@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-regular-svg-icons";
-import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
+// import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
 import { toggleChecked } from "../actions/habitActions";
 import { updateHabit } from "../actions/habitActions";
 import "./Daily.css";
