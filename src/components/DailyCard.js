@@ -30,14 +30,14 @@ class DailyCard extends Component {
   };
 
   render() {
-    console.log("DailyCard this.props", this.props);
+    console.log("DailyCard this.props.habit", this.props.habit);
     return (
       <div className="daily-card">
         <div
           onClick={this.toggleChecked}
           className={`${this.props.habit.checked ? "checked" : ""}`}
         >
-          {this.props.habit.habit}
+          {this.props.habit.habitTitle}
         </div>
         <div className="btn-div">
           <FontAwesomeIcon
@@ -59,12 +59,6 @@ DailyCard.propTypes = {
   updateHabit: PropTypes.func,
   habit: PropTypes.object
 };
-
-// const mapStateToProps = state => {
-//   return {
-//     habits: state.habits
-//   };
-// };
 
 export default connect(
   null,
