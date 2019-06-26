@@ -60,6 +60,8 @@ const unpackHabit = habit => {
     return Math.round((daysKept() * 100) / timeSpan);
   };
 
+  console.log("History", history, history.length);
+
   // console.log(`Days tracked: ${history.length}`);
   return {
     processedHabit: { ...habit, history: history },
