@@ -15,9 +15,6 @@
   border-radius: 10px;
   margin: 5px;
   transition: all 0.2s ease-in-out;
-  .grow:hover {
-    transform: scale(1.1);
-  }
 }
 
 .nav-col:hover {

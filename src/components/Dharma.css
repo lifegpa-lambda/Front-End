@@ -10,5 +10,9 @@
 }
 
 .dharma-card {
-  /* border: 1px solid red; */
+  color: whitesmoke;
+}
+
+.dharma-header {
+  color: whitesmoke;
 }

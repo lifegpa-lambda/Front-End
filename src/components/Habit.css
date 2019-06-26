@@ -1,5 +1,11 @@
 .add-update-button {
   margin: 10px;
+  background: #7fefbd;
+}
+
+.habit-form-button {
+  margin: 10px;
+  background: #7fefbd;
 }
 
 .card-btn {
@@ -39,4 +45,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.add-update-button {
 }
