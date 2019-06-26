@@ -74,7 +74,9 @@ export const deleteHabit = id => dispatch => {
       console.log("deleteHabit response.data", response.data);
       dispatch({ type: DELETE_HABIT_SUCCESS });
     })
-    .then(response => dispatch(getHabits))
+    .then(() => {
+      dispatch(getHabits());
+    })
     .catch(error => {
       console.log("deleteHabit error", error);
       dispatch({
