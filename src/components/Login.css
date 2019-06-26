@@ -33,3 +33,8 @@
 .welcome {
   margin-top: 35px;
 }
+
+.error {
+  font-weight: bold;
+  color: yellow;
+}

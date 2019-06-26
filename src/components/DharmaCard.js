@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 // import PropTypes from "prop-types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle } from "@fortawesome/free-regular-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faCircle } from "@fortawesome/free-regular-svg-icons";
 import { getHabits } from "../actions/habitActions";
 import Gauge from "../components/Gauge";
-import store from "../store";
 import "../App.css";
 import "./Dharma.css";
 import "../styles/Gauge.scss";
@@ -31,7 +30,7 @@ class DharmaCard extends Component {
           key={id}
           score={score}
           width={width - 20}
-          strokeWidth="7"
+          strokeWidth="9"
           bottomLabel={habitTitle}
           background={categoryColor}
         />

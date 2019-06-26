@@ -14,11 +14,17 @@ class Login extends Component {
   };
 
   componentDidMount() {
-    localStorage.getItem("user");
+    this.setState({
+      credentials: {
+        username: localStorage.getItem("username"),
+        password: ""
+      }
+    });
   }
 
   handleChanges = event => {
     event.preventDefault();
+    localStorage.setItem("username", this.state.credentials.username);
     this.setState({
       credentials: {
         ...this.state.credentials,
@@ -30,13 +36,12 @@ class Login extends Component {
   login = event => {
     console.log("login event", event);
     event.preventDefault();
-    this.props.login(this.state.credentials).then(() => {
-      this.props.history.push("/habits");
+    this.props.login(this.state.credentials).then(err => {
+      !err && this.props.history.push("/dashboard");
     });
-    this.setState({
-      username: "",
-      password: ""
-    });
+    // this.setState({
+    //   credentials: { ...this.state.credentials, password: "" }
+    // });
   };
 
   render() {
@@ -53,7 +58,11 @@ class Login extends Component {
         >
           Create Account
         </Button>
+        <div className="error">
+          {this.props.error && `${this.props.error.data.message}`}
+        </div>
         <Form onSubmit={this.login}>
+          )
           <FormGroup className="login-input-container">
             {/* <Label className="login-header">LOGIN</Label> */}
             <Input

@@ -74,16 +74,25 @@
 
 .option-purple {
   color: purple;
+  font-weight: 900;
 }
 
 .option-green {
   color: green;
+  font-weight: 900;
 }
 
 .option-yellow {
   color: yellow;
+  font-weight: 900;
 }
 
 .option-red {
   color: red;
+  font-weight: 900;
+}
+
+.dharma-box {
+  color: whitesmoke;
+  border: 1px solid red;
 }
