@@ -6,6 +6,7 @@ import { Button } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-regular-svg-icons";
 import "../App.css";
+import "./Habit.css";
 
 class HabitCard extends Component {
   deleteHabit = event => {
@@ -20,10 +21,22 @@ class HabitCard extends Component {
 
   render() {
     console.log("HabitCard this.props.habit", this.props.habit);
+
+    const category = this.props.habit.categoryId;
+    let dharma;
+
+    if (category === 1) {
+      dharma = <FontAwesomeIcon icon={faCircle} className="circle-green" />;
+    } else if (category === 2) {
+      dharma = <FontAwesomeIcon icon={faCircle} className="circle-yellow" />;
+    } else if (category === 3) {
+      dharma = <FontAwesomeIcon icon={faCircle} className="circle-red" />;
+    }
+
     return (
       <div className="habit-card">
         <div>
-          <FontAwesomeIcon icon={faCircle} className="circle" />{" "}
+          {dharma}
           {this.props.habit.habitTitle}
         </div>
         <div className="btn-div">

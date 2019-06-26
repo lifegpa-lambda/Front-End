@@ -1,8 +1,10 @@
 .gauge-outer-wrapper {
   margin: 15px;
   vertical-align: top;
+  color: #f2eee8;
 
-  .top-label, .bottom-label {
+  .top-label,
+  .bottom-label {
     margin: 0 auto;
     padding: 0;
   }
@@ -14,7 +16,9 @@
   .gauge-inner-wrapper {
     margin: 0 auto;
     position: relative;
-  
+
+    filter: drop-shadow(-2px 1px 1px rgba(0, 0, 0, 0.5));
+
     .score {
       position: absolute;
       top: 50%;
@@ -22,10 +26,12 @@
       transform: translate(-50%, -50%);
       font-weight: bold;
     }
-  
+
     .gauge {
       transform: rotate(-90deg);
     }
+
+    .progress {
+    }
   }
 }
-

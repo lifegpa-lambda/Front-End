@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { filterHabits } from "../actions/habitActions";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle } from "@fortawesome/free-regular-svg-icons";
 
 class SearchBar extends Component {
   state = {
-    filteredHabits: []
+    searchTerm: ""
   };
 
   render() {
@@ -21,6 +19,7 @@ class SearchBar extends Component {
             type="text"
             placeholder="Search"
             onChange={this.handleSearch}
+            value={this.state.searchTerm}
           />
           <div className="col">{/* Icon links col */}</div>
         </div>
@@ -29,10 +28,10 @@ class SearchBar extends Component {
   }
 
   handleSearch = event => {
+    const term = event.target.value.toLowerCase();
+    this.setState({ searchTerm: term });
     const list = this.props.habits.habits.filter(habit => {
-      if (habit.habit.includes(event.target.value)) {
-        return habit;
-      }
+      return habit.habitTitle.toLowerCase().includes(term) ? habit : null;
     });
     this.props.filterHabits(list);
   };
@@ -40,7 +39,6 @@ class SearchBar extends Component {
 
 const mapStateToProps = state => {
   return {
-    filteredHabits: state.filteredHabits,
     habits: state.habits
   };
 };

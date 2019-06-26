@@ -9,11 +9,12 @@ class DharmaList extends Component {
     console.log("DharmaList this.props", this.props);
     return (
       <div>
-        <h3>Dharma Card</h3>
-        {/* {this.props.habits.habits.map(habit => {
-          console.log("DharmaList habit", habit);
-          return <DharmaCard habit={habit} key={habit.id} />;
-        })} */}
+        <h3 className="dharma-header">Dharma Card</h3>
+        {this.props.habits.habits &&
+          this.props.habits.habits.map(habit => {
+            // console.log("HabitList habit", habit);
+            return <DharmaCard habit={habit} key={habit.id} />;
+          })}
       </div>
     );
   }

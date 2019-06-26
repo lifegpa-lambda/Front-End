@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { login } from "../actions/authActions";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Button, Form, FormGroup, Input } from "reactstrap";
+import "./Login.css";
 
 class Login extends Component {
   state = {
@@ -11,6 +12,10 @@ class Login extends Component {
       password: ""
     }
   };
+
+  componentDidMount() {
+    localStorage.getItem("user");
+  }
 
   handleChanges = event => {
     event.preventDefault();
@@ -26,7 +31,7 @@ class Login extends Component {
     console.log("login event", event);
     event.preventDefault();
     this.props.login(this.state.credentials).then(() => {
-      this.props.history.push(`/habits/${localStorage.getItem("userId")}`);
+      this.props.history.push("/habits");
     });
     this.setState({
       username: "",
@@ -37,8 +42,8 @@ class Login extends Component {
   render() {
     return (
       <div className="Login">
-        <h1>Welcome to LifeGPA!</h1>
-        <div className="create-account-header">CREATE ACCOUNT</div>
+        <h1 className="welcome">Welcome to LifeGPA!</h1>
+        {/* <div className="create-account-header">CREATE ACCOUNT</div> */}
         <Button
           onClick={() => {
             this.props.history.push("/create");
@@ -49,8 +54,8 @@ class Login extends Component {
           Create Account
         </Button>
         <Form onSubmit={this.login}>
-          <FormGroup>
-            <Label className="login-header">LOGIN</Label>
+          <FormGroup className="login-input-container">
+            {/* <Label className="login-header">LOGIN</Label> */}
             <Input
               required
               type="text"
@@ -58,6 +63,7 @@ class Login extends Component {
               placeholder="username"
               value={this.state.credentials.username}
               onChange={this.handleChanges}
+              className="login-input"
             />
             <Input
               required
@@ -66,6 +72,7 @@ class Login extends Component {
               placeholder="password"
               value={this.state.credentials.password}
               onChange={this.handleChanges}
+              className="login-input"
             />
           </FormGroup>
           <Button className="login-button" color="primary">

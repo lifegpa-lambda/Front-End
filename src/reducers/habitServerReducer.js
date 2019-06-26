@@ -11,30 +11,25 @@ import {
   UPDATE_HABIT_START,
   UPDATE_HABIT_SUCCESS,
   UPDATE_HABIT_ERROR,
+  UPDATE_GPAS_START,
+  UPDATE_GPAS_SUCCESS,
   SET_UPDATE_FORM,
   FILTER_HABITS,
   TOGGLE_CHECKED
 } from "../actions/habitActions";
 
 const initialState = {
-  habits: [
-    {
-      id: "",
-      habitTitle: "",
-      completed: 0,
-      completionPoints: 0,
-      userId: "",
-      createdAt: ""
-    }
-  ],
+  habits: [],
+  gpaScores: [],
   fetching: false,
   error: null,
   addingHabit: false,
   deletingHabit: false,
   updatingHabit: false,
+  updatingGPAs: false,
   activeHabit: null,
   active: false,
-  filteredHabits: "banana",
+  filteredHabits: "",
   checked: false
 };
 
@@ -51,8 +46,7 @@ export default (state = initialState, action) => {
         ...state,
         fetching: false,
         error: null,
-        habits: action.payload.habits
-        // user:
+        habits: action.payload
       };
     case FETCH_HABITS_ERROR:
       return {
@@ -67,6 +61,7 @@ export default (state = initialState, action) => {
         error: null
       };
     case ADD_HABIT_SUCCESS:
+      console.log("AHS", state.habits, action.payload);
       return {
         ...state,
         addingHabit: false,
@@ -79,7 +74,6 @@ export default (state = initialState, action) => {
         addingHabit: false,
         error: action.payload
       };
-
     case DELETE_HABIT_START:
       return {
         ...state,
@@ -98,7 +92,6 @@ export default (state = initialState, action) => {
         deletingHabit: false,
         error: action.payload
       };
-
     case UPDATE_HABIT_START:
       return {
         ...state,
@@ -117,6 +110,18 @@ export default (state = initialState, action) => {
         updatingHabit: false,
         error: action.payload
       };
+    case UPDATE_GPAS_START:
+      return {
+        ...state,
+        updatingGPAs: true
+      };
+    case UPDATE_GPAS_SUCCESS:
+      console.log(action.payload);
+      return {
+        ...state,
+        updatingGPAs: false,
+        gpaScores: action.payload
+      };
     case SET_UPDATE_FORM:
       return {
         ...state,
@@ -124,9 +129,11 @@ export default (state = initialState, action) => {
         active: true
       };
     case FILTER_HABITS:
+      console.log(action.payload);
       return {
         ...state,
-        habits: action.payload.length > 0 ? action.payload : state.habits
+        filteredHabits: action.payload
+        // habits: action.payload.length > 0 ? action.payload : state.habits
       };
     case TOGGLE_CHECKED:
       console.log("TOGGLE_CHECKED state", state);

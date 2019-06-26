@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { getHabits } from "../actions/habitActions";
 import DailyCard from "./DailyCard";
 import SearchBar from "./SearchBar";
+import "./Daily.css";
 
 class DailyList extends Component {
   componentDidMount() {
@@ -11,15 +12,20 @@ class DailyList extends Component {
   }
 
   render() {
-    // console.log("DailyList this.props", this.props);
+    const filtered = this.props.habits.filteredHabits;
+    const habits = filtered ? filtered : this.props.habits.habits;
+    console.log("DailyList this.props", this.props);
     return (
       <div>
-        <h2>DLY HBTZ</h2>
-        <h3>Today did you...?</h3>
+        <h2 className="daily-habits-header">Daily Habits</h2>
+        <SearchBar />
+        <h3 className="daily-habits-header daily-habits-sub-hheader">
+          Today did you...?
+        </h3>
         {/* <SearchBar /> */}
-        {/* {this.props.habits.habits.map(habit => {
+        {habits.map(habit => {
           return <DailyCard habit={habit} key={habit.id} />;
-        })} */}
+        })}
       </div>
     );
   }
@@ -33,7 +39,8 @@ DailyList.propTypes = {
 const mapStateToProps = state => {
   // console.log("HabitList mapStateToProps state", state);
   return {
-    habits: state.habits
+    habits: state.habits,
+    filteredHabits: state.habits.filteredHabits
   };
 };
 

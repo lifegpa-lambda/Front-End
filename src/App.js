@@ -1,8 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import "./";
 import Login from "./components/Login";
+import Signout from "./components/Signout";
 import CreateAccount from "./components/CreateAccount";
 import PrivateRoute from "./components/PrivateRoute";
 import HabitList from "./components/HabitList";
@@ -18,6 +19,7 @@ const App = () => {
       <div className="App">
         <NavBar />
         <Route path="/login" component={Login} />
+        <Route path="/signout" component={Signout} />
         <Route path="/create" component={CreateAccount} />
         <Route exact path="/gaugestest" component={GaugesTest} />
         <PrivateRoute exact path="/habits" component={HabitList} />

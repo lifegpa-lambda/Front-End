@@ -5,6 +5,7 @@ import { getHabits } from "../actions/habitActions";
 import HabitCard from "./HabitCard";
 import HabitForm from "./HabitForm";
 import SearchBar from "./SearchBar";
+import "./Habit.css";
 
 class HabitList extends Component {
   componentDidMount() {
@@ -19,14 +20,16 @@ class HabitList extends Component {
   // }
 
   render() {
-    console.log("HabitList this.props.habits.habits", this.props.habits.habits);
+    const filtered = this.props.habits.filteredHabits;
+    const habits = filtered ? filtered : this.props.habits.habits;
+    console.log("HabitList this.props.habits.habits", this.props.habits);
     return (
       <div>
-        <h2>HBTZ</h2>
-        {/* <SearchBar /> */}
-        {this.props.habits.habits &&
-          this.props.habits.habits.map(habit => {
-            // console.log("HabitList habit", habit);
+        <h2 className="habits-header">Habits</h2>
+        <SearchBar />
+        {habits &&
+          habits.map(habit => {
+            console.log("|| HabitList habit", habit);
             return <HabitCard habit={habit} key={habit.id} />;
           })}
         <HabitForm />

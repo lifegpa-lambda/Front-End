@@ -1,4 +1,6 @@
 import axios from "axios";
+import store from "../store";
+import { unpackHabit } from "../utilities";
 
 export const FETCH_HABITS_START = "FETCH_HABITS_START";
 export const FETCH_HABITS_SUCCESS = "FETCH_HABITS_SUCCESS";
@@ -12,11 +14,13 @@ export const DELETE_HABIT_ERROR = "DELETE_HABIT_ERROR";
 export const UPDATE_HABIT_START = "UPDATE_HABIT_START";
 export const UPDATE_HABIT_SUCCESS = "UPDATE_HABIT_SUCCESS";
 export const UPDATE_HABIT_ERROR = "UPDATE_HABIT_ERROR";
+export const UPDATE_GPAS_START = "UPDATE_GPAS_START";
+export const UPDATE_GPAS_SUCCESS = "UPDATE_GPAS_SUCCESS";
 export const SET_UPDATE_FORM = "SET_UPDATE_FORM";
 export const FILTER_HABITS = "FILTER_HABITS";
 export const TOGGLE_CHECKED = "TOGGLE_CHECKED";
 
-export const getHabits = id => dispatch => {
+export const getHabits = () => dispatch => {
   dispatch({ type: FETCH_HABITS_START });
   axios
     .get(
@@ -29,7 +33,7 @@ export const getHabits = id => dispatch => {
     )
     .then(response => {
       console.log("getHabits response.data", response.data);
-      dispatch({ type: FETCH_HABITS_SUCCESS, payload: response.data });
+      dispatch({ type: FETCH_HABITS_SUCCESS, payload: response.data.habits });
     })
     .catch(error => {
       console.log("getHabits error", error);
@@ -42,6 +46,7 @@ export const getHabits = id => dispatch => {
 
 export const addHabit = newHabit => dispatch => {
   dispatch({ type: ADD_HABIT_START });
+  console.log(newHabit);
   axios
     .post(`https://lifegpa-zach-christy.herokuapp.com/api/habits`, newHabit, {
       headers: { Authorization: localStorage.getItem("token") }
@@ -69,7 +74,9 @@ export const deleteHabit = id => dispatch => {
       console.log("deleteHabit response.data", response.data);
       dispatch({ type: DELETE_HABIT_SUCCESS });
     })
-    .then(() => window.location.reload())
+    .then(() => {
+      dispatch(getHabits());
+    })
     .catch(error => {
       console.log("deleteHabit error", error);
       dispatch({
@@ -85,7 +92,12 @@ export const updateHabit = habit => dispatch => {
   axios
     .put(
       `https://lifegpa-zach-christy.herokuapp.com/api/habits/${habit.id}`,
-      { habitTitle: habit.habitTitle, categoryId: habit.categoryId },
+      {
+        habitTitle: habit.habitTitle,
+        categoryId: habit.categoryId,
+        history: habit.history,
+        completed: habit.completed
+      },
       {
         headers: { Authorization: localStorage.getItem("token") }
       }
@@ -94,7 +106,9 @@ export const updateHabit = habit => dispatch => {
       console.log("updateHabit response.data", response.data);
       dispatch({ type: UPDATE_HABIT_SUCCESS });
     })
-    .then(() => window.location.reload())
+    .then(() => {
+      dispatch(getHabits());
+    })
     .catch(error => {
       console.log("updateHabit error", error);
       dispatch({
@@ -102,6 +116,28 @@ export const updateHabit = habit => dispatch => {
         payload: error
       });
     });
+};
+
+const updateGPAs = dispatch => {
+  dispatch({ type: UPDATE_GPAS_START });
+  const gpaScores = store.getState().habits.gpaScores;
+  store.getState().habits.habits.map(habit => {
+    const { processedHabit, GPA } = unpackHabit(habit);
+    gpaScores[habit.id] = GPA;
+    if (habit.history !== processedHabit.history) {
+      dispatch(updateHabit(processedHabit));
+    }
+    return null;
+  });
+  dispatch({ type: UPDATE_GPAS_SUCCESS, payload: gpaScores });
+  // console.log(gpaScores);
+};
+
+const updateGPA = habit => dispatch => {
+  dispatch({ type: UPDATE_GPAS_START });
+  const gpaScores = store.getState().habits.gpaScores;
+  gpaScores[habit.id] = unpackHabit(habit).GPA;
+  dispatch({ type: UPDATE_GPAS_SUCCESS, payload: gpaScores });
 };
 
 export const setUpdateForm = habit => {
