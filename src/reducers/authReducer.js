@@ -2,6 +2,7 @@ import {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
+  LOGOUT,
   CREATE_START,
   CREATE_SUCCESS,
   CREATE_ERROR
@@ -30,6 +31,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loggingIn: false,
+        token: action.payload,
         error: null
       };
     case LOGIN_ERROR:
@@ -37,6 +39,11 @@ export default (state = initialState, action) => {
         ...state,
         loggingIn: false,
         error: action.payload
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        token: null
       };
     case CREATE_START:
       console.log("Auth reducer state", state);

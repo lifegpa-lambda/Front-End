@@ -3,6 +3,7 @@ import axios from "axios";
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_ERROR = "LOGIN_ERROR";
+export const LOGOUT = "LOGOUT";
 export const CREATE_START = "CREATE_START";
 export const CREATE_SUCCESS = "CREATE_SUCCESS";
 export const CREATE_ERROR = "CREATE_ERROR";
@@ -15,12 +16,18 @@ export const login = creds => dispatch => {
       console.log("login response", response);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("userId", response.data.user.id);
-      dispatch({ type: LOGIN_SUCCESS });
+      dispatch({ type: LOGIN_SUCCESS, payload: response.data.token });
     })
     .catch(error => {
       console.log("login error.response", error.response);
       dispatch({ type: LOGIN_ERROR, payload: error.response });
     });
+};
+
+export const logout = () => {
+  return {
+    type: LOGOUT
+  };
 };
 
 export const createAccount = creds => dispatch => {

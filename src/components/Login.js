@@ -13,6 +13,10 @@ class Login extends Component {
     }
   };
 
+  componentDidMount() {
+    localStorage.getItem("user");
+  }
+
   handleChanges = event => {
     event.preventDefault();
     this.setState({
@@ -27,7 +31,7 @@ class Login extends Component {
     console.log("login event", event);
     event.preventDefault();
     this.props.login(this.state.credentials).then(() => {
-      this.props.history.push(`/habits/${localStorage.getItem("userId")}`);
+      this.props.history.push("/habits");
     });
     this.setState({
       username: "",
