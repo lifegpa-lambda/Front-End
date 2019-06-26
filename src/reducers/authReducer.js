@@ -8,7 +8,6 @@ import {
 } from "../actions/authActions";
 
 const initialState = {
-  habits: [],
   fetching: false,
   error: null,
   loading: true,

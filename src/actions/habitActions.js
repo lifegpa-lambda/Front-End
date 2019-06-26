@@ -1,4 +1,5 @@
 import axios from "axios";
+import store from "../store";
 
 export const FETCH_HABITS_START = "FETCH_HABITS_START";
 export const FETCH_HABITS_SUCCESS = "FETCH_HABITS_SUCCESS";
@@ -12,6 +13,8 @@ export const DELETE_HABIT_ERROR = "DELETE_HABIT_ERROR";
 export const UPDATE_HABIT_START = "UPDATE_HABIT_START";
 export const UPDATE_HABIT_SUCCESS = "UPDATE_HABIT_SUCCESS";
 export const UPDATE_HABIT_ERROR = "UPDATE_HABIT_ERROR";
+export const UPDATE_GPAS_START = "UPDATE_GPAS_START";
+export const UPDATE_GPAS_SUCCESS = "UPDATE_GPAS_START";
 export const SET_UPDATE_FORM = "SET_UPDATE_FORM";
 export const FILTER_HABITS = "FILTER_HABITS";
 export const TOGGLE_CHECKED = "TOGGLE_CHECKED";
@@ -30,6 +33,9 @@ export const getHabits = id => dispatch => {
     .then(response => {
       console.log("getHabits response.data", response.data);
       dispatch({ type: FETCH_HABITS_SUCCESS, payload: response.data });
+    })
+    .then(() => {
+      dispatch(updateGPAs);
     })
     .catch(error => {
       console.log("getHabits error", error);
@@ -102,6 +108,12 @@ export const updateHabit = habit => dispatch => {
         payload: error
       });
     });
+};
+
+const updateGPAs = dispatch => {
+  // console.log("updateGPAs");
+  dispatch({ type: UPDATE_GPAS_START });
+  console.log("updateGPAS store", store.getState());
 };
 
 export const setUpdateForm = habit => {

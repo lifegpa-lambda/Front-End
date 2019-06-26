@@ -11,27 +11,22 @@ import {
   UPDATE_HABIT_START,
   UPDATE_HABIT_SUCCESS,
   UPDATE_HABIT_ERROR,
+  UPDATE_GPAS_START,
+  UPDATE_GPAS_SUCCESS,
   SET_UPDATE_FORM,
   FILTER_HABITS,
   TOGGLE_CHECKED
 } from "../actions/habitActions";
 
 const initialState = {
-  habits: [
-    {
-      id: "",
-      habitTitle: "",
-      completed: 0,
-      completionPoints: 0,
-      userId: "",
-      createdAt: ""
-    }
-  ],
+  habits: [],
+  gpaScores: [],
   fetching: false,
   error: null,
   addingHabit: false,
   deletingHabit: false,
   updatingHabit: false,
+  updatingGPAs: false,
   activeHabit: null,
   active: false,
   filteredHabits: "banana",
@@ -52,7 +47,6 @@ export default (state = initialState, action) => {
         fetching: false,
         error: null,
         habits: action.payload.habits
-        // user:
       };
     case FETCH_HABITS_ERROR:
       return {
@@ -98,7 +92,6 @@ export default (state = initialState, action) => {
         deletingHabit: false,
         error: action.payload
       };
-
     case UPDATE_HABIT_START:
       return {
         ...state,
@@ -116,6 +109,17 @@ export default (state = initialState, action) => {
         ...state,
         updatingHabit: false,
         error: action.payload
+      };
+    case UPDATE_GPAS_START:
+      return {
+        ...state,
+        updatingGPAs: true
+      };
+    case UPDATE_GPAS_SUCCESS:
+      return {
+        ...state,
+        updatingGPAs: false,
+        gpaScores: action.payload
       };
     case SET_UPDATE_FORM:
       return {

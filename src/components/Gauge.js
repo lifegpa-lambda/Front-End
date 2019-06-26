@@ -58,7 +58,7 @@ const Gauge = props => {
             strokeWidth={strokeWidth}
             strokeDasharray={offset}
             strokeDashoffset={circumference}
-            strokeLinecap="butt"
+            strokeLinecap="round"
           />
         </svg>
       </div>
