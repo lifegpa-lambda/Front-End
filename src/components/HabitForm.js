@@ -66,11 +66,10 @@ class HabitForm extends Component {
               value={this.state.categoryId}
               onChange={this.handleChanges}
             >
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              <option className="option-purple">1</option>
+              <option className="option-green">2</option>
+              <option className="option-yellow">3</option>
+              <option className="option-red">4</option>
             </Input>
           </FormGroup>
 
@@ -84,7 +83,6 @@ class HabitForm extends Component {
 
   handleChanges = event => {
     event.preventDefault();
-    console.log("HF handleChanges event.target.value", event.target.value);
     this.setState({
       [event.target.name]: event.target.value
     });
