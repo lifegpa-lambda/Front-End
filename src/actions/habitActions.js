@@ -95,7 +95,8 @@ export const updateHabit = (habit, refresh = true) => dispatch => {
       {
         habitTitle: habit.habitTitle,
         categoryId: habit.categoryId,
-        history: habit.history
+        history: habit.history,
+        completed: habit.completed
       },
       {
         headers: { Authorization: localStorage.getItem("token") }
@@ -127,7 +128,7 @@ const updateGPAs = dispatch => {
     if (habit.history !== processedHabit.history) {
       dispatch(updateHabit(processedHabit, false));
     }
-    console.log(gpaScores);
+    return null;
   });
   dispatch({ type: UPDATE_GPAS_SUCCESS, payload: gpaScores });
   // console.log(gpaScores);

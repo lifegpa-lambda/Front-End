@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-regular-svg-icons";
 import { getHabits } from "../actions/habitActions";
 import "../App.css";
+import "./Dharma.css";
 
 class DharmaCard extends Component {
   render() {

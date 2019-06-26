@@ -1,18 +1,26 @@
 .nav-bar {
-  /* background: #0d0221;
-  color: #f2eee8; */
-  border: 1px solid red;
+  background: #0d0221;
+  color: #f2eee8;
+  /* border: 1px solid red; */
 }
 
 .nav-link {
   background: hsl(261, 89%, 7%);
   color: #f2eee8;
-  border: 2px solid #f2eee8;
+  font-weight: 700;
 }
 
 .nav-col {
-  border: 1px solid fuchsia;
+  border: 3px solid #f2eee8;
+  border-radius: 10px;
+  margin: 5px;
+  transition: all 0.2s ease-in-out;
 }
+
+.nav-col:hover {
+  transform: scale(1.1);
+}
+
 .nav-row {
-  border: 1px solid fuchsia;
+  /* border: 1px solid fuchsia; */
 }

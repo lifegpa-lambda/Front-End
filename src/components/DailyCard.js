@@ -6,27 +6,30 @@ import { faCheckCircle } from "@fortawesome/free-regular-svg-icons";
 import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
 import { toggleChecked } from "../actions/habitActions";
 import { updateHabit } from "../actions/habitActions";
+import "./Daily.css";
 
 class DailyCard extends Component {
   state = {
-    greenCheck: false,
-    count: 0
+    history: ""
   };
 
-  toggleChecked = event => {
-    console.log("toggleChecked this.props.habit", this.props.habit);
+  toggleComplete = event => {
     event.preventDefault();
+    const habitCheck = "x";
     const newHabit = {
       ...this.props.habit,
-      checked: !this.props.habit.checked,
-      count: this.props.habit.count + 1
+      history: this.props.habit.history.concat(habitCheck),
+      completed: !this.props.habit.completed
     };
-    console.log("newHabit", newHabit);
     this.props.updateHabit(newHabit);
   };
 
-  toggleGreenCheck = () => {
-    this.setState({ greenCheck: !this.state.greenCheck });
+  // toggleGreenCheck = () => {
+  //   this.setState({ greenCheck: !this.state.greenCheck });
+  // };
+
+  toggleChecked = () => {
+    this.setState({ checked: !this.state.checked });
   };
 
   render() {
@@ -35,16 +38,18 @@ class DailyCard extends Component {
       <div className="daily-card">
         <div
           onClick={this.toggleChecked}
-          className={`${this.props.habit.checked ? "checked" : ""}`}
+          className={`${this.props.habit.completed ? "checked" : ""}`}
         >
           {this.props.habit.habitTitle}
         </div>
         <div className="btn-div">
           <FontAwesomeIcon
-            onClick={this.toggleGreenCheck}
+            onClick={this.toggleComplete}
             icon={faCheckCircle}
             className={`${
-              this.state.greenCheck ? "daily-circle-checked" : "daily-circle"
+              this.props.habit.completed
+                ? "daily-circle-checked"
+                : "daily-circle"
             }`}
             size="2x"
           />

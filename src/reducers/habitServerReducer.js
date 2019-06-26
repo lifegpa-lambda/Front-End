@@ -29,7 +29,7 @@ const initialState = {
   updatingGPAs: false,
   activeHabit: null,
   active: false,
-  filteredHabits: "banana",
+  filteredHabits: "",
   checked: false
 };
 
@@ -129,9 +129,11 @@ export default (state = initialState, action) => {
         active: true
       };
     case FILTER_HABITS:
+      console.log(action.payload);
       return {
         ...state,
-        habits: action.payload.length > 0 ? action.payload : state.habits
+        filteredHabits: action.payload
+        // habits: action.payload.length > 0 ? action.payload : state.habits
       };
     case TOGGLE_CHECKED:
       console.log("TOGGLE_CHECKED state", state);

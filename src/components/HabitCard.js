@@ -6,6 +6,7 @@ import { Button } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-regular-svg-icons";
 import "../App.css";
+import "./Habit.css";
 
 class HabitCard extends Component {
   deleteHabit = event => {

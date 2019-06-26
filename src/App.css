@@ -1,38 +1,6 @@
 .App {
   text-align: center;
-  border: 1px solid hotpink;
-}
-
-.add-update-button {
-  margin: 10px;
-}
-
-.card-btn {
-  margin: 10px;
-}
-
-.habit-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1.25rem;
-  padding: 10px;
-}
-
-.card-btn {
-  font-size: 0.75rem;
-}
-
-.Login {
-  background: dodgerblue;
-}
-
-.Login > h1 {
-  color: whitesmoke;
-}
-
-.login-header {
-  color: whitesmoke;
+  /* border: 1px solid hotpink; */
 }
 
 .circle {
