@@ -49,14 +49,29 @@ class HabitForm extends Component {
               onChange={this.handleChanges}
               placeholder="HBT"
             />
-            <Input
+            {/* <Input
               className="habit-input"
               type="number"
               name="categoryId"
               value={this.state.categoryId}
               onChange={this.handleChanges}
               placeholder="Category"
-            />
+            /> */}
+          </FormGroup>
+          <FormGroup>
+            <Label>Select Category</Label>
+            <Input
+              type="select"
+              name="categoryId"
+              value={this.state.categoryId}
+              onChange={this.handleChanges}
+            >
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </Input>
           </FormGroup>
 
           <Button id="habit-form-button" className="add-update-button">{`${
@@ -69,6 +84,7 @@ class HabitForm extends Component {
 
   handleChanges = event => {
     event.preventDefault();
+    console.log("HF handleChanges event.target.value", event.target.value);
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -80,7 +96,8 @@ class HabitForm extends Component {
       const updateHabit = {
         habitTitle: this.state.habitTitle,
         id: this.state.id,
-        categoryId: parseInt(this.state.categoryId, 10)
+        categoryId:
+          this.state.categoryId === "" ? 1 : parseInt(this.state.categoryId, 10)
       };
       this.props.updateHabit(updateHabit);
     } else {
@@ -93,7 +110,8 @@ class HabitForm extends Component {
     event.preventDefault();
     const newHabit = {
       habitTitle: this.state.habitTitle,
-      categoryId: parseInt(this.state.categoryId, 10)
+      categoryId:
+        this.state.categoryId === "" ? 1 : parseInt(this.state.categoryId, 10)
     };
     this.props.addHabit(newHabit);
     this.setState({
