@@ -118,29 +118,36 @@ export const updateHabit = habit => dispatch => {
     });
 };
 
-// const updateGPAs = dispatch => {
-//   dispatch({ type: UPDATE_GPAS_START });
-//   const gpaScores = store.getState().habits.gpaScores;
-//   store.getState().habits.habits.map(habit => {
-//     const { processedHabit, GPA } = unpackHabit(habit);
-//     gpaScores[habit.id] = GPA;
-//     if (habit.history !== processedHabit.history) {
-//       dispatch(updateHabit(processedHabit));
-//     }
-//     return null;
-//   });
-//   dispatch({ type: UPDATE_GPAS_SUCCESS, payload: gpaScores });
-//   // console.log(gpaScores);
-// };
+const updateGPAs = dispatch => {
+  dispatch({ type: UPDATE_GPAS_START });
+  const gpaScores = store.getState().habits.gpaScores;
+  store.getState().habits.habits.map(habit => {
+    const { processedHabit, GPA } = unpackHabit(habit);
+    gpaScores[habit.id] = GPA;
+    if (habit.history !== processedHabit.history) {
+      dispatch(updateHabit(processedHabit));
+    }
+    return null;
+  });
+  dispatch({ type: UPDATE_GPAS_SUCCESS, payload: gpaScores });
+  // console.log(gpaScores);
+};
 
-// const updateGPA = habit => dispatch => {
-//   dispatch({ type: UPDATE_GPAS_START });
-//   const gpaScores = store.getState().habits.gpaScores;
-//   gpaScores[habit.id] = unpackHabit(habit).GPA;
-//   dispatch({ type: UPDATE_GPAS_SUCCESS, payload: gpaScores });
-// };
+const updateGPA = habit => dispatch => {
+  dispatch({ type: UPDATE_GPAS_START });
+  const gpaScores = store.getState().habits.gpaScores;
+  gpaScores[habit.id] = unpackHabit(habit).GPA;
+  dispatch({ type: UPDATE_GPAS_SUCCESS, payload: gpaScores });
+};
 
 export const setUpdateForm = habit => {
+  return {
+    type: SET_UPDATE_FORM,
+    payload: habit
+  };
+};
+
+export const setUpdateBox = habit => {
   return {
     type: SET_UPDATE_FORM,
     payload: habit
