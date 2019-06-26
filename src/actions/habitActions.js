@@ -106,6 +106,9 @@ export const updateHabit = habit => dispatch => {
       console.log("updateHabit response.data", response.data);
       dispatch({ type: UPDATE_HABIT_SUCCESS });
     })
+    .then(() => {
+      dispatch(getHabits());
+    })
     .catch(error => {
       console.log("updateHabit error", error);
       dispatch({
