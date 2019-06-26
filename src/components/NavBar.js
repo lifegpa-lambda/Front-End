@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./Nav.css";
 
 const NavBar = props => {
-  console.log(props);
+  // console.log(props);
   return (
     <div className="nav-bar container">
       <div className="row nav-row">

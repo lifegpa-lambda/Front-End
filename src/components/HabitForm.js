@@ -100,7 +100,6 @@ class HabitForm extends Component {
       habitTitle: "",
       categoryId: ""
     });
-    window.location.reload();
   };
 }
 

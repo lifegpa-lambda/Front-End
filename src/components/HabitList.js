@@ -22,14 +22,14 @@ class HabitList extends Component {
   render() {
     const filtered = this.props.habits.filteredHabits;
     const habits = filtered ? filtered : this.props.habits.habits;
-    console.log("HabitList this.props.habits.habits", this.props.habits.habits);
+    console.log("HabitList this.props.habits.habits", this.props.habits);
     return (
       <div>
         <h2 className="habits-header">Habits</h2>
         <SearchBar />
         {habits &&
           habits.map(habit => {
-            // console.log("HabitList habit", habit);
+            console.log("|| HabitList habit", habit);
             return <HabitCard habit={habit} key={habit.id} />;
           })}
         <HabitForm />

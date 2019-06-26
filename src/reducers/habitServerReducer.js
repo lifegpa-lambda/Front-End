@@ -46,7 +46,7 @@ export default (state = initialState, action) => {
         ...state,
         fetching: false,
         error: null,
-        habits: action.payload.habits
+        habits: action.payload
       };
     case FETCH_HABITS_ERROR:
       return {
@@ -61,6 +61,7 @@ export default (state = initialState, action) => {
         error: null
       };
     case ADD_HABIT_SUCCESS:
+      console.log("AHS", state.habits, action.payload);
       return {
         ...state,
         addingHabit: false,
@@ -73,7 +74,6 @@ export default (state = initialState, action) => {
         addingHabit: false,
         error: action.payload
       };
-
     case DELETE_HABIT_START:
       return {
         ...state,

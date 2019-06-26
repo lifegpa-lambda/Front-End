@@ -20,7 +20,7 @@ export const SET_UPDATE_FORM = "SET_UPDATE_FORM";
 export const FILTER_HABITS = "FILTER_HABITS";
 export const TOGGLE_CHECKED = "TOGGLE_CHECKED";
 
-export const getHabits = id => dispatch => {
+export const getHabits = () => dispatch => {
   dispatch({ type: FETCH_HABITS_START });
   axios
     .get(
@@ -33,10 +33,7 @@ export const getHabits = id => dispatch => {
     )
     .then(response => {
       console.log("getHabits response.data", response.data);
-      dispatch({ type: FETCH_HABITS_SUCCESS, payload: response.data });
-    })
-    .then(() => {
-      dispatch(updateGPAs);
+      dispatch({ type: FETCH_HABITS_SUCCESS, payload: response.data.habits });
     })
     .catch(error => {
       console.log("getHabits error", error);
@@ -49,6 +46,7 @@ export const getHabits = id => dispatch => {
 
 export const addHabit = newHabit => dispatch => {
   dispatch({ type: ADD_HABIT_START });
+  console.log(newHabit);
   axios
     .post(`https://lifegpa-zach-christy.herokuapp.com/api/habits`, newHabit, {
       headers: { Authorization: localStorage.getItem("token") }
@@ -76,7 +74,7 @@ export const deleteHabit = id => dispatch => {
       console.log("deleteHabit response.data", response.data);
       dispatch({ type: DELETE_HABIT_SUCCESS });
     })
-    .then(() => window.location.reload())
+    .then(response => dispatch(getHabits))
     .catch(error => {
       console.log("deleteHabit error", error);
       dispatch({
@@ -86,7 +84,7 @@ export const deleteHabit = id => dispatch => {
     });
 };
 
-export const updateHabit = (habit, refresh = true) => dispatch => {
+export const updateHabit = habit => dispatch => {
   dispatch({ type: UPDATE_HABIT_START });
   console.log("updateHabit habit", habit);
   axios
@@ -106,10 +104,6 @@ export const updateHabit = (habit, refresh = true) => dispatch => {
       console.log("updateHabit response.data", response.data);
       dispatch({ type: UPDATE_HABIT_SUCCESS });
     })
-    .then(() => {
-      console.log(refresh);
-      refresh && window.location.reload();
-    })
     .catch(error => {
       console.log("updateHabit error", error);
       dispatch({
@@ -126,7 +120,7 @@ const updateGPAs = dispatch => {
     const { processedHabit, GPA } = unpackHabit(habit);
     gpaScores[habit.id] = GPA;
     if (habit.history !== processedHabit.history) {
-      dispatch(updateHabit(processedHabit, false));
+      dispatch(updateHabit(processedHabit));
     }
     return null;
   });
