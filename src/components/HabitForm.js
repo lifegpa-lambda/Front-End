@@ -79,30 +79,7 @@ class HabitForm extends Component {
               <option className="option-red">3</option>
               <option className="option-purple">4</option>
             </Input>
-            {/* <Input
-              className="habit-input"
-              type="number"
-              name="categoryId"
-              value={this.state.categoryId}
-              onChange={this.handleChanges}
-              placeholder="Category"
-            /> */}
           </FormGroup>
-          {/* <FormGroup>
-            <Label>Select Category</Label>
-            <Input
-              className="habit-input"
-              type="select"
-              name="categoryId"
-              value={this.state.categoryId}
-              onChange={this.handleChanges}
-            >
-              <option className="option-green">1</option>
-              <option className="option-yellow">2</option>
-              <option className="option-red">3</option>
-              <option className="option-purple">4</option>
-            </Input>
-          </FormGroup> */}
 
           <Button id="habit-form-button" className="add-update-button">{`${
             this.props.habits.active ? "UPDT" : "ADD"
