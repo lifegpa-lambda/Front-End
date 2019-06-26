@@ -1,6 +1,6 @@
 import axios from "axios";
-import store from "../store";
-import { unpackHabit } from "../utilities";
+// import store from "../store";
+// import { unpackHabit } from "../utilities";
 
 export const FETCH_HABITS_START = "FETCH_HABITS_START";
 export const FETCH_HABITS_SUCCESS = "FETCH_HABITS_SUCCESS";
@@ -118,27 +118,27 @@ export const updateHabit = habit => dispatch => {
     });
 };
 
-const updateGPAs = dispatch => {
-  dispatch({ type: UPDATE_GPAS_START });
-  const gpaScores = store.getState().habits.gpaScores;
-  store.getState().habits.habits.map(habit => {
-    const { processedHabit, GPA } = unpackHabit(habit);
-    gpaScores[habit.id] = GPA;
-    if (habit.history !== processedHabit.history) {
-      dispatch(updateHabit(processedHabit));
-    }
-    return null;
-  });
-  dispatch({ type: UPDATE_GPAS_SUCCESS, payload: gpaScores });
-  // console.log(gpaScores);
-};
+// const updateGPAs = dispatch => {
+//   dispatch({ type: UPDATE_GPAS_START });
+//   const gpaScores = store.getState().habits.gpaScores;
+//   store.getState().habits.habits.map(habit => {
+//     const { processedHabit, GPA } = unpackHabit(habit);
+//     gpaScores[habit.id] = GPA;
+//     if (habit.history !== processedHabit.history) {
+//       dispatch(updateHabit(processedHabit));
+//     }
+//     return null;
+//   });
+//   dispatch({ type: UPDATE_GPAS_SUCCESS, payload: gpaScores });
+//   // console.log(gpaScores);
+// };
 
-const updateGPA = habit => dispatch => {
-  dispatch({ type: UPDATE_GPAS_START });
-  const gpaScores = store.getState().habits.gpaScores;
-  gpaScores[habit.id] = unpackHabit(habit).GPA;
-  dispatch({ type: UPDATE_GPAS_SUCCESS, payload: gpaScores });
-};
+// const updateGPA = habit => dispatch => {
+//   dispatch({ type: UPDATE_GPAS_START });
+//   const gpaScores = store.getState().habits.gpaScores;
+//   gpaScores[habit.id] = unpackHabit(habit).GPA;
+//   dispatch({ type: UPDATE_GPAS_SUCCESS, payload: gpaScores });
+// };
 
 export const setUpdateForm = habit => {
   return {
