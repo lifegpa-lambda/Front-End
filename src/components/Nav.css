@@ -11,8 +11,19 @@
 }
 
 .nav-col {
-  border: 2px solid #f2eee8;
+  border: 3px solid #f2eee8;
+  border-radius: 10px;
+  margin: 5px;
+  transition: all 0.2s ease-in-out;
+  .grow:hover {
+    transform: scale(1.1);
+  }
 }
+
+.nav-col:hover {
+  transform: scale(1.1);
+}
+
 .nav-row {
   /* border: 1px solid fuchsia; */
 }

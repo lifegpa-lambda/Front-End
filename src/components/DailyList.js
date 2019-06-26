@@ -16,7 +16,9 @@ class DailyList extends Component {
     return (
       <div>
         <h2 className="daily-habits-header">Daily Habits</h2>
-        <h3 className="daily-habits-header">Today did you...?</h3>
+        <h3 className="daily-habits-header daily-habits-sub-hheader">
+          Today did you...?
+        </h3>
         {/* <SearchBar /> */}
         {this.props.habits.habits.map(habit => {
           return <DailyCard habit={habit} key={habit.id} />;
