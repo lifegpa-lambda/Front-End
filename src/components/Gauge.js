@@ -45,7 +45,7 @@ const Gauge = props => {
             cy={halfWidth}
             r={halfWidth - strokeWidth}
             fill="none"
-            stroke="#bbbbbb"
+            stroke="#555555"
             strokeWidth={strokeWidth}
           />
           <circle
