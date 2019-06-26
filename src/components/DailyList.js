@@ -11,15 +11,15 @@ class DailyList extends Component {
   }
 
   render() {
-    // console.log("DailyList this.props", this.props);
+    console.log("DailyList this.props", this.props);
     return (
       <div>
-        <h2>DLY HBTZ</h2>
+        <h2>Daily Habits</h2>
         <h3>Today did you...?</h3>
         {/* <SearchBar /> */}
-        {/* {this.props.habits.habits.map(habit => {
+        {this.props.habits.habits.map(habit => {
           return <DailyCard habit={habit} key={habit.id} />;
-        })} */}
+        })}
       </div>
     );
   }

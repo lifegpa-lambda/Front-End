@@ -10,10 +10,11 @@ class DharmaList extends Component {
     return (
       <div>
         <h3>Dharma Card</h3>
-        {/* {this.props.habits.habits.map(habit => {
-          console.log("DharmaList habit", habit);
-          return <DharmaCard habit={habit} key={habit.id} />;
-        })} */}
+        {this.props.habits.habits &&
+          this.props.habits.habits.map(habit => {
+            // console.log("HabitList habit", habit);
+            return <DharmaCard habit={habit} key={habit.id} />;
+          })}
       </div>
     );
   }
