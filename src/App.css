@@ -3,25 +3,6 @@
   /* border: 1px solid hotpink; */
 }
 
-.circle {
-  color: grey;
-  margin-right: 15px;
-}
-
-.circle-green {
-  color: green;
-  margin-right: 15px;
-}
-
-.circle-yellow {
-  color: yellow;
-  margin-right: 15px;
-}
-.circle-red {
-  color: red;
-  margin-right: 15px;
-}
-
 .daily-card {
   display: flex;
   justify-content: space-between;

@@ -23,15 +23,20 @@ class HabitCard extends Component {
     console.log("HabitCard this.props.habit", this.props.habit);
 
     const category = this.props.habit.categoryId;
-    let dharma;
-
-    if (category === 1) {
-      dharma = <FontAwesomeIcon icon={faCircle} className="circle-green" />;
-    } else if (category === 2) {
-      dharma = <FontAwesomeIcon icon={faCircle} className="circle-yellow" />;
-    } else if (category === 3) {
-      dharma = <FontAwesomeIcon icon={faCircle} className="circle-red" />;
+    let dharmaColor;
+    if (this.props.habit.categoryId > 3 || this.props.habit.categoryId < 0) {
+      dharmaColor = "purple";
+    } else if (this.props.habit.categoryId === 1) {
+      dharmaColor = "green";
+    } else if (this.props.habit.categoryId === 2) {
+      dharmaColor = "yellow";
+    } else if (this.props.habit.categoryId === 3) {
+      dharmaColor = "red";
     }
+
+    let dharma = (
+      <FontAwesomeIcon icon={faCircle} className={`circle-${dharmaColor}`} />
+    );
 
     return (
       <div className="habit-card">

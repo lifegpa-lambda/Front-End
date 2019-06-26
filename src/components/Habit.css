@@ -47,5 +47,43 @@
   align-items: center;
 }
 
-.add-update-button {
+.circle {
+  color: grey;
+  margin-right: 15px;
+}
+
+.circle-green {
+  color: green;
+  margin-right: 15px;
+}
+
+.circle-yellow {
+  color: yellow;
+  margin-right: 15px;
+}
+
+.circle-red {
+  color: red;
+  margin-right: 15px;
+}
+
+.circle-purple {
+  color: purple;
+  margin-right: 15px;
+}
+
+.option-purple {
+  color: purple;
+}
+
+.option-green {
+  color: green;
+}
+
+.option-yellow {
+  color: yellow;
+}
+
+.option-red {
+  color: red;
 }
