@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { getHabits } from "../actions/habitActions";
 import DailyCard from "./DailyCard";
 import SearchBar from "./SearchBar";
+import "./Daily.css";
 
 class DailyList extends Component {
   componentDidMount() {
@@ -14,8 +15,8 @@ class DailyList extends Component {
     console.log("DailyList this.props", this.props);
     return (
       <div>
-        <h2>Daily Habits</h2>
-        <h3>Today did you...?</h3>
+        <h2 className="daily-habits-header">Daily Habits</h2>
+        <h3 className="daily-habits-header">Today did you...?</h3>
         {/* <SearchBar /> */}
         {this.props.habits.habits.map(habit => {
           return <DailyCard habit={habit} key={habit.id} />;
