@@ -85,7 +85,11 @@ export const updateHabit = habit => dispatch => {
   axios
     .put(
       `https://lifegpa-zach-christy.herokuapp.com/api/habits/${habit.id}`,
-      { habitTitle: habit.habitTitle, categoryId: habit.categoryId },
+      {
+        habitTitle: habit.habitTitle,
+        categoryId: habit.categoryId,
+        history: habit.history
+      },
       {
         headers: { Authorization: localStorage.getItem("token") }
       }
