@@ -24,7 +24,7 @@ class DailyCard extends Component {
   toggleComplete = event => {
     event.preventDefault();
     const completed = !this.state.completed;
-    const habitCheck = completed ? " " : "x";
+    const habitCheck = completed ? "x" : " ";
     let history = this.props.habit.history;
     history = history.replace(/.$/, habitCheck);
     const newHabit = {

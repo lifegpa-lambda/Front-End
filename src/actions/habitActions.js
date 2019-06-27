@@ -133,6 +133,16 @@ export const updateGPAs = dispatch => {
   dispatch({ type: UPDATE_GPAS_SUCCESS, payload: updatedHabits });
 };
 
+export const updateLifeGPA = dispatch => {
+  const { habits } = store.getState().habits;
+  const totals = habits.reduce((total, habit) => {}, {
+    thirty: 0,
+    sixty: 0,
+    ninety: 0,
+    all: 0
+  });
+};
+
 export const updateGPA = updatedHabit => dispatch => {
   dispatch({ type: UPDATE_GPAS_START });
   dispatch(updateHabit(updatedHabit));
