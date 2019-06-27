@@ -1,6 +1,7 @@
 .add-update-button {
   margin: 10px;
   background: #65afff;
+  filter: drop-shadow(0 0 0.15rem rgba(0, 0, 0, 1));
 }
 
 .habit-form-button {
@@ -36,6 +37,7 @@
   padding: 10px;
   color: whitesmoke;
   font-weight: 700;
+  filter: drop-shadow(0 0 0.15rem rgba(0, 0, 0, 1));
 }
 
 .habit-form {
@@ -127,10 +129,30 @@
 .category-header {
   color: whitesmoke;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  filter: drop-shadow(0 0 0.15rem rgba(0, 0, 0, 1));
 }
 
 .active-circle-cat {
   border: 2px solid whitesmoke;
   border-radius: 10px;
+}
+
+.category-list {
+  display: flex;
+}
+
+.dharma-card {
+  filter: drop-shadow(0 0 0.15rem rgba(0, 0, 0, 1));
+}
+
+/* .dharma-row {
+  display: flex;
+  flex-direction: row;
+} */
+
+.category {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

@@ -10,7 +10,8 @@ const Gauge = props => {
     topLabel = "",
     bottomLabel = "",
     display = "inline-block",
-    background = "transparent"
+    background = "transparent",
+    margin = "0px"
   } = props;
 
   const percentage = score !== null ? score : 100;
@@ -29,7 +30,7 @@ const Gauge = props => {
   return (
     <div
       className="gauge-outer-wrapper"
-      style={{ display, height, boxSizing: "border-box" }}
+      style={{ display, height, boxSizing: "border-box", margin: props.margin }}
     >
       <h2 className="top-label" style={{ fontSize: `${fontSize * 0.65}rem` }}>
         {topLabel}

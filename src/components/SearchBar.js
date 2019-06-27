@@ -22,6 +22,7 @@ class SearchBar extends Component {
             placeholder="Search"
             onChange={this.handleSearch}
             value={this.state.searchTerm}
+            className="search-bar"
           />
           <div className="col">{/* Icon links col */}</div>
         </div>

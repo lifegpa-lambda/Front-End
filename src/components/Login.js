@@ -71,7 +71,6 @@ class Login extends Component {
               placeholder="username"
               value={this.state.credentials.username}
               onChange={this.handleChanges}
-              className="login-input"
             />
             <Input
               required
@@ -80,7 +79,6 @@ class Login extends Component {
               placeholder="password"
               value={this.state.credentials.password}
               onChange={this.handleChanges}
-              className="login-input"
             />
           </FormGroup>
           <Button className="login-button" color="primary">

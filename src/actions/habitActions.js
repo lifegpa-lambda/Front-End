@@ -5,9 +5,15 @@ import { unpackHabit } from "../utilities";
 export const FETCH_HABITS_START = "FETCH_HABITS_START";
 export const FETCH_HABITS_SUCCESS = "FETCH_HABITS_SUCCESS";
 export const FETCH_HABITS_ERROR = "FETCH_HABITS_ERROR";
+export const FETCH_CATEGORIES_START = "FETCH_CATEGORIES_START";
+export const FETCH_CATEGORIES_SUCCESS = "FETCH_CATEGORIES_SUCCESS";
+export const FETCH_CATEGORIES_ERROR = "FETCH_CATEGORIES_ERROR";
 export const ADD_HABIT_START = "ADD_HABIT_START";
 export const ADD_HABIT_SUCCESS = "ADD_HABIT_SUCCESS";
 export const ADD_HABIT_ERROR = "ADD_HABIT_ERROR";
+export const ADD_CATEGORY_START = "ADD_CATEGORY_START";
+export const ADD_CATEGORY_SUCCESS = "ADD_CATEGORY_SUCCESS";
+export const ADD_CATEGORY_ERROR = "ADD_CATEGORY_ERROR";
 export const DELETE_HABIT_START = "DELETE_HABIT_START";
 export const DELETE_HABIT_SUCCESS = "DELETE_HABIT_SUCCESS";
 export const DELETE_HABIT_ERROR = "DELETE_HABIT_ERROR";
@@ -48,6 +54,25 @@ export const getHabits = () => dispatch => {
   return axiosPromise;
 };
 
+export const getCategories = () => dispatch => {
+  dispatch({ type: FETCH_CATEGORIES_START });
+  axios
+    .get(`https://lifegpa-zach-christy.herokuapp.com/api/categories`, {
+      headers: { Authorization: localStorage.getItem("token") }
+    })
+    .then(response => {
+      console.log("getCategories response.data", response.data);
+      dispatch({ type: FETCH_CATEGORIES_SUCCESS, payload: response.data });
+    })
+    .catch(error => {
+      console.log("getCategories error", error);
+      dispatch({
+        type: FETCH_CATEGORIES_ERROR,
+        payload: error.response
+      });
+    });
+};
+
 export const addHabit = newHabit => dispatch => {
   dispatch({ type: ADD_HABIT_START });
   // console.log(newHabit);
@@ -63,6 +88,30 @@ export const addHabit = newHabit => dispatch => {
       console.log("addHabit error", error.reponse);
       dispatch({
         type: ADD_HABIT_ERROR,
+        payload: error.response
+      });
+    });
+};
+
+export const addCategory = newCategory => dispatch => {
+  dispatch({ type: ADD_CATEGORY_START });
+  // console.log(newHabit);
+  axios
+    .post(
+      `https://lifegpa-zach-christy.herokuapp.com/api/categories`,
+      newCategory,
+      {
+        headers: { Authorization: localStorage.getItem("token") }
+      }
+    )
+    .then(response => {
+      // console.log("addCategory response.data", response.data);
+      dispatch({ type: ADD_CATEGORY_SUCCESS, payload: response.data });
+    })
+    .catch(error => {
+      console.log("addHabit error", error.reponse);
+      dispatch({
+        type: ADD_CATEGORY_ERROR,
         payload: error.response
       });
     });
@@ -146,6 +195,7 @@ export const updateLifeGPA = dispatch => {
       total.sixty += habit.gpa.sixty;
       total.ninety += habit.gpa.ninety;
       total.all += habit.gpa.ninety;
+      total.count += 1;
       total.days =
         habit.history.length > total.days ? habit.history.length : total.days;
       return total;
@@ -155,17 +205,18 @@ export const updateLifeGPA = dispatch => {
       sixty: 0,
       ninety: 0,
       all: 0,
-      days: 1
+      days: 1,
+      count: 0
     }
   );
 
   dispatch({
     type: UPDATE_LIFEGPA_SUCCESS,
     payload: {
-      thirty: Math.round(totals.thirty / totals.days),
-      sixty: Math.round(totals.sixty / totals.days),
-      ninety: Math.round(totals.ninety / totals.days),
-      all: Math.round(totals.ninety / totals.days)
+      thirty: Math.round(totals.thirty / totals.days / totals.count),
+      sixty: Math.round(totals.sixty / totals.days / totals.count),
+      ninety: Math.round(totals.ninety / totals.days / totals.count),
+      all: Math.round(totals.ninety / totals.days / totals.count)
     }
   });
 };

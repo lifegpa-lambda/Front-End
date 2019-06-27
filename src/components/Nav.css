@@ -18,8 +18,10 @@
   border-radius: 10px;
   background: rgba(0, 0, 0, 0);
   margin: 5px 8px;
+  padding: 10px;
   transition: all 0.2s ease-in-out;
   display: inline-block;
+  filter: drop-shadow(0 0 0.175rem rgba(0, 0, 0, 1));
 }
 
 .nav-link:hover,

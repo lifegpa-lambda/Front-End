@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 // import PropTypes from "prop-types";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faCircle } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircle } from "@fortawesome/free-regular-svg-icons";
 import { getHabits } from "../actions/habitActions";
 import Gauge from "../components/Gauge";
 import "../App.css";
@@ -11,7 +11,8 @@ import "./Dharma.css";
 class DharmaCard extends Component {
   render() {
     const { id, habitTitle, categoryId, gpa } = this.props.habit;
-    const score = gpa ? gpa.all : 0;
+    const score = gpa ? gpa[this.props.time] : 0;
+    console.log("DC props.time", this.props.time);
     const width = 160;
 
     const category = Math.min(categoryId, 3) - 1;

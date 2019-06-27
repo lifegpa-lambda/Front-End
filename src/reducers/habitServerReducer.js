@@ -2,6 +2,9 @@ import {
   FETCH_HABITS_START,
   FETCH_HABITS_SUCCESS,
   FETCH_HABITS_ERROR,
+  FETCH_CATEGORIES_START,
+  FETCH_CATEGORIES_SUCCESS,
+  FETCH_CATEGORIES_ERROR,
   ADD_HABIT_START,
   ADD_HABIT_SUCCESS,
   ADD_HABIT_ERROR,
@@ -33,7 +36,8 @@ const initialState = {
   activeHabit: null,
   active: false,
   filteredHabits: "",
-  checked: false
+  checked: false,
+  categories: []
 };
 
 export default (state = initialState, action) => {
@@ -51,7 +55,20 @@ export default (state = initialState, action) => {
         error: null,
         habits: action.payload
       };
-    case FETCH_HABITS_ERROR:
+    case FETCH_CATEGORIES_START:
+      return {
+        ...state,
+        fetching: true,
+        error: null
+      };
+    case FETCH_CATEGORIES_SUCCESS:
+      return {
+        ...state,
+        fetching: false,
+        error: null,
+        categories: action.payload
+      };
+    case FETCH_CATEGORIES_ERROR:
       return {
         ...state,
         fetching: false,
