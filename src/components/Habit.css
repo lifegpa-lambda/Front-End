@@ -41,6 +41,11 @@
   filter: drop-shadow(0 0 0.15rem rgba(0, 0, 0, 1));
 }
 
+.habit {
+  max-width: 60%;
+  text-align: left;
+}
+
 .habit-form {
   color: whitesmoke;
   font-weight: 700;
