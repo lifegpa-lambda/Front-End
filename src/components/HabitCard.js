@@ -47,32 +47,6 @@ class HabitCard extends Component {
       <FontAwesomeIcon icon={faCircle} className={`circle-${dharmaColor}`} />
     );
 
-    // let dharmaBox = <div className="dharma-box">Dharma Box</div>;
-
-    // If activeHabit is true, render a new div showing activeHabit characteristics underneath the matching habit
-    // if (this.props.habits.activeHabit) {
-    //   dharma = (
-    //     <div>
-    //       <FontAwesomeIcon
-    //         icon={faCircle}
-    //         className={`circle-${dharmaColor}`}
-    //       />
-    //       {dharmaBox}
-    //     </div>
-    //   );
-    // } else {
-    //   dharma = (
-    //     <FontAwesomeIcon icon={faCircle} className={`circle-${dharmaColor}`} />
-    //   );
-    // }
-
-    // let dharma = (
-    //   <div>
-    //     <FontAwesomeIcon icon={faCircle} className={`circle-${dharmaColor}`} />
-    //     <h3>Test Div</h3>
-    //   </div>
-    // );
-
     return (
       <div className="habit-card">
         <div>

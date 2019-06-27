@@ -103,3 +103,19 @@
   border-radius: 25px;
   text-align: center;
 }
+
+.category-circle {
+  font-weight: 700;
+  margin: 10px 62px;
+}
+
+.category-header {
+  color: whitesmoke;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.active-circle-cat {
+  border: 2px solid whitesmoke;
+  border-radius: 10px;
+}
