@@ -1,24 +1,26 @@
 import React, { Component } from "react";
+import Moment from "react-moment";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addHabit } from "../actions/habitActions";
 import { updateHabit } from "../actions/habitActions";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Button, Form, FormGroup, Input } from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircle } from "@fortawesome/free-regular-svg-icons";
 import "./Habit.css";
 
 class HabitForm extends Component {
   state = {
     habitTitle: this.props.habits.activeHabit || "",
     active: false,
-    categoryId: "",
-    id: ""
+    categoryId: 1,
+    id: "",
+    checkedGreen: "active-circle-cat",
+    checkedYellow: "",
+    checkedRed: ""
   };
 
   componentDidUpdate(prevState) {
-    // console.log(
-    //   "HabitForm prevState.habits.activeHabit",
-    //   prevState.habits.activeHabit
-    // );
     if (
       this.props.habits.activeHabit &&
       prevState.habits.activeHabit !== this.props.habits.activeHabit
@@ -27,26 +29,97 @@ class HabitForm extends Component {
         habitTitle: this.props.habits.activeHabit.habitTitle,
         active: true,
         id: this.props.habits.activeHabit.id,
-        categoryId: this.props.habits.activeHabit.categoryId
+        categoryId: this.props.habits.activeHabit.categoryId,
+        checkedGreen:
+          this.props.habits.activeHabit.categoryId === 1
+            ? "active-circle-cat"
+            : "",
+        checkedYellow:
+          this.props.habits.activeHabit.categoryId === 2
+            ? "active-circle-cat"
+            : "",
+        checkedRed:
+          this.props.habits.activeHabit.categoryId === 3
+            ? "active-circle-cat"
+            : ""
       });
     }
   }
 
+  activeCircleGreen = event => {
+    event.preventDefault();
+    this.setState(prevState => ({
+      ...prevState,
+      checkedGreen: this.state.checkedGreen ? "" : "active-circle-cat",
+      checkedYellow: "",
+      checkedRed: "",
+      categoryId: 1
+    }));
+  };
+
+  activeCircleYellow = event => {
+    event.preventDefault();
+    this.setState(prevState => ({
+      ...prevState,
+      checkedYellow: this.state.checkedYellow ? "" : "active-circle-cat",
+      checkedGreen: "",
+      checkedRed: "",
+      categoryId: 2
+    }));
+  };
+
+  activeCircleRed = event => {
+    event.preventDefault();
+    this.setState(prevState => ({
+      ...prevState,
+      checkedRed: this.state.checkedRed ? "" : "active-circle-cat",
+      checkedGreen: "",
+      checkedYellow: "",
+      categoryId: 3
+    }));
+  };
+
   render() {
-    console.log(
-      "HabitForm this.props.habits.activeHabit",
-      this.props.habits.activeHabit
-    );
+    console.log("HabitForm this.state.categoryId", this.state.categoryId);
     // console.log("HabitForm this.state.habit", this.state.habit);
 
     // let dharmaActive = <div>{this.props.habits.activeHabit.habitTitle}</div>;
 
+    // let circleColor = "";
+    // switch (this.state.categoryId) {
+    //   case 2:
+    //     circleColor = "yellow";
+    //     break;
+    //   case 3:
+    //     circleColor = "red";
+    //     break;
+    //   default:
+    //     circleColor = "green";
+    // }
+    // if (this.state.checkedGreen) {
+    //   circleColor = "green";
+    // } else if (this.state.checkedYellow) {
+    //   circleColor = "yellow";
+    // } else if (this.state.checkedRed) {
+    //   circleColor = "red";
+    // } else {
+    //   circleColor = "";
+    // }
+
     let dharmaBox = this.state.active ? (
       <div className="dharma-box container">
         <div>{this.props.habits.activeHabit.habitTitle}</div>
-        <div>Category: {this.props.habits.activeHabit.categoryId}</div>
-        <div>Created: {this.props.habits.activeHabit.createdAt}</div>
-        <div>Completed: {this.props.habits.activeHabit.completed}</div>
+        <div>Category: {this.state.categoryId}</div>
+        <div>
+          Created:{" "}
+          <Moment fromNow>{this.props.habits.activeHabit.createdAt}</Moment>
+        </div>
+        <div>
+          Completed:{" "}
+          {this.props.habits.activeHabit.history.slice(-1) === "x"
+            ? "Yes"
+            : "No"}
+        </div>
       </div>
     ) : (
       <div />
@@ -57,16 +130,16 @@ class HabitForm extends Component {
         {dharmaBox}
         <Form className="habit-form" onSubmit={this.submitHandler}>
           <FormGroup className="habit-input-container">
-            <Label>NEW HBT</Label>
+            {/* <Label>NEW HBT</Label> */}
             <Input
               className="habit-input"
-              type="textarea"
+              type="text"
               name="habitTitle"
               value={this.state.habitTitle}
               onChange={this.handleChanges}
               placeholder="HBT"
             />
-            <Label>Select Category</Label>
+            {/* <Label>Select Category</Label>
             <Input
               className="habit-input"
               type="select"
@@ -78,13 +151,39 @@ class HabitForm extends Component {
               <option className="option-yellow">2</option>
               <option className="option-red">3</option>
               <option className="option-purple">4</option>
-            </Input>
+            </Input> */}
           </FormGroup>
-
-          <Button id="habit-form-button" className="add-update-button">{`${
-            this.props.habits.active ? "UPDT" : "ADD"
-          }`}</Button>
         </Form>
+        <div className="category-header">Priority Level</div>
+        <div className="category">
+          <FontAwesomeIcon
+            icon={faCircle}
+            className={`circle-green category-circle ${
+              this.state.checkedGreen
+            }`}
+            size="3x"
+            onClick={this.activeCircleGreen}
+          />
+          <FontAwesomeIcon
+            icon={faCircle}
+            className={`circle-yellow category-circle ${
+              this.state.checkedYellow
+            }`}
+            size="3x"
+            onClick={this.activeCircleYellow}
+          />
+          <FontAwesomeIcon
+            icon={faCircle}
+            className={`circle-red category-circle ${this.state.checkedRed}`}
+            size="3x"
+            onClick={this.activeCircleRed}
+          />
+        </div>
+        <Button
+          id="habit-form-button"
+          className="add-update-button"
+          onClick={this.submitHandler}
+        >{`${this.props.habits.active ? "UPDATE" : "ADD"}`}</Button>
       </div>
     );
   }
@@ -122,7 +221,10 @@ class HabitForm extends Component {
     this.props.addHabit(newHabit);
     this.setState({
       habitTitle: "",
-      categoryId: ""
+      categoryId: "",
+      checkedGreen: "",
+      checkedYellow: "",
+      checkedRed: ""
     });
   };
 }

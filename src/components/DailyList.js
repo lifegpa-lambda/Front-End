@@ -17,12 +17,11 @@ class DailyList extends Component {
     console.log("DailyList this.props", this.props);
     return (
       <div>
-        <h2 className="daily-habits-header">Daily Habits</h2>
-        <SearchBar />
+        {/* <h2 className="daily-habits-header">Daily Habits</h2> */}
         <h3 className="daily-habits-header daily-habits-sub-hheader">
           Today did you...?
         </h3>
-        {/* <SearchBar /> */}
+        <SearchBar />
         {habits.map(habit => {
           return <DailyCard habit={habit} key={habit.id} />;
         })}

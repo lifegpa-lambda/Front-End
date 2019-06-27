@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Input } from "reactstrap";
 import { filterHabits } from "../actions/habitActions";
+import "./Search.css";
 
 class SearchBar extends Component {
   state = {
@@ -15,7 +17,7 @@ class SearchBar extends Component {
           <div className="col">
             {/* <FontAwesomeIcon icon={faCircle} className="link user" size="2x" /> */}
           </div>
-          <input
+          <Input
             type="text"
             placeholder="Search"
             onChange={this.handleSearch}

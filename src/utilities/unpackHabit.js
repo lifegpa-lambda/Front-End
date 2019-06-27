@@ -36,12 +36,15 @@ const unpackHabit = habit => {
         .asDays()
     ) + 1;
   if (daysSinceStart <= 0) daysSinceStart = 1;
+  localStorage.setItem("days", daysSinceStart);
 
   history = history.padEnd(daysSinceStart, " ");
+  // console.log("unpackhabit history", habit.habitTitle, history, history.length);
+  // console.log("unpackhabit daysSinceStart", habit.habitTitle, daysSinceStart);
 
   // console.log("daysSinceStart", daysSinceStart);
   if (history.length > daysSinceStart)
-    history = history.substring(history.length - daysSinceStart);
+    history = history.slice(0 - daysSinceStart);
   // console.log("history after", history);
 
   // If a day or more has passed since stats were last updated, add empty stats (represented by spaces) for the missing days
@@ -50,10 +53,9 @@ const unpackHabit = habit => {
   const gpaCalc = timeSpan => {
     // If desired timeSpan is greater than the amount of time since tracking started, change timeSpan to daysSinceStart
     timeSpan = timeSpan > daysSinceStart ? daysSinceStart : timeSpan;
-    // Count the numbers of times a habit was kept by removing all spaces and checking the length. .substring() is used to select the desired number of days starting from the most recent
+    // Count the numbers of times a habit was kept by removing all spaces and checking the length. .slice() is used to select the desired number of days starting from the most recent
     const daysKept = () => {
-      return history.substring(history.length - timeSpan).replace(/\s/g, "")
-        .length;
+      return history.slice(0 - timeSpan).replace(/\s/g, "").length;
     };
     return Math.round((daysKept() * 100) / timeSpan);
   };
