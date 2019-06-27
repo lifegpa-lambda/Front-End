@@ -7,8 +7,17 @@ body {
   font-family: "American Typewriter Regular";
   max-width: 850px;
   margin: 0 auto;
-  background: #0d0221;
+  /* background: #0d0221 */
   /* color: whitesmoke; */
+  height: 100%;
+  background: rgb(19, 44, 75);
+  background: linear-gradient(
+    180deg,
+    rgba(19, 44, 75, 1) 0%,
+    rgba(76, 33, 83, 1) 100%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 /* Colors */

@@ -1,24 +1,32 @@
 .nav-bar {
-  background: #0d0221;
-  color: #f2eee8;
+  /* background: #0d0221; */
   user-select: none;
   /* border: 1px solid red; */
 }
 
 .nav-link {
-  background: hsl(261, 89%, 7%);
-  color: #f2eee8;
+  /* background: hsl(261, 89%, 7%); */
+  color: rgb(242, 238, 232);
   font-weight: 700;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  color: dodgerblue;
 }
 
 .nav-col {
+  background: rgba(0, 0, 0, 0);
   border: 3px solid #f2eee8;
   border-radius: 10px;
   margin: 5px;
   transition: all 0.2s ease-in-out;
 }
 
-.nav-col:hover {
+.nav-col:hover,
+.nav-col:hover .nav-link {
+  color: dodgerblue;
+  background: rgba(242, 238, 232, 1);
   transform: scale(1.1);
 }
 

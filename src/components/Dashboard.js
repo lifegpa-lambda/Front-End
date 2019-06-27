@@ -2,8 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { getHabits } from "../actions/habitActions";
 import Gauge from "./Gauge";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDharmachakra } from "@fortawesome/free-solid-svg-icons";
 import "./Dharma.css";
 
 class Dashboard extends React.Component {

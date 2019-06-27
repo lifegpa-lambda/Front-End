@@ -50,12 +50,11 @@ const Gauge = props => {
             cx={halfWidth}
             cy={halfWidth}
             r={halfWidth - strokeWidth * 1.35}
-            fill={background}
+            fill="white"
             stroke="black"
             strokeWidth={strokeWidth}
-            fillOpacity="0.75"
           />
-          {/* <circle
+          <circle
             className="face"
             cx={halfWidth}
             cy={halfWidth}
@@ -63,8 +62,8 @@ const Gauge = props => {
             fill={background}
             stroke="black"
             strokeWidth={strokeWidth}
-            fillOpacity="0.77"
-          /> */}
+            fillOpacity="0.6"
+          />
           <circle
             className="dial"
             cx={halfWidth}
@@ -84,7 +83,7 @@ const Gauge = props => {
             strokeWidth={strokeWidth}
             strokeDasharray={offset}
             strokeDashoffset={circumference}
-            strokeLinecap="butt"
+            strokeLinecap="round"
           />
         </svg>
       </div>

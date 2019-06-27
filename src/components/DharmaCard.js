@@ -32,7 +32,7 @@ class DharmaCard extends Component {
           strokeWidth="9"
           bottomLabel={habitTitle}
           color={categoryColor}
-          background="white"
+          background={categoryColor}
         />
       </div>
     );
