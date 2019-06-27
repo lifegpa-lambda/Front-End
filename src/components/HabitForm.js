@@ -137,7 +137,7 @@ class HabitForm extends Component {
               name="habitTitle"
               value={this.state.habitTitle}
               onChange={this.handleChanges}
-              placeholder="HBT"
+              placeholder="add a new habit"
             />
             {/* <Label>Select Category</Label>
             <Input
@@ -161,7 +161,7 @@ class HabitForm extends Component {
             className={`circle-green category-circle ${
               this.state.checkedGreen
             }`}
-            size="3x"
+            size="2x"
             onClick={this.activeCircleGreen}
           />
           <FontAwesomeIcon
@@ -169,13 +169,13 @@ class HabitForm extends Component {
             className={`circle-yellow category-circle ${
               this.state.checkedYellow
             }`}
-            size="3x"
+            size="2x"
             onClick={this.activeCircleYellow}
           />
           <FontAwesomeIcon
             icon={faCircle}
             className={`circle-red category-circle ${this.state.checkedRed}`}
-            size="3x"
+            size="2x"
             onClick={this.activeCircleRed}
           />
         </div>

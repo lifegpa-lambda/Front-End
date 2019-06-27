@@ -1,5 +1,7 @@
 .Login {
-  background: #0d0221;
+  /* background: #0d0221; */
+  width: 50%;
+  margin: 0 auto;
 }
 
 .Login > h1 {
@@ -11,7 +13,7 @@
 }
 
 .create-account-button {
-  margin: 50px;
+  margin: 15px;
 }
 
 .login-button {
@@ -32,6 +34,11 @@
 
 .welcome {
   margin-top: 35px;
+}
+
+.form-control {
+  margin: 15px auto;
+  max-width: 75%;
 }
 
 .error {

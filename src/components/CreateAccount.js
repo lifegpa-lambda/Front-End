@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createAccount } from "../actions/authActions";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import "./Login.css";
 
 class CreateAccount extends Component {
   state = {
@@ -32,8 +33,8 @@ class CreateAccount extends Component {
   createAccount = event => {
     console.log("create account event", event);
     event.preventDefault();
-    this.props.createAccount(this.state.credentials).then(() => {
-      this.props.history.push("/habits");
+    this.props.createAccount(this.state.credentials).then(err => {
+      !err && this.props.history.push("/habits");
     });
     this.setState({
       credentials: {
@@ -53,6 +54,9 @@ class CreateAccount extends Component {
         <Form onSubmit={this.createAccount}>
           <FormGroup>
             <Label className="login-header">CREATE ACCOUNT</Label>
+            <div className="error">
+              {this.props.error && `${this.props.error.data.message}`}
+            </div>
             <Input
               required
               type="text"
@@ -65,7 +69,7 @@ class CreateAccount extends Component {
               required
               type="text"
               name="fullname"
-              placeholder="Full name"
+              placeholder="full name"
               value={this.state.credentials.fullname}
               onChange={this.handleChanges}
             />
@@ -88,7 +92,7 @@ class CreateAccount extends Component {
             <Input
               type="text"
               name="imgUrl"
-              placeholder="Link a profile image"
+              placeholder="link a profile image"
               value={this.state.credentials.imgUrl}
               onChange={this.handleChanges}
             />
