@@ -36,7 +36,6 @@ const unpackHabit = habit => {
         .asDays()
     ) + 1;
   if (daysSinceStart <= 0) daysSinceStart = 1;
-  localStorage.setItem("days", daysSinceStart);
 
   history = history.padEnd(daysSinceStart, " ");
   // console.log("unpackhabit history", habit.habitTitle, history, history.length);
