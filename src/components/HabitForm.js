@@ -43,7 +43,7 @@ class HabitForm extends Component {
     // let dharmaActive = <div>{this.props.habits.activeHabit.habitTitle}</div>;
 
     let dharmaBox = this.state.active ? (
-      <div className="dharma-box">
+      <div className="dharma-box container">
         <div>{this.props.habits.activeHabit.habitTitle}</div>
         <div>Category: {this.props.habits.activeHabit.categoryId}</div>
         <div>
@@ -70,18 +70,9 @@ class HabitForm extends Component {
               onChange={this.handleChanges}
               placeholder="HBT"
             />
-            {/* <Input
-              className="habit-input"
-              type="number"
-              name="categoryId"
-              value={this.state.categoryId}
-              onChange={this.handleChanges}
-              placeholder="Category"
-            /> */}
-          </FormGroup>
-          <FormGroup>
             <Label>Select Category</Label>
             <Input
+              className="habit-input"
               type="select"
               name="categoryId"
               value={this.state.categoryId}

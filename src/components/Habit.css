@@ -45,6 +45,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 30px;
 }
 
 .circle {
@@ -93,6 +94,12 @@
 }
 
 .dharma-box {
-  color: whitesmoke;
-  border: 1px solid red;
+  color: #0f084b;
+  font-weight: 700;
+  background: #7fefbd;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  max-width: 50%;
+  border-radius: 25px;
+  text-align: center;
 }
