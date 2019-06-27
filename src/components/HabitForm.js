@@ -37,7 +37,7 @@ class HabitForm extends Component {
   activeCircleGreen = event => {
     event.preventDefault();
     this.setState({
-      checkedGreen: "active-circle-cat",
+      checkedGreen: this.state.checkedGreen ? "" : "active-circle-cat",
       categoryId: 1
     });
   };
@@ -45,7 +45,7 @@ class HabitForm extends Component {
   activeCircleYellow = event => {
     event.preventDefault();
     this.setState({
-      checkedYellow: "active-circle-cat",
+      checkedYellow: this.state.checkedYellow ? "" : "active-circle-cat",
       categoryId: 2
     });
   };
@@ -53,7 +53,7 @@ class HabitForm extends Component {
   activeCircleRed = event => {
     event.preventDefault();
     this.setState({
-      checkedRed: "active-circle-cat",
+      checkedRed: this.state.checkedRed ? "" : "active-circle-cat",
       categoryId: 3
     });
   };
