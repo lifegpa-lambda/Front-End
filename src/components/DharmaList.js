@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Nav, NavLink } from "reactstrap";
+import { NavLink } from "reactstrap";
 import { getHabits } from "../actions/habitActions";
 import SearchBar from "./SearchBar";
 import PropTypes from "prop-types";

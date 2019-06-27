@@ -195,6 +195,7 @@ export const updateLifeGPA = dispatch => {
       total.sixty += habit.gpa.sixty;
       total.ninety += habit.gpa.ninety;
       total.all += habit.gpa.ninety;
+      total.count += 1;
       total.days =
         habit.history.length > total.days ? habit.history.length : total.days;
       return total;
@@ -204,17 +205,18 @@ export const updateLifeGPA = dispatch => {
       sixty: 0,
       ninety: 0,
       all: 0,
-      days: 1
+      days: 1,
+      count: 0
     }
   );
 
   dispatch({
     type: UPDATE_LIFEGPA_SUCCESS,
     payload: {
-      thirty: Math.round(totals.thirty / totals.days),
-      sixty: Math.round(totals.sixty / totals.days),
-      ninety: Math.round(totals.ninety / totals.days),
-      all: Math.round(totals.ninety / totals.days)
+      thirty: Math.round(totals.thirty / totals.days / totals.count),
+      sixty: Math.round(totals.sixty / totals.days / totals.count),
+      ninety: Math.round(totals.ninety / totals.days / totals.count),
+      all: Math.round(totals.ninety / totals.days / totals.count)
     }
   });
 };
