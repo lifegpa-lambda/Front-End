@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getHabits } from "../actions/habitActions";
+import SearchBar from "./SearchBar";
 import PropTypes from "prop-types";
 import DharmaCard from "./DharmaCard";
 
@@ -12,12 +13,15 @@ class DharmaList extends Component {
 
   render() {
     console.log("DharmaList this.props", this.props);
+    const filtered = this.props.habits.filteredHabits;
+    const habits = filtered ? filtered : this.props.habits.habits;
     return (
       <div>
+        <SearchBar />
         {/* <h3 className="dharma-header">Dharma Card</h3> */}
         <div className="dharma-dials">
-          {this.props.habits &&
-            this.props.habits.map(habit => {
+          {habits &&
+            habits.map(habit => {
               // console.log("HabitList habit", habit);
               return <DharmaCard habit={habit} key={habit.id} />;
             })}
@@ -33,7 +37,7 @@ DharmaList.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  habits: state.habits.habits
+  habits: state.habits
 });
 
 export default connect(
