@@ -12,12 +12,41 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className="dashboard">
+        <div>
+          <Gauge
+            key="LifeGPA"
+            score={this.props.lifeGPA.all}
+            width={200}
+            strokeWidth="11"
+            topLabel="LifeGPA"
+            color="purple"
+            background="white"
+          />
+        </div>
         <Gauge
           key="LifeGPA"
-          score={this.props.lifeGPA.all}
-          width={200}
-          strokeWidth="11"
-          topLabel="LifeGPA"
+          score={this.props.lifeGPA.thirty}
+          width={150}
+          strokeWidth="8"
+          bottomLabel="30 Day GPA"
+          color="purple"
+          background="white"
+        />
+        <Gauge
+          key="LifeGPA"
+          score={this.props.lifeGPA.sixty}
+          width={150}
+          strokeWidth="8"
+          bottomLabel="60 Day GPA"
+          color="purple"
+          background="white"
+        />
+        <Gauge
+          key="LifeGPA"
+          score={this.props.lifeGPA.ninety}
+          width={150}
+          strokeWidth="8"
+          bottomLabel="90 Day GPA"
           color="purple"
           background="white"
         />
