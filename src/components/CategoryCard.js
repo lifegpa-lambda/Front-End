@@ -14,6 +14,8 @@ class CategoryCard extends Component {
     checkedRed: ""
   };
 
+  //   let activeCircleCat = "active-circle-cat"
+
   activeCircleGreen = event => {
     event.preventDefault();
     const cat = 1;
@@ -53,6 +55,7 @@ class CategoryCard extends Component {
   render() {
     let dharma;
     let category = this.props.category.id;
+    console.log("CategoryCard this.state", this.state);
 
     if (category === 1) {
       dharma = (

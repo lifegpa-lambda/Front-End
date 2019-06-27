@@ -53,38 +53,38 @@ class HabitForm extends Component {
     }
   }
 
-  // activeCircleGreen = event => {
-  //   event.preventDefault();
-  //   this.setState(prevState => ({
-  //     ...prevState,
-  //     checkedGreen: this.state.checkedGreen ? "" : "active-circle-cat",
-  //     checkedYellow: "",
-  //     checkedRed: "",
-  //     categoryId: 1
-  //   }));
-  // };
+  activeCircleGreen = event => {
+    event.preventDefault();
+    this.setState(prevState => ({
+      ...prevState,
+      checkedGreen: this.state.checkedGreen ? "" : "active-circle-cat",
+      checkedYellow: "",
+      checkedRed: "",
+      categoryId: 1
+    }));
+  };
 
-  // activeCircleYellow = event => {
-  //   event.preventDefault();
-  //   this.setState(prevState => ({
-  //     ...prevState,
-  //     checkedYellow: this.state.checkedYellow ? "" : "active-circle-cat",
-  //     checkedGreen: "",
-  //     checkedRed: "",
-  //     categoryId: 2
-  //   }));
-  // };
+  activeCircleYellow = event => {
+    event.preventDefault();
+    this.setState(prevState => ({
+      ...prevState,
+      checkedYellow: this.state.checkedYellow ? "" : "active-circle-cat",
+      checkedGreen: "",
+      checkedRed: "",
+      categoryId: 2
+    }));
+  };
 
-  // activeCircleRed = event => {
-  //   event.preventDefault();
-  //   this.setState(prevState => ({
-  //     ...prevState,
-  //     checkedRed: this.state.checkedRed ? "" : "active-circle-cat",
-  //     checkedGreen: "",
-  //     checkedYellow: "",
-  //     categoryId: 3
-  //   }));
-  // };
+  activeCircleRed = event => {
+    event.preventDefault();
+    this.setState(prevState => ({
+      ...prevState,
+      checkedRed: this.state.checkedRed ? "" : "active-circle-cat",
+      checkedGreen: "",
+      checkedYellow: "",
+      categoryId: 3
+    }));
+  };
 
   render() {
     console.log("HabitForm this.props.habits", this.props.habits);
