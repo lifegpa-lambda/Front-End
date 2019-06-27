@@ -26,12 +26,6 @@ class HabitCard extends Component {
   // };
 
   render() {
-    console.log("HabitCard this.props", this.props);
-    console.log(
-      "HabitCard this.props.habits.activeHabit",
-      this.props.habits.activeHabit
-    );
-
     const category = this.props.habit.categoryId;
     let dharmaColor = "green";
     if (category === 2) {

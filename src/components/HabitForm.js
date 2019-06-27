@@ -8,6 +8,7 @@ import { Button, Form, FormGroup, Input } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-regular-svg-icons";
 import "./Habit.css";
+import CategoryList from "./CategoryList";
 
 class HabitForm extends Component {
   state = {
@@ -80,35 +81,9 @@ class HabitForm extends Component {
   };
 
   render() {
-    console.log("HabitForm this.state.categoryId", this.state.categoryId);
-    // console.log("HabitForm this.state.habit", this.state.habit);
-
-    // let dharmaActive = <div>{this.props.habits.activeHabit.habitTitle}</div>;
-
-    // let circleColor = "";
-    // switch (this.state.categoryId) {
-    //   case 2:
-    //     circleColor = "yellow";
-    //     break;
-    //   case 3:
-    //     circleColor = "red";
-    //     break;
-    //   default:
-    //     circleColor = "green";
-    // }
-    // if (this.state.checkedGreen) {
-    //   circleColor = "green";
-    // } else if (this.state.checkedYellow) {
-    //   circleColor = "yellow";
-    // } else if (this.state.checkedRed) {
-    //   circleColor = "red";
-    // } else {
-    //   circleColor = "";
-    // }
-
     let dharmaBox = this.state.active ? (
       <div className="dharma-box container">
-        <div>{this.props.habits.activeHabit.habitTitle}</div>
+        <div>Habit: {this.props.habits.activeHabit.habitTitle}</div>
         <div>Category: {this.state.categoryId}</div>
         <div>
           Created:{" "}
@@ -139,24 +114,13 @@ class HabitForm extends Component {
               onChange={this.handleChanges}
               placeholder="HBT"
             />
-            {/* <Label>Select Category</Label>
-            <Input
-              className="habit-input"
-              type="select"
-              name="categoryId"
-              value={this.state.categoryId}
-              onChange={this.handleChanges}
-            >
-              <option className="option-green">1</option>
-              <option className="option-yellow">2</option>
-              <option className="option-red">3</option>
-              <option className="option-purple">4</option>
-            </Input> */}
           </FormGroup>
         </Form>
         <div className="category-header">Priority Level</div>
         <div className="category">
-          <FontAwesomeIcon
+          <CategoryList />
+          {/* Delete here */}
+          {/* <FontAwesomeIcon
             icon={faCircle}
             className={`circle-green category-circle ${
               this.state.checkedGreen
@@ -177,7 +141,8 @@ class HabitForm extends Component {
             className={`circle-red category-circle ${this.state.checkedRed}`}
             size="3x"
             onClick={this.activeCircleRed}
-          />
+          /> */}
+          {/* End Delete */}
         </div>
         <Button
           id="habit-form-button"
