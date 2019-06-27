@@ -27,6 +27,7 @@ export const UPDATE_LIFEGPA_SUCCESS = "UPDATE_LIFEGPA_SUCCESS";
 export const SET_UPDATE_FORM = "SET_UPDATE_FORM";
 export const FILTER_HABITS = "FILTER_HABITS";
 export const TOGGLE_CHECKED = "TOGGLE_CHECKED";
+export const SET_ACTIVE_CATEGORY = "SET_ACTIVE_CATEGORY";
 
 export const getHabits = () => dispatch => {
   dispatch({ type: FETCH_HABITS_START });
@@ -239,6 +240,13 @@ export const setUpdateForm = habit => {
   return {
     type: SET_UPDATE_FORM,
     payload: habit
+  };
+};
+
+export const setActiveCategory = category => {
+  return {
+    type: SET_ACTIVE_CATEGORY,
+    payload: category
   };
 };
 
