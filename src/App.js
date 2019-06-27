@@ -38,6 +38,10 @@ const App = props => {
           <PrivateRoute exact path="/dharma" component={DharmaList} />
           <Route component={Page404} />
         </Switch>
+        <div className="footer">
+          Copyright &copy; 2019 LifeGPA |{" "}
+          <a href="https://github.com/lifegpa-lambda">MIT License</a>
+        </div>
       </div>
     </Router>
   );
