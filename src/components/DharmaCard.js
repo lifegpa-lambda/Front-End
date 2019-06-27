@@ -11,7 +11,8 @@ import "./Dharma.css";
 class DharmaCard extends Component {
   render() {
     const { id, habitTitle, categoryId, gpa } = this.props.habit;
-    const score = gpa ? gpa.all : 0;
+    const score = gpa ? gpa[this.props.time] : 0;
+    console.log("DC props.time", this.props.time);
     const width = 160;
 
     const category = Math.min(categoryId, 3) - 1;

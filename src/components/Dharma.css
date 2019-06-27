@@ -17,3 +17,17 @@
 .dharma-header {
   color: whitesmoke;
 }
+
+.nav {
+  user-select: none;
+}
+
+.time-bar .nav-link {
+  margin: 0 10px 10px;
+}
+
+.selected-time.nav-link {
+  color: dodgerblue;
+  background: rgba(242, 238, 232, 1);
+  transform: scale(1.1);
+}
