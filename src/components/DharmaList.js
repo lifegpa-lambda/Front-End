@@ -14,7 +14,7 @@ class DharmaList extends Component {
     console.log("DharmaList this.props", this.props);
     return (
       <div>
-        <h3 className="dharma-header">Dharma Card</h3>
+        {/* <h3 className="dharma-header">Dharma Card</h3> */}
         <div className="dharma-dials">
           {this.props.habits &&
             this.props.habits.map(habit => {

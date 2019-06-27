@@ -1,45 +1,37 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Nav.css";
 
 const NavBar = props => {
   // console.log(props);
   return (
     <div className="nav-bar container">
-      <div className="row nav-row">
-        <div className="col nav-col">
-          {props.loggedIn ? (
-            <Link className="nav-link" to="/signout">
-              Sign Out
-            </Link>
-          ) : (
-            <Link className="nav-link" to="/login">
-              Log In
-            </Link>
-          )}
-        </div>
-        <div className="col nav-col">
-          <Link className="nav-link" to="/habits">
-            Habits
-          </Link>
-        </div>
-        <div className="col nav-col">
-          <Link className="nav-link" to="/daily">
-            Daily
-          </Link>
-        </div>
-        <div className="col nav-col">
-          <Link className="nav-link" to="/dashboard">
-            Dashboard
-          </Link>
-        </div>
-        <div className="col nav-col">
-          <Link className="nav-link" to="/dharma">
-            Dharma
-          </Link>
-        </div>
-      </div>
+      {props.loggedIn ? (
+        <NavLink className="nav-link" to="/signout">
+          <div className="col nav-col">Sign Out</div>
+        </NavLink>
+      ) : (
+        <NavLink className="nav-link" to="/login">
+          <div className="col nav-col">Log In</div>
+        </NavLink>
+      )}
+
+      <NavLink className="nav-link" to="/habits">
+        <div className="col nav-col">Habits</div>
+      </NavLink>
+
+      <NavLink className="nav-link" to="/daily">
+        <div className="col nav-col">Daily</div>
+      </NavLink>
+
+      <NavLink className="nav-link" to="/dashboard">
+        <div className="col nav-col">Dashboard</div>
+      </NavLink>
+
+      <NavLink className="nav-link" to="/dharma">
+        <div className="col nav-col">Dharma</div>
+      </NavLink>
     </div>
   );
 };

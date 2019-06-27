@@ -25,7 +25,7 @@ class HabitList extends Component {
     // console.log("HabitList this.props.habits.habits", this.props.habits);
     return (
       <div>
-        <h2 className="habits-header">Habits</h2>
+        {/* <h2 className="habits-header">Habits</h2> */}
         <SearchBar />
         {habits &&
           habits.map(habit => {

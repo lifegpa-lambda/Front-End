@@ -17,7 +17,7 @@ class DailyList extends Component {
     console.log("DailyList this.props", this.props);
     return (
       <div>
-        <h2 className="daily-habits-header">Daily Habits</h2>
+        {/* <h2 className="daily-habits-header">Daily Habits</h2> */}
         <SearchBar />
         <h3 className="daily-habits-header daily-habits-sub-hheader">
           Today did you...?
