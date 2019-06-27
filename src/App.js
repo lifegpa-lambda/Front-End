@@ -12,6 +12,7 @@ import DailyList from "./components/DailyList";
 import Dashboard from "./components/Dashboard";
 import DharmaList from "./components/DharmaList";
 import GaugesTest from "./tests/GaugesTest";
+import Page404 from "./components/Page404";
 
 const App = props => {
   console.log("App props", props);
@@ -31,6 +32,7 @@ const App = props => {
         <PrivateRoute exact path="/daily" component={DailyList} />
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute exact path="/dharma" component={DharmaList} />
+        <Route component={Page404} />
       </div>
     </Router>
   );
