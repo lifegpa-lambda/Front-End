@@ -47,16 +47,12 @@ class DailyCard extends Component {
   render() {
     // console.log("DailyCard this.props.habit", this.props.habit);
     return (
-      <div className="daily-card">
-        <div
-          onClick={this.toggleChecked}
-          className={`${this.state.completed ? "checked" : ""}`}
-        >
+      <div className="daily-card" onClick={this.toggleComplete}>
+        <div className={`habit ${this.state.completed ? "checked" : ""}`}>
           {this.props.habit.habitTitle}
         </div>
         <div className="btn-div">
           <FontAwesomeIcon
-            onClick={this.toggleComplete}
             icon={faCheckCircle}
             className={`${
               this.state.completed ? "daily-circle-checked" : "daily-circle"
