@@ -27,3 +27,7 @@
   background: rgba(242, 238, 232, 1);
   transform: scale(1.1);
 }
+
+.life-meter {
+  margin-bottom: 20px;
+}

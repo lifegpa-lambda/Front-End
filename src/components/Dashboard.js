@@ -21,6 +21,7 @@ class Dashboard extends React.Component {
             topLabel="LifeGPA"
             color="purple"
             background="white"
+            margin="20px"
           />
         </div>
         <Gauge
