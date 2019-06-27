@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import "./App.css";
 import "./";
 import Login from "./components/Login";
@@ -13,11 +13,16 @@ import Dashboard from "./components/Dashboard";
 import DharmaList from "./components/DharmaList";
 import GaugesTest from "./tests/GaugesTest";
 
-const App = () => {
+const App = props => {
+  console.log("App props", props);
+  if (props.location.pathname === "/") {
+    return <Redirect to="/login" />;
+  }
   return (
     <Router>
       <div className="App">
         <NavBar />
+        {/* <Route exact path ="/"  */}
         <Route path="/login" component={Login} />
         <Route path="/signout" component={Signout} />
         <Route path="/create" component={CreateAccount} />
