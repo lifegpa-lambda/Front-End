@@ -20,6 +20,7 @@
 
 .time-bar .nav-link {
   margin: 0 10px 10px;
+  font-size: 0.9rem;
 }
 
 .selected-time.nav-link {

@@ -12,7 +12,6 @@
 
 .daily-habits-header {
   color: whitesmoke;
-  margin-top: 20px;
   filter: drop-shadow(0 0 0.15rem rgba(0, 0, 0, 1));
   user-select: none;
 }

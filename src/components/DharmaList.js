@@ -33,7 +33,7 @@ class DharmaList extends Component {
             className={this.state.timePeriod === "all" ? "selected-time" : null}
             onClick={e => this.updateTimePeriod(e, "all")}
           >
-            All Time
+            ALL
           </NavLink>
           <NavLink
             href="#thirty"
@@ -42,7 +42,7 @@ class DharmaList extends Component {
             }
             onClick={e => this.updateTimePeriod(e, "thirty")}
           >
-            30 Days
+            30
           </NavLink>{" "}
           <NavLink
             href="#sixty"
@@ -51,7 +51,7 @@ class DharmaList extends Component {
             }
             onClick={e => this.updateTimePeriod(e, "sixty")}
           >
-            60 Days
+            60
           </NavLink>{" "}
           <NavLink
             href="#ninety"
@@ -60,7 +60,7 @@ class DharmaList extends Component {
             }
             onClick={e => this.updateTimePeriod(e, "ninety")}
           >
-            90 Days
+            90
           </NavLink>
         </div>
         {/* <h3 className="dharma-header">Dharma Card</h3> */}

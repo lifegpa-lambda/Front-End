@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   flex-flow: row wrap;
-  margin: 10px auto 20px;
+  margin: 0 auto;
 }
 
 .nav-link {
@@ -28,5 +28,5 @@
 .nav-link.active {
   color: dodgerblue;
   background: rgba(242, 238, 232, 1);
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
