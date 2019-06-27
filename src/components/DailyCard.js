@@ -10,18 +10,30 @@ import "./Daily.css";
 
 class DailyCard extends Component {
   state = {
-    history: ""
+    completed: false
   };
+
+  componentDidMount() {
+    const history = this.props.habit.history;
+    console.log("DC cdm history", history[history.length - 1]);
+    const completed = history[history.length - 1] === "x" ? true : false;
+    console.log("DC cdm completed", completed);
+    this.setState({ completed });
+  }
 
   toggleComplete = event => {
     event.preventDefault();
-    const habitCheck = "x";
+    const completed = !this.state.completed;
+    const habitCheck = completed ? " " : "x";
+    let history = this.props.habit.history;
+    history = history.replace(/.$/, habitCheck);
     const newHabit = {
       ...this.props.habit,
-      history: this.props.habit.history.concat(habitCheck),
-      completed: !this.props.habit.completed
+      history,
+      completed
     };
     this.props.updateHabit(newHabit);
+    this.setState({ completed });
   };
 
   // toggleGreenCheck = () => {
@@ -29,7 +41,7 @@ class DailyCard extends Component {
   // };
 
   toggleChecked = () => {
-    this.setState({ checked: !this.state.checked });
+    this.setState({ completed: !this.state.completed });
   };
 
   render() {
@@ -38,7 +50,7 @@ class DailyCard extends Component {
       <div className="daily-card">
         <div
           onClick={this.toggleChecked}
-          className={`${this.props.habit.completed ? "checked" : ""}`}
+          className={`${this.state.completed ? "checked" : ""}`}
         >
           {this.props.habit.habitTitle}
         </div>
@@ -47,9 +59,7 @@ class DailyCard extends Component {
             onClick={this.toggleComplete}
             icon={faCheckCircle}
             className={`${
-              this.props.habit.completed
-                ? "daily-circle-checked"
-                : "daily-circle"
+              this.state.completed ? "daily-circle-checked" : "daily-circle"
             }`}
             size="2x"
           />
@@ -65,7 +75,11 @@ DailyCard.propTypes = {
   habit: PropTypes.object
 };
 
+const mapStateToProps = state => ({
+  habits: state.habits
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   { toggleChecked, updateHabit }
 )(DailyCard);

@@ -13,9 +13,9 @@ class HabitForm extends Component {
   state = {
     habitTitle: this.props.habits.activeHabit || "",
     active: false,
-    categoryId: "",
+    categoryId: 1,
     id: "",
-    checkedGreen: "",
+    checkedGreen: "active-circle-cat",
     checkedYellow: "",
     checkedRed: ""
   };
@@ -128,12 +128,12 @@ class HabitForm extends Component {
     return (
       <div>
         {dharmaBox}
-        <Form className="habit-form">
+        <Form className="habit-form" onSubmit={this.submitHandler}>
           <FormGroup className="habit-input-container">
             {/* <Label>NEW HBT</Label> */}
             <Input
               className="habit-input"
-              type="textarea"
+              type="text"
               name="habitTitle"
               value={this.state.habitTitle}
               onChange={this.handleChanges}
@@ -183,7 +183,7 @@ class HabitForm extends Component {
           id="habit-form-button"
           className="add-update-button"
           onClick={this.submitHandler}
-        >{`${this.props.habits.active ? "UPDT" : "ADD"}`}</Button>
+        >{`${this.props.habits.active ? "UPDATE" : "ADD"}`}</Button>
       </div>
     );
   }
