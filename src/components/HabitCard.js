@@ -4,7 +4,8 @@ import { deleteHabit, setUpdateForm } from "../actions/habitActions";
 import PropTypes from "prop-types";
 import { Button } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle } from "@fortawesome/free-regular-svg-icons";
+import { faCircle, faTrashAlt } from "@fortawesome/free-regular-svg-icons";
+import { faPenSquare } from "@fortawesome/free-solid-svg-icons";
 import "../App.css";
 import "./Habit.css";
 
@@ -32,12 +33,8 @@ class HabitCard extends Component {
     );
 
     const category = this.props.habit.categoryId;
-    let dharmaColor;
-    if (category > 3 || category < 0) {
-      dharmaColor = "purple";
-    } else if (category === 1) {
-      dharmaColor = "green";
-    } else if (category === 2) {
+    let dharmaColor = "green";
+    if (category === 2) {
       dharmaColor = "yellow";
     } else if (category === 3) {
       dharmaColor = "red";
@@ -59,14 +56,14 @@ class HabitCard extends Component {
             className="card-btn"
             color="primary"
           >
-            UPDT
+            <FontAwesomeIcon icon={faPenSquare} size="2x" />
           </Button>
           <Button
             onClick={this.deleteHabit}
             className="card-btn"
             color="primary"
           >
-            X
+            <FontAwesomeIcon icon={faTrashAlt} size="2x" />
           </Button>
         </div>
       </div>
