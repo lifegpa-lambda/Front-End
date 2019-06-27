@@ -20,14 +20,13 @@ import Page404 from "./components/Page404";
 
 const App = props => {
   console.log("App props", props);
-  if (props.location.pathname === "/") {
-    return <Redirect to="/login" />;
-  }
+  // if (props.location.pathname === "/") {
+  //   return <Redirect to="/login" />;
+  // }
   return (
     <Router>
       <div className="App">
         <NavBar />
-        {/* <Route exact path ="/"  */}
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/signout" component={Signout} />
@@ -36,6 +35,7 @@ const App = props => {
           <PrivateRoute exact path="/daily" component={DailyList} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <PrivateRoute exact path="/dharma" component={DharmaList} />
+          <Route path="/" component={Dashboard} />
           <Route component={Page404} />
         </Switch>
       </div>
