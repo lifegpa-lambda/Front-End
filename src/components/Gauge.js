@@ -53,6 +53,7 @@ const Gauge = props => {
             fill="white"
             stroke="black"
             strokeWidth={strokeWidth}
+            fillOpacity="0.7"
           />
           <circle
             className="face"
@@ -62,7 +63,7 @@ const Gauge = props => {
             fill={background}
             stroke="black"
             strokeWidth={strokeWidth}
-            fillOpacity="0.6"
+            fillOpacity="0.5"
           />
           <circle
             className="dial"
