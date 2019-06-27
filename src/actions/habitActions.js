@@ -16,13 +16,15 @@ export const UPDATE_HABIT_SUCCESS = "UPDATE_HABIT_SUCCESS";
 export const UPDATE_HABIT_ERROR = "UPDATE_HABIT_ERROR";
 export const UPDATE_GPAS_START = "UPDATE_GPAS_START";
 export const UPDATE_GPAS_SUCCESS = "UPDATE_GPAS_SUCCESS";
+export const UPDATE_LIFEGPA_START = "UPDATE_LIFEGPA_START";
+export const UPDATE_LIFEGPA_SUCCESS = "UPDATE_LIFEGPA_SUCCESS";
 export const SET_UPDATE_FORM = "SET_UPDATE_FORM";
 export const FILTER_HABITS = "FILTER_HABITS";
 export const TOGGLE_CHECKED = "TOGGLE_CHECKED";
 
 export const getHabits = () => dispatch => {
   dispatch({ type: FETCH_HABITS_START });
-  axios
+  const axiosPromise = axios
     .get(
       `https://lifegpa-zach-christy.herokuapp.com/api/users/habits/${localStorage.getItem(
         "userId"
@@ -43,6 +45,7 @@ export const getHabits = () => dispatch => {
         payload: error.response
       });
     });
+  return axiosPromise;
 };
 
 export const addHabit = newHabit => dispatch => {
@@ -131,15 +134,39 @@ export const updateGPAs = dispatch => {
     return habit;
   });
   dispatch({ type: UPDATE_GPAS_SUCCESS, payload: updatedHabits });
+  dispatch(updateLifeGPA);
 };
 
 export const updateLifeGPA = dispatch => {
-  const { habits } = store.getState().habits;
-  const totals = habits.reduce((total, habit) => {}, {
-    thirty: 0,
-    sixty: 0,
-    ninety: 0,
-    all: 0
+  dispatch({ type: UPDATE_LIFEGPA_START });
+  const habits = store.getState().habits.habits;
+  const totals = habits.reduce(
+    (total, habit) => {
+      total.thirty += habit.gpa.thirty;
+      total.sixty += habit.gpa.sixty;
+      total.ninety += habit.gpa.ninety;
+      total.all += habit.gpa.ninety;
+      total.days =
+        habit.history.length > total.days ? habit.history.length : total.days;
+      return total;
+    },
+    {
+      thirty: 0,
+      sixty: 0,
+      ninety: 0,
+      all: 0,
+      days: 1
+    }
+  );
+
+  dispatch({
+    type: UPDATE_LIFEGPA_SUCCESS,
+    payload: {
+      thirty: Math.round(totals.thirty / totals.days),
+      sixty: Math.round(totals.sixty / totals.days),
+      ninety: Math.round(totals.ninety / totals.days),
+      all: Math.round(totals.ninety / totals.days)
+    }
   });
 };
 
@@ -154,6 +181,7 @@ export const updateGPA = updatedHabit => dispatch => {
     return habit;
   });
   dispatch({ type: UPDATE_GPAS_SUCCESS, payload: updatedHabits });
+  dispatch(updateLifeGPA);
 };
 
 export const setUpdateForm = habit => {

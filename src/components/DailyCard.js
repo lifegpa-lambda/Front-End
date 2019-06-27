@@ -15,9 +15,9 @@ class DailyCard extends Component {
 
   componentDidMount() {
     const history = this.props.habit.history;
-    console.log("DC cdm history", history[history.length - 1]);
-    const completed = history[history.length - 1] === "x" ? true : false;
-    console.log("DC cdm completed", completed);
+    // console.log("DC cdm history", history[history.length - 1]);
+    const completed = history.slice(-1) === "x" ? true : false;
+    // console.log("DC cdm completed", completed);
     this.setState({ completed });
   }
 
@@ -45,7 +45,7 @@ class DailyCard extends Component {
   };
 
   render() {
-    console.log("DailyCard this.props.habit", this.props.habit);
+    // console.log("DailyCard this.props.habit", this.props.habit);
     return (
       <div className="daily-card">
         <div

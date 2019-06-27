@@ -13,6 +13,8 @@ import {
   UPDATE_HABIT_ERROR,
   UPDATE_GPAS_START,
   UPDATE_GPAS_SUCCESS,
+  UPDATE_LIFEGPA_START,
+  UPDATE_LIFEGPA_SUCCESS,
   SET_UPDATE_FORM,
   FILTER_HABITS,
   TOGGLE_CHECKED
@@ -20,12 +22,14 @@ import {
 
 const initialState = {
   habits: [],
+  lifeGPA: { thirty: 0, sixty: 0, ninety: 0, all: 0 },
   fetching: false,
   error: null,
   addingHabit: false,
   deletingHabit: false,
   updatingHabit: false,
   updatingGPAs: false,
+  updatingLifeGPA: true,
   activeHabit: null,
   active: false,
   filteredHabits: "",
@@ -120,6 +124,17 @@ export default (state = initialState, action) => {
         ...state,
         updatingGPAs: false,
         habits: action.payload
+      };
+    case UPDATE_LIFEGPA_START:
+      return {
+        ...state,
+        updatingLifeGPA: true
+      };
+    case UPDATE_LIFEGPA_SUCCESS:
+      return {
+        ...state,
+        updatingLifeGPA: false,
+        lifeGPA: action.payload
       };
     case SET_UPDATE_FORM:
       return {

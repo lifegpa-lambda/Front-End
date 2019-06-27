@@ -116,7 +116,7 @@ class HabitForm extends Component {
         </div>
         <div>
           Completed:{" "}
-          {this.props.habits.activeHabit.history.substring(-1) === "x"
+          {this.props.habits.activeHabit.history.slice(-1) === "x"
             ? "Yes"
             : "No"}
         </div>
