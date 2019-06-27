@@ -21,7 +21,7 @@ class Dashboard extends React.Component {
             topLabel="LifeGPA"
             color="purple"
             background="white"
-            margin="20px"
+            margin="10px 0 20px"
           />
         </div>
         <Gauge
@@ -51,6 +51,12 @@ class Dashboard extends React.Component {
           color="purple"
           background="white"
         />
+        <h5
+          className="dharma-header"
+          onClick={e => this.props.history.push("/dharma")}
+        >
+          Details on your Dharma page >>
+        </h5>
       </div>
     );
   }

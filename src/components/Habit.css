@@ -13,6 +13,7 @@
   border-top: 3px solid #7fefbd;
   border-bottom: 3px solid #7fefbd;
   padding: 15px;
+  user-select: none;
   /* padding-top: 10px; */
 }
 
@@ -131,6 +132,7 @@
   font-weight: 700;
   font-size: 1.4rem;
   filter: drop-shadow(0 0 0.15rem rgba(0, 0, 0, 1));
+  user-select: none;
 }
 
 .active-circle-cat {

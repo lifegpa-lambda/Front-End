@@ -1,7 +1,17 @@
 .App {
   text-align: center;
   /* border: 1px solid hotpink; */
-  padding: 20px 10px 15px;
+  padding: 20px 30px 15px;
+  /* background: rgba(0, 0, 0, 0.1); */
+  background: rgb(19, 44, 75);
+  background: linear-gradient(
+    180deg,
+    rgba(19, 44, 75, 0.75) 0%,
+    rgba(76, 33, 83, 0.5) 100%
+  );
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 0 0 35px 35px;
+  margin-bottom: 30px;
 }
 
 .daily-card {
@@ -75,6 +85,7 @@
   color: whitesmoke;
   font-size: 1rem;
   filter: drop-shadow(0 0 0.15rem rgba(0, 0, 0, 1));
+  user-select: none;
 }
 
 .footer a {

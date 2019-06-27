@@ -21,7 +21,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    filter: drop-shadow(0 0 0.225rem rgba(0, 0, 0, 0.8));
+    filter: drop-shadow(0 0 0.225rem rgba(0, 0, 0, 0.75));
 
     .score {
       position: absolute;
@@ -32,7 +32,6 @@
       z-index: 1;
       color: black;
       font-family: monospace;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
     }
 
     .gauge {

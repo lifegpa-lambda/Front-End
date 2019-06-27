@@ -26,7 +26,7 @@ const NavBar = props => {
       </NavLink>
 
       <NavLink className="nav-link" to="/dashboard">
-        <div className="col nav-col">Dashboard</div>
+        <div className="col nav-col">GPA</div>
       </NavLink>
 
       <NavLink className="nav-link" to="/dharma">
