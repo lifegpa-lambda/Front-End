@@ -134,3 +134,22 @@
   border: 2px solid whitesmoke;
   border-radius: 10px;
 }
+
+.category-list {
+  display: flex;
+}
+
+/* .dharma-card {
+  display: flex;
+} */
+
+/* .dharma-row {
+  display: flex;
+  flex-direction: row;
+} */
+
+.category {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
