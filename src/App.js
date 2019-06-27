@@ -35,7 +35,7 @@ const App = props => {
           <PrivateRoute exact path="/daily" component={DailyList} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <PrivateRoute exact path="/dharma" component={DharmaList} />
-          <Route path="/" component={Dashboard} />
+          <Route exact path="/" component={Dashboard} />
           <Route component={Page404} />
         </Switch>
       </div>
