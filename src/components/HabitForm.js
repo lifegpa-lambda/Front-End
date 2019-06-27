@@ -4,8 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addHabit } from "../actions/habitActions";
 import { updateHabit } from "../actions/habitActions";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import Moment from "react-moment";
+import { Button, Form, FormGroup, Input } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-regular-svg-icons";
 import "./Habit.css";
@@ -30,33 +29,54 @@ class HabitForm extends Component {
         habitTitle: this.props.habits.activeHabit.habitTitle,
         active: true,
         id: this.props.habits.activeHabit.id,
-        categoryId: this.props.habits.activeHabit.categoryId
+        categoryId: this.props.habits.activeHabit.categoryId,
+        checkedGreen:
+          this.props.habits.activeHabit.categoryId === 1
+            ? "active-circle-cat"
+            : "",
+        checkedYellow:
+          this.props.habits.activeHabit.categoryId === 2
+            ? "active-circle-cat"
+            : "",
+        checkedRed:
+          this.props.habits.activeHabit.categoryId === 3
+            ? "active-circle-cat"
+            : ""
       });
     }
   }
 
   activeCircleGreen = event => {
     event.preventDefault();
-    this.setState({
+    this.setState(prevState => ({
+      ...prevState,
       checkedGreen: this.state.checkedGreen ? "" : "active-circle-cat",
+      checkedYellow: "",
+      checkedRed: "",
       categoryId: 1
-    });
+    }));
   };
 
   activeCircleYellow = event => {
     event.preventDefault();
-    this.setState({
+    this.setState(prevState => ({
+      ...prevState,
       checkedYellow: this.state.checkedYellow ? "" : "active-circle-cat",
+      checkedGreen: "",
+      checkedRed: "",
       categoryId: 2
-    });
+    }));
   };
 
   activeCircleRed = event => {
     event.preventDefault();
-    this.setState({
+    this.setState(prevState => ({
+      ...prevState,
       checkedRed: this.state.checkedRed ? "" : "active-circle-cat",
+      checkedGreen: "",
+      checkedYellow: "",
       categoryId: 3
-    });
+    }));
   };
 
   render() {
@@ -65,26 +85,41 @@ class HabitForm extends Component {
 
     // let dharmaActive = <div>{this.props.habits.activeHabit.habitTitle}</div>;
 
-    let circleColor;
-    if (this.state.checkedGreen) {
-      circleColor = "green";
-    } else if (this.state.checkedYellow) {
-      circleColor = "yellow";
-    } else if (this.state.checkedRed) {
-      circleColor = "red";
-    } else {
-      circleColor = "";
-    }
+    // let circleColor = "";
+    // switch (this.state.categoryId) {
+    //   case 2:
+    //     circleColor = "yellow";
+    //     break;
+    //   case 3:
+    //     circleColor = "red";
+    //     break;
+    //   default:
+    //     circleColor = "green";
+    // }
+    // if (this.state.checkedGreen) {
+    //   circleColor = "green";
+    // } else if (this.state.checkedYellow) {
+    //   circleColor = "yellow";
+    // } else if (this.state.checkedRed) {
+    //   circleColor = "red";
+    // } else {
+    //   circleColor = "";
+    // }
 
     let dharmaBox = this.state.active ? (
       <div className="dharma-box container">
         <div>{this.props.habits.activeHabit.habitTitle}</div>
-        <div>Category: {this.props.habits.activeHabit.categoryId}</div>
+        <div>Category: {this.state.categoryId}</div>
         <div>
           Created:{" "}
           <Moment fromNow>{this.props.habits.activeHabit.createdAt}</Moment>
         </div>
-        <div>Completed: {this.props.habits.activeHabit.completed}</div>
+        <div>
+          Completed:{" "}
+          {this.props.habits.activeHabit.history.substring(-1) === "x"
+            ? "Yes"
+            : "No"}
+        </div>
       </div>
     ) : (
       <div />

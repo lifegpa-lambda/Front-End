@@ -7,7 +7,6 @@ import { getHabits } from "../actions/habitActions";
 import Gauge from "../components/Gauge";
 import "../App.css";
 import "./Dharma.css";
-import "../styles/Gauge.scss";
 
 class DharmaCard extends Component {
   render() {
@@ -32,7 +31,8 @@ class DharmaCard extends Component {
           width={width - 20}
           strokeWidth="9"
           bottomLabel={habitTitle}
-          background={categoryColor}
+          color={categoryColor}
+          background="white"
         />
       </div>
     );

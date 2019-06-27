@@ -1,9 +1,9 @@
 import React from "react";
-import "../styles/Gauge.scss";
+import "./Gauge.scss";
 
 const Gauge = props => {
   const {
-    score,
+    score = null,
     width = "100",
     height = "auto",
     strokeWidth = "12",
@@ -13,14 +13,16 @@ const Gauge = props => {
     background = "transparent"
   } = props;
 
+  const percentage = score !== null ? score : 100;
+
   const halfWidth = width / 2;
   const radius = halfWidth - strokeWidth;
   const circumference = 2 * Math.PI * radius;
-  const offset = circumference * (2 - (100 - score) / 100);
+  const offset = circumference * (2 - (100 - percentage) / 100);
 
   let color = props.color
     ? props.color
-    : ["#ff3d3d", "#ffe53d", "#00ff00"][Math.floor(score / 33.5)];
+    : ["#ff3d3d", "#ffe53d", "#00ff00"][Math.floor(percentage / 33.5)];
 
   let fontSize = props.fontSize ? props.fontSize : width * 0.0185;
 
@@ -35,8 +37,8 @@ const Gauge = props => {
       <div className="gauge-inner-wrapper">
         <div className="score" style={{ fontSize: `${fontSize}rem` }}>
           {score}
-          <small>%</small>
         </div>
+
         <svg
           className="gauge"
           width={width}
@@ -48,11 +50,12 @@ const Gauge = props => {
             cx={halfWidth}
             cy={halfWidth}
             r={halfWidth - strokeWidth * 1.35}
-            fill="white"
+            fill={background}
             stroke="black"
             strokeWidth={strokeWidth}
+            fillOpacity="0.75"
           />
-          <circle
+          {/* <circle
             className="face"
             cx={halfWidth}
             cy={halfWidth}
@@ -60,8 +63,8 @@ const Gauge = props => {
             fill={background}
             stroke="black"
             strokeWidth={strokeWidth}
-            fillOpacity="0.66"
-          />
+            fillOpacity="0.77"
+          /> */}
           <circle
             className="dial"
             cx={halfWidth}
@@ -81,7 +84,7 @@ const Gauge = props => {
             strokeWidth={strokeWidth}
             strokeDasharray={offset}
             strokeDashoffset={circumference}
-            strokeLinecap="round"
+            strokeLinecap="butt"
           />
         </svg>
       </div>

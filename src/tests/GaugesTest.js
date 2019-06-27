@@ -1,6 +1,5 @@
 import React from "react";
 import Gauge from "../components/Gauge";
-import "../styles/Gauge.scss";
 
 import Moment from "react-moment";
 
