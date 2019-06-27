@@ -1,6 +1,6 @@
 .add-update-button {
   margin: 10px;
-  background: #7fefbd;
+  background: #65afff;
 }
 
 .habit-form-button {
@@ -8,9 +8,24 @@
   background: #7fefbd;
 }
 
+.habits-header {
+  border-top: 3px solid #7fefbd;
+  border-bottom: 3px solid #7fefbd;
+  padding: 15px;
+  /* padding-top: 10px; */
+}
+
+.search-bar {
+  margin: 25px;
+}
+
 .card-btn {
   margin: 10px;
   font-size: 0.75rem;
+  background: #65afff;
+  border: 1px solid whitesmoke;
+  font-weight: 900;
+  /* color: #0f084b; */
 }
 
 .habit-card {
@@ -96,7 +111,7 @@
 .dharma-box {
   color: #0f084b;
   font-weight: 700;
-  background: #7fefbd;
+  background: #65afff;
   margin-top: 30px;
   margin-bottom: 30px;
   max-width: 50%;

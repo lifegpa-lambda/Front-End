@@ -26,7 +26,7 @@ class HabitList extends Component {
     return (
       <div>
         <h2 className="habits-header">Habits</h2>
-        <SearchBar />
+        <SearchBar className="search-bar" />
         {habits &&
           habits.map(habit => {
             console.log("|| HabitList habit", habit);
