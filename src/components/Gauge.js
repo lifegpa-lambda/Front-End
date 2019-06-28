@@ -30,7 +30,7 @@ const Gauge = props => {
   return (
     <div
       className="gauge-outer-wrapper"
-      style={{ display, height, boxSizing: "border-box", margin: props.margin }}
+      style={{ display, height, margin: margin }}
     >
       <h2 className="top-label" style={{ fontSize: `${fontSize * 0.65}rem` }}>
         {topLabel}

@@ -13,13 +13,13 @@ export const login = creds => dispatch => {
   return axios
     .post("https://lifegpa-zach-christy.herokuapp.com/api/login/", creds)
     .then(response => {
-      console.log("login response", response);
+      // console.log("login response", response);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("userId", response.data.user.id);
       dispatch({ type: LOGIN_SUCCESS, payload: response.data.token });
     })
     .catch(error => {
-      console.log("login error.response", error.response);
+      // console.log("login error.response", error.response);
       dispatch({ type: LOGIN_ERROR, payload: error.response });
     });
 };
@@ -31,17 +31,17 @@ export const logout = () => {
 };
 
 export const createAccount = creds => dispatch => {
-  console.log(creds);
+  // console.log(creds);
   dispatch({ type: CREATE_START });
   return axios
     .post("https://lifegpa-zach-christy.herokuapp.com/api/register/", creds)
     .then(response => {
-      console.log("createAccount response", response);
+      // console.log("createAccount response", response);
       localStorage.setItem("token", response.data.payload);
       dispatch({ type: CREATE_SUCCESS, payload: response.data.payload });
     })
     .catch(error => {
-      console.log("createAccount error.response", error.response);
+      // console.log("createAccount error.response", error.response);
       dispatch({ type: CREATE_ERROR, payload: error.response.data.error });
     });
 };

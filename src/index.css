@@ -3,6 +3,10 @@
   src: url("./assets/AmericanTypewriterRegular.ttf") format("truetype");
 }
 
+* {
+  boxsizing: "border-box";
+}
+
 body {
   font-family: "American Typewriter Regular";
   max-width: 850px;

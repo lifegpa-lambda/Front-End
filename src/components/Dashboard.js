@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { getHabits } from "../actions/habitActions";
 import Gauge from "./Gauge";
-import "./Dharma.css";
+import "./Dharma.scss";
 
 class Dashboard extends React.Component {
   componentDidMount() {
@@ -25,31 +25,34 @@ class Dashboard extends React.Component {
           />
         </div>
         <Gauge
-          key="LifeGPA"
+          key="Thirty"
           score={this.props.lifeGPA.thirty}
           width={150}
           strokeWidth="8"
           bottomLabel="30 Day GPA"
           color="purple"
           background="white"
+          margin="0px 20px"
         />
         <Gauge
-          key="LifeGPA"
+          key="Sixty"
           score={this.props.lifeGPA.sixty}
           width={150}
           strokeWidth="8"
           bottomLabel="60 Day GPA"
           color="purple"
           background="white"
+          margin="0px 20px"
         />
         <Gauge
-          key="LifeGPA"
+          key="Ninety"
           score={this.props.lifeGPA.ninety}
           width={150}
           strokeWidth="8"
           bottomLabel="90 Day GPA"
           color="purple"
           background="white"
+          margin="0px 20px"
         />
         <h5
           className="dharma-header"

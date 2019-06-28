@@ -6,6 +6,7 @@ const Signout = props => {
   localStorage.removeItem("token");
   props.logout();
   window.location.href = "/";
+  return null;
 };
 
 export default connect(

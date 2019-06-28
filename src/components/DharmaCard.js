@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import PropTypes from "prop-types";
 import { getHabits } from "../actions/habitActions";
 import Gauge from "../components/Gauge";
 import "../App.css";
-import "./Dharma.css";
+import "./Dharma.scss";
 
 class DharmaCard extends Component {
   render() {
     const { id, habitTitle, categoryId, gpa } = this.props.habit;
     const score = gpa ? gpa[this.props.time] : 0;
-    console.log("DC props.time", this.props.time);
+    // console.log("DC props.time", this.props.time);
     const width = 160;
 
     const category = Math.min(categoryId, 3) - 1;
@@ -35,29 +34,6 @@ class DharmaCard extends Component {
         />
       </div>
     );
-    // let dharma;
-
-    // if (category === 1) {
-    //   dharma = (
-    //     <FontAwesomeIcon icon={faCircle} className="circle-green" size="4x" />
-    //   );
-    // } else if (category === 2) {
-    //   dharma = (
-    //     <FontAwesomeIcon icon={faCircle} className="circle-yellow" size="4x" />
-    //   );
-    // } else if (category === 3) {
-    //   dharma = (
-    //     <FontAwesomeIcon icon={faCircle} className="circle-red" size="4x" />
-    //   );
-    // }
-
-    // return (
-    //   <div className="dharma-card container">
-    //     <div className="dharma-card row">
-    //       <div className="dharma-card col">{dharma}</div>
-    //     </div>
-    //   </div>
-    // );
   }
 }
 
@@ -69,40 +45,3 @@ export default connect(
   mapStateToProps,
   { getHabits }
 )(DharmaCard);
-
-// class DharmaCard extends Component {
-//   render() {
-//     // console.log("DharmaCard this.props.habit", this.props.habit);
-//     return (
-//       <div className="dharma-card container">
-//         {this.props.habit.count > 0 ? (
-//           <div className="dharmas row">
-//             <div className="col">
-//               <FontAwesomeIcon
-//                 icon={faCircle}
-//                 className="circle-green"
-//                 size="4x"
-//               />
-
-//               {this.props.habit.habit}
-//             </div>
-//           </div>
-//         ) : (
-//           <div className="dharmas row">
-//             <div className="col">
-//               <FontAwesomeIcon
-//                 icon={faCircle}
-//                 className="circle-red"
-//                 size="4x"
-//               />
-
-//               {this.props.habit.habit}
-//             </div>
-//           </div>
-//         )}
-//       </div>
-
-//       //   {this.props.habit.habit} }
-//     );
-//   }
-// }

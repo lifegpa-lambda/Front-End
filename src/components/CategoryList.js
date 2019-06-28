@@ -13,11 +13,11 @@ class CategoryList extends Component {
   };
   componentDidMount() {
     this.props.getCategories();
-    console.log("CategoryList this.props", this.props);
+    // console.log("CategoryList this.props", this.props);
   }
 
   activeCircleGreen = () => {
-    console.log("activeCircleGreen this.state", this.state);
+    // console.log("activeCircleGreen this.state", this.state);
     this.setState({
       checkedGreen: "active-circle-cat",
       checkedYellow: "",
@@ -26,7 +26,7 @@ class CategoryList extends Component {
   };
 
   activeCircleYellow = () => {
-    console.log("activeCircleYellow this.state", this.state);
+    // console.log("activeCircleYellow this.state", this.state);
     this.setState({
       checkedYellow: "active-circle-cat",
       checkedGreen: "",
@@ -35,7 +35,7 @@ class CategoryList extends Component {
   };
 
   activeCircleRed = () => {
-    console.log("activeCircleRed this.state", this.state);
+    // console.log("activeCircleRed this.state", this.state);
     this.setState({
       checkedRed: "active-circle-cat",
       checkedGreen: "",

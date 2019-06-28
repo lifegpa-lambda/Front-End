@@ -1,0 +1,51 @@
+.Login {
+  /* background: #0d0221; */
+  width: 50%;
+  margin: 0 auto;
+
+  h1 {
+    color: whitesmoke;
+  }
+
+  .login-header {
+    color: whitesmoke;
+    filter: drop-shadow(0 0 0.175rem rgba(0, 0, 0, 1));
+  }
+
+  .create-account-button {
+    margin: 10px;
+    filter: drop-shadow(0 0 0.175rem rgba(0, 0, 0, 1));
+  }
+
+  .login-button {
+    margin: 0px;
+    filter: drop-shadow(0 0 0.175rem rgba(0, 0, 0, 1));
+  }
+
+  .login-input {
+    max-width: 50%;
+    text-align: center;
+  }
+
+  .login-input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .welcome {
+    margin-top: 35px;
+    filter: drop-shadow(0 0 0.175rem rgba(0, 0, 0, 1));
+  }
+
+  .form-control {
+    margin: 15px auto;
+    max-width: 75%;
+  }
+
+  .error {
+    font-weight: bold;
+    color: yellow;
+  }
+}
