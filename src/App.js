@@ -17,8 +17,8 @@ const App = props => {
   // console.log("App props", props);
   return (
     <Router>
+      <NavBar />
       <div className="App">
-        <NavBar />
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/signout" component={Signout} />
