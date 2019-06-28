@@ -15,10 +15,7 @@ class HabitForm extends Component {
     habitTitle: this.props.habits.activeHabit || "",
     active: false,
     categoryId: this.props.habits.categoryId,
-    id: "",
-    checkedGreen: "active-circle-cat",
-    checkedYellow: "",
-    checkedRed: ""
+    id: ""
   };
 
   componentDidUpdate(prevState) {
@@ -133,13 +130,16 @@ class HabitForm extends Component {
         habitTitle: this.state.habitTitle,
         id: this.state.id,
         categoryId:
-          this.state.categoryId === "" ? 1 : parseInt(this.state.categoryId, 10)
+          this.props.habits.categoryId === 1
+            ? 1
+            : parseInt(this.state.categoryId, 10)
       };
       this.props.updateHabit(updateHabit);
     } else {
       this.addHabit(event);
     }
     this.setState({ habitTitle: "", active: false, categoryId: "" });
+    // window.location.reload();
   };
 
   addHabit = event => {
