@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import Moment from "react-moment";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { addHabit } from "../actions/habitActions";
-import { updateHabit } from "../actions/habitActions";
+import { addHabit, updateHabit, addCategory } from "../actions/habitActions";
 import { Button, Form, FormGroup, Input } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-regular-svg-icons";
@@ -15,7 +14,8 @@ class HabitForm extends Component {
     habitTitle: this.props.habits.activeHabit || "",
     active: false,
     categoryId: this.props.habits.categoryId,
-    id: ""
+    id: "",
+    categoryTitle: ""
   };
 
   componentDidUpdate(prevState) {
@@ -77,11 +77,23 @@ class HabitForm extends Component {
       <Input
         className="habit-input"
         type="text"
-        name="category"
-        value={this.state.category}
+        name="categoryTitle"
+        value={this.state.categoryTitle}
         onChange={this.handleChanges}
         placeholder="add a new category or choose below"
       />
+    ) : (
+      <div />
+    );
+
+    let catButton = this.state.active ? (
+      <Button
+        id="habit-form-button"
+        className="add-cat-button"
+        onClick={this.addCategory}
+      >
+        Update Category
+      </Button>
     ) : (
       <div />
     );
@@ -102,6 +114,7 @@ class HabitForm extends Component {
             />
             {addCatForm}
           </FormGroup>
+          {catButton}
         </Form>
         <div className="category-header">Priority Level</div>
         <div className="category">
@@ -142,6 +155,15 @@ class HabitForm extends Component {
     // window.location.reload();
   };
 
+  addCategory = event => {
+    event.preventDefault();
+    const newCategory = {
+      categoryTitle: this.state.categoryTitle,
+      color: "green"
+    };
+    this.props.addCategory(newCategory);
+  };
+
   addHabit = event => {
     event.preventDefault();
     const newHabit = {
@@ -180,5 +202,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { updateHabit, addHabit }
+  { updateHabit, addHabit, addCategory }
 )(HabitForm);
