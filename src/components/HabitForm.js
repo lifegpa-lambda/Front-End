@@ -14,7 +14,7 @@ class HabitForm extends Component {
   state = {
     habitTitle: this.props.habits.activeHabit || "",
     active: false,
-    categoryId: this.props.habits.categoryId,
+    categoryId: this.props.habits.categoryId || 1,
     id: ""
   };
 

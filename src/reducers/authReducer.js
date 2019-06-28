@@ -20,8 +20,8 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_START:
-      console.log("Auth reducer state", state);
-      console.log("Auth reducer action", action);
+      // console.log("Auth reducer state", state);
+      // console.log("Auth reducer action", action);
       return {
         ...state,
         loggingIn: true,
@@ -46,8 +46,8 @@ export default (state = initialState, action) => {
         token: null
       };
     case CREATE_START:
-      console.log("Auth reducer state", state);
-      console.log("Auth reducer action", action);
+      // console.log("Auth reducer state", state);
+      // console.log("Auth reducer action", action);
       return {
         ...state,
         creating: true,

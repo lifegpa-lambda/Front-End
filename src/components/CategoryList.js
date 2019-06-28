@@ -7,7 +7,7 @@ import CategoryCard from "./CategoryCard";
 class CategoryList extends Component {
   state = {
     categories: [],
-    checkedGreen: "",
+    checkedGreen: "active-circle-cat",
     checkedYellow: "",
     checkedRed: ""
   };
@@ -19,7 +19,7 @@ class CategoryList extends Component {
   activeCircleGreen = () => {
     console.log("activeCircleGreen this.state", this.state);
     this.setState({
-      checkedGreen: this.state.checkedGreen ? "" : "active-circle-cat",
+      checkedGreen: "active-circle-cat",
       checkedYellow: "",
       checkedRed: ""
     });
@@ -28,7 +28,7 @@ class CategoryList extends Component {
   activeCircleYellow = () => {
     console.log("activeCircleYellow this.state", this.state);
     this.setState({
-      checkedYellow: this.state.checkedYellow ? "" : "active-circle-cat",
+      checkedYellow: "active-circle-cat",
       checkedGreen: "",
       checkedRed: ""
     });
@@ -37,7 +37,7 @@ class CategoryList extends Component {
   activeCircleRed = () => {
     console.log("activeCircleRed this.state", this.state);
     this.setState({
-      checkedRed: this.state.checkedRed ? "" : "active-circle-cat",
+      checkedRed: "active-circle-cat",
       checkedGreen: "",
       checkedYellow: ""
     });
