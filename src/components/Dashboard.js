@@ -55,7 +55,7 @@ class Dashboard extends React.Component {
           className="dharma-header"
           onClick={e => this.props.history.push("/dharma")}
         >
-          Details on your Dharma page >>
+          Details on your <span>Dharma</span> page >>
         </h5>
       </div>
     );

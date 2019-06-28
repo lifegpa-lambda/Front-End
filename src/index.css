@@ -10,14 +10,17 @@ body {
   /* background: #0d0221 */
   /* color: whitesmoke; */
   height: 100%;
-  background: rgb(19, 44, 75);
+  /* background: rgb(19, 44, 75);
   background: linear-gradient(
     0deg,
-    rgba(19, 44, 75, 1) 0%,
-    rgba(76, 33, 83, 1) 100%
+    rgba(19, 44, 75, 1) 33%,
+    rgba(252, 232, 60, 0.856) 66%
   );
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: fixed; */
+  background: url("./assets/yellow-sky.jpg") no-repeat center center fixed;
+  background-size: cover;
+  background-position: fixed;
 }
 
 /* Colors */
