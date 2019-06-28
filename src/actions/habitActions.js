@@ -28,6 +28,7 @@ export const SET_UPDATE_FORM = "SET_UPDATE_FORM";
 export const FILTER_HABITS = "FILTER_HABITS";
 export const TOGGLE_CHECKED = "TOGGLE_CHECKED";
 export const SET_ACTIVE_CATEGORY = "SET_ACTIVE_CATEGORY";
+export const CLEAR_CHECKED = "SET_ACTIVE_CATEGORY";
 
 export const getHabits = () => dispatch => {
   dispatch({ type: FETCH_HABITS_START });
@@ -268,5 +269,12 @@ export const toggleChecked = habit => {
   return {
     type: TOGGLE_CHECKED,
     payload: habit
+  };
+};
+
+export const clearChecked = category => {
+  return {
+    type: CLEAR_CHECKED,
+    payload: category
   };
 };

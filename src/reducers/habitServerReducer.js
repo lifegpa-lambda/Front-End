@@ -21,7 +21,8 @@ import {
   SET_UPDATE_FORM,
   FILTER_HABITS,
   TOGGLE_CHECKED,
-  SET_ACTIVE_CATEGORY
+  SET_ACTIVE_CATEGORY,
+  CLEAR_CHECKED
 } from "../actions/habitActions";
 
 const initialState = {
@@ -39,7 +40,10 @@ const initialState = {
   filteredHabits: "",
   checked: false,
   categories: [],
-  categoryId: null
+  categoryId: null,
+  checkedGreen: "",
+  checkedYellow: "",
+  checkedRed: ""
 };
 
 export default (state = initialState, action) => {
@@ -172,10 +176,14 @@ export default (state = initialState, action) => {
         ...state
       };
     case SET_ACTIVE_CATEGORY:
-      // console.log("SET_ACTIVE_CATEGORY state", state);
       return {
         ...state,
         categoryId: action.payload
+      };
+    case CLEAR_CHECKED:
+      // console.log("SET_ACTIVE_CATEGORY state", state);
+      return {
+        ...state
       };
     default:
       return state;

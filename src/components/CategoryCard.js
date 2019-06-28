@@ -8,48 +8,27 @@ import { toggleChecked, setActiveCategory } from "../actions/habitActions";
 import "./Habit.css";
 
 class CategoryCard extends Component {
-  state = {
-    checkedGreen: "active-circle-cat",
-    checkedYellow: "",
-    checkedRed: ""
-  };
+  // state = {
+  //   checkedGreen: "active-circle-cat",
+  //   checkedYellow: "",
+  //   checkedRed: ""
+  // };
 
   //   let activeCircleCat = "active-circle-cat"
 
   activeCircleGreen = event => {
     event.preventDefault();
-    const cat = 1;
-    this.props.setActiveCategory(cat);
-    this.setState(prevState => ({
-      ...prevState,
-      checkedGreen: this.state.checkedGreen ? "" : "active-circle-cat",
-      checkedYellow: "",
-      checkedRed: ""
-    }));
+    this.props.activeCircleGreen(this.props.category.id);
   };
 
   activeCircleYellow = event => {
     event.preventDefault();
-    const cat = 2;
-    this.props.setActiveCategory(cat);
-    this.setState(prevState => ({
-      ...prevState,
-      checkedYellow: this.state.checkedYellow ? "" : "active-circle-cat",
-      checkedGreen: "",
-      checkedRed: ""
-    }));
+    this.props.activeCircleYellow(this.props.category.id);
   };
 
   activeCircleRed = event => {
     event.preventDefault();
-    const cat = 3;
-    this.props.setActiveCategory(cat);
-    this.setState(prevState => ({
-      ...prevState,
-      checkedRed: this.state.checkedRed ? "" : "active-circle-cat",
-      checkedGreen: "",
-      checkedYellow: ""
-    }));
+    this.props.activeCircleRed(this.props.category.id);
   };
 
   render() {
@@ -61,7 +40,7 @@ class CategoryCard extends Component {
       dharma = (
         <FontAwesomeIcon
           icon={faCircle}
-          className={`circle-green category-circle ${this.state.checkedGreen}`}
+          className={`circle-green category-circle ${this.props.checkedGreen}`}
           size="3x"
           onClick={this.activeCircleGreen}
         />
@@ -71,7 +50,7 @@ class CategoryCard extends Component {
         <FontAwesomeIcon
           icon={faCircle}
           className={`circle-yellow category-circle ${
-            this.state.checkedYellow
+            this.props.checkedYellow
           }`}
           size="3x"
           onClick={this.activeCircleYellow}
@@ -81,7 +60,7 @@ class CategoryCard extends Component {
       dharma = (
         <FontAwesomeIcon
           icon={faCircle}
-          className={`circle-red category-circle ${this.state.checkedRed}`}
+          className={`circle-red category-circle ${this.props.checkedRed}`}
           size="3x"
           onClick={this.activeCircleRed}
         />
