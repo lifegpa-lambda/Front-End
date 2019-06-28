@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getCategories } from "../actions/habitActions";
+import { getCategories, addCategory } from "../actions/habitActions";
 import CategoryCard from "./CategoryCard";
 
 class CategoryList extends Component {
@@ -13,6 +13,13 @@ class CategoryList extends Component {
   };
   componentDidMount() {
     this.props.getCategories();
+    // if (this.state.categories.length < 1) {
+    //   const newCategory = {
+    //     categoryTitle: 1,
+    //     color: "green"
+    //   };
+    //   this.props.addCategory(newCategory);
+    // }
     console.log("CategoryList this.props", this.props);
   }
 
@@ -81,5 +88,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getCategories }
+  { getCategories, addCategory }
 )(CategoryList);
