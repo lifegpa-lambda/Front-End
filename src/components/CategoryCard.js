@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-regular-svg-icons";
-import { toggleChecked, setActiveCategory } from "../actions/habitActions";
+import { toggleChecked, activeCategory } from "../actions/habitActions";
 
 import "./Habit.css";
 
@@ -14,21 +14,22 @@ class CategoryCard extends Component {
   //   checkedRed: ""
   // };
 
-  //   let activeCircleCat = "active-circle-cat"
-
   activeCircleGreen = event => {
     event.preventDefault();
     this.props.activeCircleGreen(this.props.category.id);
+    this.props.activeCategory(this.props.category.id);
   };
 
   activeCircleYellow = event => {
     event.preventDefault();
     this.props.activeCircleYellow(this.props.category.id);
+    this.props.activeCategory(this.props.category.id);
   };
 
   activeCircleRed = event => {
     event.preventDefault();
     this.props.activeCircleRed(this.props.category.id);
+    this.props.activeCategory(this.props.category.id);
   };
 
   render() {
@@ -89,5 +90,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { toggleChecked, setActiveCategory }
+  { toggleChecked, activeCategory }
 )(CategoryCard);
