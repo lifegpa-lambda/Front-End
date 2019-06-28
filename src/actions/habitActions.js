@@ -244,7 +244,7 @@ export const setUpdateForm = habit => {
   };
 };
 
-export const setActiveCategory = category => {
+export const activeCategory = category => {
   return {
     type: SET_ACTIVE_CATEGORY,
     payload: category

@@ -15,10 +15,7 @@ class HabitForm extends Component {
     habitTitle: this.props.habits.activeHabit || "",
     active: false,
     categoryId: this.props.habits.categoryId,
-    id: "",
-    checkedGreen: "active-circle-cat",
-    checkedYellow: "",
-    checkedRed: ""
+    id: ""
   };
 
   componentDidUpdate(prevState) {
@@ -53,39 +50,6 @@ class HabitForm extends Component {
     }
   }
 
-  activeCircleGreen = event => {
-    event.preventDefault();
-    this.setState(prevState => ({
-      ...prevState,
-      checkedGreen: this.state.checkedGreen ? "" : "active-circle-cat",
-      checkedYellow: "",
-      checkedRed: "",
-      categoryId: 1
-    }));
-  };
-
-  activeCircleYellow = event => {
-    event.preventDefault();
-    this.setState(prevState => ({
-      ...prevState,
-      checkedYellow: this.state.checkedYellow ? "" : "active-circle-cat",
-      checkedGreen: "",
-      checkedRed: "",
-      categoryId: 2
-    }));
-  };
-
-  activeCircleRed = event => {
-    event.preventDefault();
-    this.setState(prevState => ({
-      ...prevState,
-      checkedRed: this.state.checkedRed ? "" : "active-circle-cat",
-      checkedGreen: "",
-      checkedYellow: "",
-      categoryId: 3
-    }));
-  };
-
   render() {
     console.log("HabitForm this.props.habits", this.props.habits);
     console.log("HabitForm this.state.categoryId", this.state.categoryId);
@@ -109,6 +73,19 @@ class HabitForm extends Component {
       <div />
     );
 
+    let addCatForm = this.state.active ? (
+      <Input
+        className="habit-input"
+        type="text"
+        name="category"
+        value={this.state.category}
+        onChange={this.handleChanges}
+        placeholder="add a new category or choose below"
+      />
+    ) : (
+      <div />
+    );
+
     return (
       <div>
         {dharmaBox}
@@ -123,35 +100,12 @@ class HabitForm extends Component {
               onChange={this.handleChanges}
               placeholder="add a new habit"
             />
+            {addCatForm}
           </FormGroup>
         </Form>
         <div className="category-header">Priority Level</div>
         <div className="category">
           <CategoryList />
-          {/* Delete here */}
-          {/* <FontAwesomeIcon
-            icon={faCircle}
-            className={`circle-green category-circle ${
-              this.state.checkedGreen
-            }`}
-            size="2x"
-            onClick={this.activeCircleGreen}
-          />
-          <FontAwesomeIcon
-            icon={faCircle}
-            className={`circle-yellow category-circle ${
-              this.state.checkedYellow
-            }`}
-            size="2x"
-            onClick={this.activeCircleYellow}
-          />
-          <FontAwesomeIcon
-            icon={faCircle}
-            className={`circle-red category-circle ${this.state.checkedRed}`}
-            size="2x"
-            onClick={this.activeCircleRed}
-          /> */}
-          {/* End Delete */}
         </div>
         <Button
           id="habit-form-button"
@@ -176,13 +130,16 @@ class HabitForm extends Component {
         habitTitle: this.state.habitTitle,
         id: this.state.id,
         categoryId:
-          this.state.categoryId === "" ? 1 : parseInt(this.state.categoryId, 10)
+          this.props.habits.categoryId === 1
+            ? 1
+            : parseInt(this.state.categoryId, 10)
       };
       this.props.updateHabit(updateHabit);
     } else {
       this.addHabit(event);
     }
     this.setState({ habitTitle: "", active: false, categoryId: "" });
+    // window.location.reload();
   };
 
   addHabit = event => {
