@@ -12,7 +12,7 @@ body {
   height: 100%;
   background: rgb(19, 44, 75);
   background: linear-gradient(
-    180deg,
+    0deg,
     rgba(19, 44, 75, 1) 0%,
     rgba(76, 33, 83, 1) 100%
   );

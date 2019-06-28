@@ -40,7 +40,7 @@ class HabitCard extends Component {
 
     return (
       <div className="habit-card">
-        <div>
+        <div className={`habit habit-${dharmaColor}`}>
           {dharma}
           {this.props.habit.habitTitle}
         </div>

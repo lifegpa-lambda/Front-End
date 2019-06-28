@@ -27,6 +27,8 @@ export const UPDATE_LIFEGPA_SUCCESS = "UPDATE_LIFEGPA_SUCCESS";
 export const SET_UPDATE_FORM = "SET_UPDATE_FORM";
 export const FILTER_HABITS = "FILTER_HABITS";
 export const TOGGLE_CHECKED = "TOGGLE_CHECKED";
+export const SET_ACTIVE_CATEGORY = "SET_ACTIVE_CATEGORY";
+export const CLEAR_CHECKED = "SET_ACTIVE_CATEGORY";
 
 export const getHabits = () => dispatch => {
   dispatch({ type: FETCH_HABITS_START });
@@ -95,7 +97,7 @@ export const addHabit = newHabit => dispatch => {
 
 export const addCategory = newCategory => dispatch => {
   dispatch({ type: ADD_CATEGORY_START });
-  // console.log(newHabit);
+  // console.log(newCategory);
   axios
     .post(
       `https://lifegpa-zach-christy.herokuapp.com/api/categories`,
@@ -105,11 +107,11 @@ export const addCategory = newCategory => dispatch => {
       }
     )
     .then(response => {
-      // console.log("addCategory response.data", response.data);
+      console.log("addCategory response.data", response.data);
       dispatch({ type: ADD_CATEGORY_SUCCESS, payload: response.data });
     })
     .catch(error => {
-      console.log("addHabit error", error.reponse);
+      console.log("addCategpry error", error.reponse);
       dispatch({
         type: ADD_CATEGORY_ERROR,
         payload: error.response
@@ -242,6 +244,13 @@ export const setUpdateForm = habit => {
   };
 };
 
+export const activeCategory = category => {
+  return {
+    type: SET_ACTIVE_CATEGORY,
+    payload: category
+  };
+};
+
 export const setUpdateBox = habit => {
   return {
     type: SET_UPDATE_FORM,
@@ -260,5 +269,12 @@ export const toggleChecked = habit => {
   return {
     type: TOGGLE_CHECKED,
     payload: habit
+  };
+};
+
+export const clearChecked = category => {
+  return {
+    type: CLEAR_CHECKED,
+    payload: category
   };
 };

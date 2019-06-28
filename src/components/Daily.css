@@ -3,7 +3,8 @@
   justify-content: space-between;
   align-items: center;
   font-size: 1.5rem;
-  padding: 10px;
+  line-height: 2.4rem;
+  padding: 7px;
   color: whitesmoke;
   font-weight: 700;
   filter: drop-shadow(0 0 0.15rem rgba(0, 0, 0, 1));
@@ -12,7 +13,6 @@
 
 .daily-habits-header {
   color: whitesmoke;
-  margin-top: 20px;
   filter: drop-shadow(0 0 0.15rem rgba(0, 0, 0, 1));
   user-select: none;
 }

@@ -11,7 +11,9 @@
 }
 
 .dharma-header {
-  color: whitesmoke;
+  color: #007bff;
+  filter: drop-shadow(0 0 0.15rem rgba(0, 0, 0, 1));
+  cursor: pointer;
 }
 
 .nav {
@@ -20,6 +22,7 @@
 
 .time-bar .nav-link {
   margin: 0 10px 10px;
+  font-size: 0.9rem;
 }
 
 .selected-time.nav-link {

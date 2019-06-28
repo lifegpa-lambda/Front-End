@@ -6,12 +6,42 @@ import CategoryCard from "./CategoryCard";
 
 class CategoryList extends Component {
   state = {
-    categories: []
+    categories: [],
+    checkedGreen: "",
+    checkedYellow: "",
+    checkedRed: ""
   };
   componentDidMount() {
     this.props.getCategories();
     console.log("CategoryList this.props", this.props);
   }
+
+  activeCircleGreen = () => {
+    console.log("activeCircleGreen this.state", this.state);
+    this.setState({
+      checkedGreen: this.state.checkedGreen ? "" : "active-circle-cat",
+      checkedYellow: "",
+      checkedRed: ""
+    });
+  };
+
+  activeCircleYellow = () => {
+    console.log("activeCircleYellow this.state", this.state);
+    this.setState({
+      checkedYellow: this.state.checkedYellow ? "" : "active-circle-cat",
+      checkedGreen: "",
+      checkedRed: ""
+    });
+  };
+
+  activeCircleRed = () => {
+    console.log("activeCircleRed this.state", this.state);
+    this.setState({
+      checkedRed: this.state.checkedRed ? "" : "active-circle-cat",
+      checkedGreen: "",
+      checkedYellow: ""
+    });
+  };
 
   render() {
     // console.log("CategoryList this.props", this.props);
@@ -23,6 +53,12 @@ class CategoryList extends Component {
               className="category-card"
               category={category}
               key={category.id}
+              activeCircleGreen={this.activeCircleGreen}
+              activeCircleYellow={this.activeCircleYellow}
+              activeCircleRed={this.activeCircleRed}
+              checkedGreen={this.state.checkedGreen}
+              checkedYellow={this.state.checkedYellow}
+              checkedRed={this.state.checkedRed}
             />
           );
         })}

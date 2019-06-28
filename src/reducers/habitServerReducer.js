@@ -20,7 +20,9 @@ import {
   UPDATE_LIFEGPA_SUCCESS,
   SET_UPDATE_FORM,
   FILTER_HABITS,
-  TOGGLE_CHECKED
+  TOGGLE_CHECKED,
+  SET_ACTIVE_CATEGORY,
+  CLEAR_CHECKED
 } from "../actions/habitActions";
 
 const initialState = {
@@ -37,7 +39,11 @@ const initialState = {
   active: false,
   filteredHabits: "",
   checked: false,
-  categories: []
+  categories: [],
+  categoryId: null,
+  checkedGreen: "",
+  checkedYellow: "",
+  checkedRed: ""
 };
 
 export default (state = initialState, action) => {
@@ -160,14 +166,22 @@ export default (state = initialState, action) => {
         active: true
       };
     case FILTER_HABITS:
-      // console.log(action.payload);
       return {
         ...state,
         filteredHabits: action.payload
-        // habits: action.payload.length > 0 ? action.payload : state.habits
       };
     case TOGGLE_CHECKED:
       // console.log("TOGGLE_CHECKED state", state);
+      return {
+        ...state
+      };
+    case SET_ACTIVE_CATEGORY:
+      return {
+        ...state,
+        categoryId: action.payload
+      };
+    case CLEAR_CHECKED:
+      // console.log("SET_ACTIVE_CATEGORY state", state);
       return {
         ...state
       };

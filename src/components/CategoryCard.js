@@ -3,89 +3,45 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-regular-svg-icons";
-import { toggleChecked } from "../actions/habitActions";
-import { updateHabit } from "../actions/habitActions";
+import { toggleChecked, activeCategory } from "../actions/habitActions";
 
 import "./Habit.css";
 
 class CategoryCard extends Component {
-  state = {
-    active: false,
-    categoryId: 1,
-    id: "",
-    checkedGreen: "active-circle-cat",
-    checkedYellow: "",
-    checkedRed: ""
-  };
-
-  componentDidUpdate(prevState) {
-    if (
-      this.props.habits.activeHabit &&
-      prevState.habits.activeHabit !== this.props.habits.activeHabit
-    ) {
-      this.setState({
-        habitTitle: this.props.habits.activeHabit.habitTitle,
-        active: true,
-        id: this.props.habits.activeHabit.id,
-        categoryId: this.props.habits.activeHabit.categoryId,
-        checkedGreen:
-          this.props.habits.activeHabit.categoryId === 1
-            ? "active-circle-cat"
-            : "",
-        checkedYellow:
-          this.props.habits.activeHabit.categoryId === 2
-            ? "active-circle-cat"
-            : "",
-        checkedRed:
-          this.props.habits.activeHabit.categoryId === 3
-            ? "active-circle-cat"
-            : ""
-      });
-    }
-  }
+  // state = {
+  //   checkedGreen: "active-circle-cat",
+  //   checkedYellow: "",
+  //   checkedRed: ""
+  // };
 
   activeCircleGreen = event => {
     event.preventDefault();
-    this.setState(prevState => ({
-      ...prevState,
-      checkedGreen: this.state.checkedGreen ? "" : "active-circle-cat",
-      checkedYellow: "",
-      checkedRed: "",
-      categoryId: 1
-    }));
+    this.props.activeCircleGreen(this.props.category.id);
+    this.props.activeCategory(this.props.category.id);
   };
 
   activeCircleYellow = event => {
     event.preventDefault();
-    this.setState(prevState => ({
-      ...prevState,
-      checkedYellow: this.state.checkedYellow ? "" : "active-circle-cat",
-      checkedGreen: "",
-      checkedRed: "",
-      categoryId: 2
-    }));
+    this.props.activeCircleYellow(this.props.category.id);
+    this.props.activeCategory(this.props.category.id);
   };
 
   activeCircleRed = event => {
     event.preventDefault();
-    this.setState(prevState => ({
-      ...prevState,
-      checkedRed: this.state.checkedRed ? "" : "active-circle-cat",
-      checkedGreen: "",
-      checkedYellow: "",
-      categoryId: 3
-    }));
+    this.props.activeCircleRed(this.props.category.id);
+    this.props.activeCategory(this.props.category.id);
   };
 
   render() {
     let dharma;
     let category = this.props.category.id;
+    console.log("CategoryCard this.state", this.state);
 
     if (category === 1) {
       dharma = (
         <FontAwesomeIcon
           icon={faCircle}
-          className={`circle-green category-circle ${this.state.checkedGreen}`}
+          className={`circle-green category-circle ${this.props.checkedGreen}`}
           size="3x"
           onClick={this.activeCircleGreen}
         />
@@ -95,7 +51,7 @@ class CategoryCard extends Component {
         <FontAwesomeIcon
           icon={faCircle}
           className={`circle-yellow category-circle ${
-            this.state.checkedYellow
+            this.props.checkedYellow
           }`}
           size="3x"
           onClick={this.activeCircleYellow}
@@ -105,7 +61,7 @@ class CategoryCard extends Component {
       dharma = (
         <FontAwesomeIcon
           icon={faCircle}
-          className={`circle-red category-circle ${this.state.checkedRed}`}
+          className={`circle-red category-circle ${this.props.checkedRed}`}
           size="3x"
           onClick={this.activeCircleRed}
         />
@@ -134,5 +90,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { toggleChecked, updateHabit }
+  { toggleChecked, activeCategory }
 )(CategoryCard);

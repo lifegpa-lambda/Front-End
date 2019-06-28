@@ -13,6 +13,7 @@
   border-top: 3px solid #7fefbd;
   border-bottom: 3px solid #7fefbd;
   padding: 15px;
+  user-select: none;
   /* padding-top: 10px; */
 }
 
@@ -34,10 +35,17 @@
   justify-content: space-between;
   align-items: center;
   font-size: 1.5rem;
-  padding: 10px;
+  line-height: 2.4rem;
+  padding: 7px;
   color: whitesmoke;
   font-weight: 700;
   filter: drop-shadow(0 0 0.15rem rgba(0, 0, 0, 1));
+  user-select: none;
+}
+
+.habit {
+  max-width: 60%;
+  text-align: left;
 }
 
 .habit-form {
@@ -53,7 +61,7 @@
 }
 
 .habit-input {
-  max-width: 50%;
+  max-width: 70%;
   text-align: center;
 }
 
@@ -131,6 +139,7 @@
   font-weight: 700;
   font-size: 1.4rem;
   filter: drop-shadow(0 0 0.15rem rgba(0, 0, 0, 1));
+  user-select: none;
 }
 
 .active-circle-cat {
