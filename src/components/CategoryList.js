@@ -13,14 +13,13 @@ class CategoryList extends Component {
   };
   componentDidMount() {
     this.props.getCategories();
-    if (this.state.categories.length < 1) {
-      const newCategory = {
-        categoryTitle: 1,
-        color: "green"
-      };
-      this.props.addCategory(newCategory);
-    }
-
+    // if (this.state.categories.length < 1) {
+    //   const newCategory = {
+    //     categoryTitle: 1,
+    //     color: "green"
+    //   };
+    //   this.props.addCategory(newCategory);
+    // }
     console.log("CategoryList this.props", this.props);
   }
 

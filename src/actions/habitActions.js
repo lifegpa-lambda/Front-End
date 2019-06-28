@@ -111,7 +111,7 @@ export const addCategory = newCategory => dispatch => {
       dispatch({ type: ADD_CATEGORY_SUCCESS, payload: response.data });
     })
     .catch(error => {
-      console.log("addCategpry error", error.reponse);
+      console.log("addCategory error", error.reponse);
       dispatch({
         type: ADD_CATEGORY_ERROR,
         payload: error.response
