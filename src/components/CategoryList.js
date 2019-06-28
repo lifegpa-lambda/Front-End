@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getCategories } from "../actions/habitActions";
+import { getCategories, addCategory } from "../actions/habitActions";
 import CategoryCard from "./CategoryCard";
 
 class CategoryList extends Component {
@@ -13,7 +13,6 @@ class CategoryList extends Component {
   };
   componentDidMount() {
     this.props.getCategories();
-    // console.log("CategoryList this.props", this.props);
   }
 
   activeCircleGreen = () => {
@@ -81,5 +80,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getCategories }
+  { getCategories, addCategory }
 )(CategoryList);

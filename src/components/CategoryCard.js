@@ -68,7 +68,11 @@ class CategoryCard extends Component {
       );
     } else if (category > 3 || category < 1) {
       dharma = (
-        <FontAwesomeIcon icon={faCircle} className="circle-purple" size="4x" />
+        <FontAwesomeIcon
+          icon={faCircle}
+          className="category-circle circle-purple"
+          size="3x"
+        />
       );
     }
 

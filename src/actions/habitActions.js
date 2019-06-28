@@ -97,7 +97,7 @@ export const addHabit = newHabit => dispatch => {
 
 export const addCategory = newCategory => dispatch => {
   dispatch({ type: ADD_CATEGORY_START });
-  // console.log(newHabit);
+  // console.log(newCategory);
   axios
     .post(
       `https://lifegpa-zach-christy.herokuapp.com/api/categories`,
@@ -107,11 +107,11 @@ export const addCategory = newCategory => dispatch => {
       }
     )
     .then(response => {
-      // console.log("addCategory response.data", response.data);
+      console.log("addCategory response.data", response.data);
       dispatch({ type: ADD_CATEGORY_SUCCESS, payload: response.data });
     })
     .catch(error => {
-      console.log("addHabit error", error.reponse);
+      console.log("addCategory error", error.reponse);
       dispatch({
         type: ADD_CATEGORY_ERROR,
         payload: error.response
