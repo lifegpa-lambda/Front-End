@@ -4,8 +4,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addHabit, updateHabit, addCategory } from "../actions/habitActions";
 import { Button, Form, FormGroup, Input } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle } from "@fortawesome/free-regular-svg-icons";
 import "./Habit.css";
 import CategoryList from "./CategoryList";
 
@@ -51,8 +49,8 @@ class HabitForm extends Component {
   }
 
   render() {
-    console.log("HabitForm this.props.habits", this.props.habits);
-    console.log("HabitForm this.state.categoryId", this.state.categoryId);
+    // console.log("HabitForm this.props.habits", this.props.habits);
+    // console.log("HabitForm this.state.categoryId", this.state.categoryId);
 
     let dharmaBox = this.state.active ? (
       <div className="dharma-box container">
@@ -191,7 +189,7 @@ HabitForm.propTypes = {
 };
 
 const mapStateToProps = state => {
-  console.log("HabitForm mapStateToProps state", state);
+  // console.log("HabitForm mapStateToProps state", state);
   return {
     activeHabit: state.activeHabit,
     active: state.active,

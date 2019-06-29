@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import "./";
 import Login from "./components/Login";
@@ -19,14 +14,11 @@ import DharmaList from "./components/DharmaList";
 import Page404 from "./components/Page404";
 
 const App = props => {
-  console.log("App props", props);
-  // if (props.location.pathname === "/") {
-  //   return <Redirect to="/login" />;
-  // }
+  // console.log("App props", props);
   return (
     <Router>
+      <NavBar />
       <div className="App">
-        <NavBar />
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/signout" component={Signout} />
@@ -35,7 +27,7 @@ const App = props => {
           <PrivateRoute exact path="/daily" component={DailyList} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <PrivateRoute exact path="/dharma" component={DharmaList} />
-          <Route exact path="/" component={Dashboard} />
+          <PrivateRoute exact path="/" component={Dashboard} />
           <Route component={Page404} />
         </Switch>
       </div>

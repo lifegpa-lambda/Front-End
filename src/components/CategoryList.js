@@ -7,44 +7,36 @@ import CategoryCard from "./CategoryCard";
 class CategoryList extends Component {
   state = {
     categories: [],
-    checkedGreen: "",
+    checkedGreen: "active-circle-cat",
     checkedYellow: "",
     checkedRed: ""
   };
   componentDidMount() {
     this.props.getCategories();
-    // if (this.state.categories.length < 1) {
-    //   const newCategory = {
-    //     categoryTitle: 1,
-    //     color: "green"
-    //   };
-    //   this.props.addCategory(newCategory);
-    // }
-    console.log("CategoryList this.props", this.props);
   }
 
   activeCircleGreen = () => {
-    console.log("activeCircleGreen this.state", this.state);
+    // console.log("activeCircleGreen this.state", this.state);
     this.setState({
-      checkedGreen: this.state.checkedGreen ? "" : "active-circle-cat",
+      checkedGreen: "active-circle-cat",
       checkedYellow: "",
       checkedRed: ""
     });
   };
 
   activeCircleYellow = () => {
-    console.log("activeCircleYellow this.state", this.state);
+    // console.log("activeCircleYellow this.state", this.state);
     this.setState({
-      checkedYellow: this.state.checkedYellow ? "" : "active-circle-cat",
+      checkedYellow: "active-circle-cat",
       checkedGreen: "",
       checkedRed: ""
     });
   };
 
   activeCircleRed = () => {
-    console.log("activeCircleRed this.state", this.state);
+    // console.log("activeCircleRed this.state", this.state);
     this.setState({
-      checkedRed: this.state.checkedRed ? "" : "active-circle-cat",
+      checkedRed: "active-circle-cat",
       checkedGreen: "",
       checkedYellow: ""
     });

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { login } from "../actions/authActions";
 import { Button, Form, FormGroup, Input } from "reactstrap";
-import "./Login.css";
+import "./Login.scss";
 
 class Login extends Component {
   state = {
@@ -34,7 +34,7 @@ class Login extends Component {
   };
 
   login = event => {
-    console.log("login event", event);
+    // console.log("login event", event);
     event.preventDefault();
     this.props.login(this.state.credentials).then(err => {
       !err && this.props.history.push("/dashboard");
@@ -71,6 +71,7 @@ class Login extends Component {
               placeholder="username"
               value={this.state.credentials.username}
               onChange={this.handleChanges}
+              autoComplete="username"
             />
             <Input
               required
@@ -79,6 +80,7 @@ class Login extends Component {
               placeholder="password"
               value={this.state.credentials.password}
               onChange={this.handleChanges}
+              autoComplete="current-password"
             />
           </FormGroup>
           <Button className="login-button" color="primary">

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Input } from "reactstrap";
 import { filterHabits } from "../actions/habitActions";
-import "./Search.css";
+import "./Search.scss";
 
 class SearchBar extends Component {
   state = {

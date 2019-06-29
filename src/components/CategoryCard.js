@@ -35,7 +35,7 @@ class CategoryCard extends Component {
   render() {
     let dharma;
     let category = this.props.category.id;
-    console.log("CategoryCard this.state", this.state);
+    // console.log("CategoryCard this.state", this.state);
 
     if (category === 1) {
       dharma = (

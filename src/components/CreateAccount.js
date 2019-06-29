@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createAccount } from "../actions/authActions";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import "./Login.css";
+import "./Login.scss";
 
 class CreateAccount extends Component {
   state = {
@@ -17,7 +17,7 @@ class CreateAccount extends Component {
   };
 
   componentDidMount = () => {
-    console.log(this.props);
+    // console.log(this.props);
   };
 
   handleChanges = event => {
@@ -31,7 +31,7 @@ class CreateAccount extends Component {
   };
 
   createAccount = event => {
-    console.log("create account event", event);
+    // console.log("create account event", event);
     event.preventDefault();
     this.props.createAccount(this.state.credentials).then(err => {
       !err && this.props.history.push("/habits");
@@ -64,6 +64,7 @@ class CreateAccount extends Component {
               placeholder="username"
               value={this.state.credentials.username}
               onChange={this.handleChanges}
+              autoComplete="username"
             />
             <Input
               required
@@ -72,6 +73,7 @@ class CreateAccount extends Component {
               placeholder="full name"
               value={this.state.credentials.fullname}
               onChange={this.handleChanges}
+              autoComplete="name"
             />
             <Input
               required
@@ -80,6 +82,7 @@ class CreateAccount extends Component {
               placeholder="password"
               value={this.state.credentials.password}
               onChange={this.handleChanges}
+              autoComplete="new-password"
             />
             <Input
               required
@@ -88,6 +91,7 @@ class CreateAccount extends Component {
               placeholder="email"
               value={this.state.credentials.email}
               onChange={this.handleChanges}
+              autoComplete="email"
             />
             <Input
               type="text"
